@@ -1,0 +1,31 @@
+﻿<Window x:Class="MotoSoft.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MotoSoft"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="530" MinWidth="750" d:DesignHeight="531" Height="530" Width="750" AllowsTransparency="True" WindowStyle="None" Visibility="Visible" Icon="images/logo.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowState="Maximized">
+    <Grid Background="#FFE8EAEB" MinWidth="500">
+        <Canvas x:Name="NavPanel" Background="#FF021D2A" Margin="0,0,552,0" Width="240" MinWidth="{DynamicResource {x:Static SystemParameters.MinimizedWindowWidthKey}}" HorizontalAlignment="Left" MinHeight="530">
+            <Image x:Name="Logo" Height="100" Canvas.Left="70" Canvas.Top="20" Width="100" d:IsLocked="True">
+                <Image.Source>
+                    <BitmapImage UriSource="/images/logo.png"/>
+                </Image.Source>
+            </Image>
+            <Label x:Name="Label" Content="RECYCLE | REBUILD" Canvas.Left="50" Canvas.Top="115" Foreground="#FF3399CC" FontSize="15" FontWeight="DemiBold" d:IsLocked="True"/>
+            <Button x:Name="Home" Content="Home" Width="240" Canvas.Top="160" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Inventory" Content="Inventory" Width="240" Canvas.Top="200" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="ListParts" Content="List Parts" Width="240" Canvas.Top="240" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Garage" Content="Garage" Width="240" Canvas.Top="280" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Orders" Content="Orders" Width="240" Canvas.Top="320" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Analytics" Content="Analytics" Width="240" Canvas.Top="360" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Settings" Content="Settings" Width="240" Canvas.Top="400" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Exit" Content="Exit" Width="240" Canvas.Top="440" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+        </Canvas>
+        <Canvas x:Name="MenuNavigation" Margin="240,0,0,0" Background="#FFD0D3DA"/>
+        <Canvas x:Name="MenuInventory" Margin="240,0,0,0" Background="#FFD0D3DA" d:IsHidden="True"/>
+        <Canvas x:Name="MenuListParts" Margin="240,0,0,0" Background="#FFD0D3DA" d:IsHidden="True"/>
+        <Canvas x:Name="MenuSettings" Margin="240,0,0,0" Background="#FFD0D3DA" d:IsHidden="True"/>
+    </Grid>
+</Window>
