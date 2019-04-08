@@ -98,12 +98,25 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\logo.ico" />
     <Resource Include="images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Inventory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Garage.png" />
+    <Resource Include="images\ListParts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

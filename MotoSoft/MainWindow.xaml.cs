@@ -25,21 +25,60 @@ namespace MotoSoft
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        #region NavigationButtonClick
+
+        private void Home_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            switch (button.Name)
-            {
-                case "Home":
-                    {
-                        break;
-                    }
-                case "Exit":
-                    {
-                        Application.Current.Shutdown();
-                        break;
-                    }
-            }
+            MenuNavigation.Visibility = Visibility.Visible;
+            MenuInventory.Visibility = Visibility.Hidden;
+            MenuListParts.Visibility = Visibility.Hidden;
+            MenuGarage.Visibility = Visibility.Hidden;
+            MenuSettings.Visibility = Visibility.Hidden;
         }
+
+        private void Inventory_Click(object sender, RoutedEventArgs e)
+        {
+            MenuInventory.Visibility = Visibility.Visible;
+            MenuListParts.Visibility = Visibility.Hidden;
+            MenuNavigation.Visibility = Visibility.Hidden;
+            MenuGarage.Visibility = Visibility.Hidden;
+            MenuSettings.Visibility = Visibility.Hidden;
+        }
+
+        private void ListParts_Click(object sender, RoutedEventArgs e)
+        {
+            MenuListParts.Visibility = Visibility.Visible;
+            MenuNavigation.Visibility = Visibility.Hidden;
+            MenuInventory.Visibility = Visibility.Hidden;
+            MenuGarage.Visibility = Visibility.Hidden;
+            MenuSettings.Visibility = Visibility.Hidden;
+        }
+
+        private void Garage_Click(object sender, RoutedEventArgs e)
+        {
+            MenuGarage.Visibility = Visibility.Visible;
+            MenuListParts.Visibility = Visibility.Hidden;
+            MenuNavigation.Visibility = Visibility.Hidden;
+            MenuInventory.Visibility = Visibility.Hidden;
+            MenuSettings.Visibility = Visibility.Hidden;
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            MenuSettings.Visibility = Visibility.Visible;
+            MenuGarage.Visibility = Visibility.Hidden;
+            MenuListParts.Visibility = Visibility.Hidden;
+            MenuNavigation.Visibility = Visibility.Hidden;
+            MenuInventory.Visibility = Visibility.Hidden;
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        #endregion NavigationButtonClick
+
+        
     }
 }

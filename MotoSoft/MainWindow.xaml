@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotoSoft"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="530" MinWidth="750" d:DesignHeight="531" Height="530" Width="750" AllowsTransparency="True" WindowStyle="None" Visibility="Visible" Icon="images/logo.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowState="Maximized">
+        Title="MainWindow" MinHeight="530" MinWidth="750" d:DesignHeight="531" Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}" AllowsTransparency="True" WindowStyle="None" Visibility="Visible" Icon="images/logo.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowState="Maximized" Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}">
     <Grid Background="#FFE8EAEB" MinWidth="500">
         <Canvas x:Name="NavPanel" Background="#FF021D2A" Margin="0,0,552,0" Width="240" MinWidth="{DynamicResource {x:Static SystemParameters.MinimizedWindowWidthKey}}" HorizontalAlignment="Left" MinHeight="530">
             <Image x:Name="Logo" Height="100" Canvas.Left="70" Canvas.Top="20" Width="100" d:IsLocked="True">
@@ -14,18 +14,91 @@
                 </Image.Source>
             </Image>
             <Label x:Name="Label" Content="RECYCLE | REBUILD" Canvas.Left="50" Canvas.Top="115" Foreground="#FF3399CC" FontSize="15" FontWeight="DemiBold" d:IsLocked="True"/>
-            <Button x:Name="Home" Content="Home" Width="240" Canvas.Top="160" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Inventory" Content="Inventory" Width="240" Canvas.Top="200" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="ListParts" Content="List Parts" Width="240" Canvas.Top="240" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Garage" Content="Garage" Width="240" Canvas.Top="280" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Orders" Content="Orders" Width="240" Canvas.Top="320" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Analytics" Content="Analytics" Width="240" Canvas.Top="360" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Settings" Content="Settings" Width="240" Canvas.Top="400" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Exit" Content="Exit" Width="240" Canvas.Top="440" Height="30" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Home" Content="Home" Width="240" Canvas.Top="160" Height="30" Click="Home_Click" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Inventory" Content="Inventory" Width="240" Canvas.Top="200" Height="30" Click="Inventory_Click" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="ListParts" Content="List Parts" Width="240" Canvas.Top="240" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929" Click="ListParts_Click"/>
+            <Button x:Name="Garage" Content="Garage" Width="240" Canvas.Top="280" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929" Click="Garage_Click"/>
+            <Button x:Name="Orders" Content="Orders" Width="240" Canvas.Top="320" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Analytics" Content="Analytics" Width="240" Canvas.Top="360" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Settings" Content="Settings" Width="240" Canvas.Top="400" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929" Click="Settings_Click"/>
+            <Button x:Name="Exit" Content="Exit" Width="240" Canvas.Top="440" Height="30" Click="Exit_Click" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
         </Canvas>
-        <Canvas x:Name="MenuNavigation" Margin="240,0,0,0" Background="#FFD0D3DA"/>
-        <Canvas x:Name="MenuInventory" Margin="240,0,0,0" Background="#FFD0D3DA" d:IsHidden="True"/>
-        <Canvas x:Name="MenuListParts" Margin="240,0,0,0" Background="#FFD0D3DA" d:IsHidden="True"/>
-        <Canvas x:Name="MenuSettings" Margin="240,0,0,0" Background="#FFD0D3DA" d:IsHidden="True"/>
+        <Canvas x:Name="MenuNavigation" Margin="240,0,0,0" Background="#FFD0D3DA" d:IsHidden="True">
+            <Button x:Name="ButtonInventory" Canvas.Left="150" Canvas.Top="80" FontSize="20" FontFamily="Times New Roman" FontStyle="Italic" Background="#FFD0D3DA" MinWidth="350" MinHeight="350" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MaxHeight="500" MaxWidth="500" ScrollViewer.CanContentScroll="True" Click="Inventory_Click">
+                <Canvas Height="350" Width="350">
+                    <Image Height="350" Width="350" Canvas.Left="0" Canvas.Top="0" Source="images/Inventory.png">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="images/Inventory.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Canvas>
+            </Button>
+            <Button x:Name="ButtonListParts" Canvas.Left="665" Canvas.Top="81" FontSize="20" FontFamily="Times New Roman" FontStyle="Italic" Background="#FFD0D3DA" MinWidth="350" MinHeight="350" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MaxHeight="500" MaxWidth="500" ScrollViewer.CanContentScroll="True" Click="ListParts_Click">
+                <Canvas Height="350" Width="350">
+                    <Image Height="350" Width="350" Canvas.Left="0" Canvas.Top="0" Source="images/ListParts.png">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="images/ListParts.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Canvas>
+            </Button>
+            <Button x:Name="ButtonGarage" Canvas.Left="1185" Canvas.Top="82" FontSize="20" FontFamily="Times New Roman" FontStyle="Italic" Background="#FFD0D3DA" MinWidth="350" MinHeight="350" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MaxHeight="500" MaxWidth="500" ScrollViewer.CanContentScroll="True" Click="Garage_Click">
+                <Canvas Height="350" Width="350">
+                    <Image Height="350" Width="350" Canvas.Left="0" Canvas.Top="0" Source="images/Garage.png">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="images/Garage.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Canvas>
+            </Button>
+            <Button x:Name="ButtonOrders" Canvas.Left="151" Canvas.Top="520" FontSize="20" FontFamily="Times New Roman" FontStyle="Italic" Background="#FFD0D3DA" MinWidth="350" MinHeight="350" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MaxHeight="500" MaxWidth="500" ScrollViewer.CanContentScroll="True">
+                <Canvas Height="350" Width="350">
+                    <Image Height="350" Width="350" Canvas.Left="0" Canvas.Top="0" Source="images/Inventory.png">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="images/Inventory.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Canvas>
+            </Button>
+            <Button x:Name="ButtonAnalytics" Canvas.Left="666" Canvas.Top="525" FontSize="20" FontFamily="Times New Roman" FontStyle="Italic" Background="#FFD0D3DA" MinWidth="350" MinHeight="350" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MaxHeight="500" MaxWidth="500" ScrollViewer.CanContentScroll="True">
+                <Canvas Height="350" Width="350">
+                    <Image Height="350" Width="350" Canvas.Left="0" Canvas.Top="0" Source="images/Inventory.png">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="images/Inventory.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Canvas>
+            </Button>
+            <Button x:Name="ButtonSettings" Canvas.Left="1185" Canvas.Top="526" FontSize="20" FontFamily="Times New Roman" FontStyle="Italic" Background="#FFD0D3DA" MinWidth="350" MinHeight="350" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MaxHeight="500" MaxWidth="500" ScrollViewer.CanContentScroll="True" Click="Settings_Click">
+                <Canvas Height="350" Width="350">
+                    <Image Height="350" Width="350" Canvas.Left="0" Canvas.Top="0" Source="images/Settings.png">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="images/Settings.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Canvas>
+            </Button>
+        </Canvas>
+        <Canvas x:Name="MenuInventory" Margin="240,0,0,0" Background="#FFD0D3DA" Visibility="Hidden" d:IsHidden="True">
+            <Canvas x:Name="TitleInventory" Height="100" Width="1700" Background="#FF021D2A" MinHeight="100" MinWidth="300" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <Label Content="INVENTORY" Height="60" Width="295" Foreground="White" Canvas.Left="735" Canvas.Top="20" FontSize="48" FontFamily="Times New Roman"/>
+            </Canvas>
+        </Canvas>
+        <Canvas x:Name="MenuListParts" Margin="240,0,0,0" Background="#FFD0D3DA" Visibility="Hidden" d:IsHidden="True">
+            <Canvas x:Name="TitleListParts" Height="100" Width="1700" Background="#FF021D2A" MinHeight="100" MinWidth="300" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <Label Content="LIST PARTS" Height="60" Width="262" Foreground="White" Canvas.Left="748" Canvas.Top="20" FontSize="48" FontFamily="Times New Roman"/>
+            </Canvas>
+        </Canvas>
+        <Canvas x:Name="MenuSettings" Margin="240,0,0,0" Background="#FFD0D3DA">
+            <Canvas x:Name="TitleSettings" Height="100" Width="1700" Background="#FF021D2A" MinHeight="100" MinWidth="300" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <Label Content="SETTINGS" Height="60" Width="242" Foreground="White" Canvas.Left="758" Canvas.Top="20" FontSize="48" FontFamily="Times New Roman"/>
+            </Canvas>
+            <GridSplitter Height="245" Canvas.Left="545" Canvas.Top="310" Width="600" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" ScrollViewer.CanContentScroll="True" UseLayoutRounding="True" Background="#FFD85959"/>
+        </Canvas>
+        <Canvas x:Name="MenuGarage" Margin="240,0,0,0" Background="#FFD0D3DA" d:IsHidden="True" Visibility="Hidden">
+            <Canvas x:Name="TitleGarage" Height="100" Width="1700" Background="#FF021D2A">
+                <Label Content="GARAGE" Height="76" Width="208" Foreground="White" Canvas.Left="777" Canvas.Top="19" FontSize="48" FontFamily="Times New Roman"/>
+            </Canvas>
+        </Canvas>
     </Grid>
 </Window>
