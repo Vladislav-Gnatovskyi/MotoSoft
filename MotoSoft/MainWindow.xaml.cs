@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MotoSoft.Model;
 
 namespace MotoSoft
 {
@@ -20,10 +21,12 @@ namespace MotoSoft
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static SettingsModel Setting;
+
         public MainWindow()
         {
             InitializeComponent();
-        }
+        }        
 
         #region NavigationButtonClick
 
@@ -33,6 +36,8 @@ namespace MotoSoft
             MenuInventory.Visibility = Visibility.Hidden;
             MenuListParts.Visibility = Visibility.Hidden;
             MenuGarage.Visibility = Visibility.Hidden;
+            MenuAnalytics.Visibility = Visibility.Hidden;
+            MenuOrders.Visibility = Visibility.Hidden;
             MenuSettings.Visibility = Visibility.Hidden;
         }
 
@@ -42,6 +47,8 @@ namespace MotoSoft
             MenuListParts.Visibility = Visibility.Hidden;
             MenuNavigation.Visibility = Visibility.Hidden;
             MenuGarage.Visibility = Visibility.Hidden;
+            MenuAnalytics.Visibility = Visibility.Hidden;
+            MenuOrders.Visibility = Visibility.Hidden;
             MenuSettings.Visibility = Visibility.Hidden;
         }
 
@@ -51,6 +58,8 @@ namespace MotoSoft
             MenuNavigation.Visibility = Visibility.Hidden;
             MenuInventory.Visibility = Visibility.Hidden;
             MenuGarage.Visibility = Visibility.Hidden;
+            MenuAnalytics.Visibility = Visibility.Hidden;
+            MenuOrders.Visibility = Visibility.Hidden;
             MenuSettings.Visibility = Visibility.Hidden;
         }
 
@@ -60,6 +69,8 @@ namespace MotoSoft
             MenuListParts.Visibility = Visibility.Hidden;
             MenuNavigation.Visibility = Visibility.Hidden;
             MenuInventory.Visibility = Visibility.Hidden;
+            MenuAnalytics.Visibility = Visibility.Hidden;
+            MenuOrders.Visibility = Visibility.Hidden;
             MenuSettings.Visibility = Visibility.Hidden;
         }
 
@@ -69,6 +80,8 @@ namespace MotoSoft
             MenuGarage.Visibility = Visibility.Hidden;
             MenuListParts.Visibility = Visibility.Hidden;
             MenuNavigation.Visibility = Visibility.Hidden;
+            MenuAnalytics.Visibility = Visibility.Hidden;
+            MenuOrders.Visibility = Visibility.Hidden;
             MenuInventory.Visibility = Visibility.Hidden;
         }
 
@@ -77,8 +90,45 @@ namespace MotoSoft
             Application.Current.Shutdown();
         }
 
+        private void Orders_Click(object sender, RoutedEventArgs e)
+        {
+            MenuOrders.Visibility = Visibility.Visible;
+            MenuGarage.Visibility = Visibility.Hidden;
+            MenuListParts.Visibility = Visibility.Hidden;
+            MenuNavigation.Visibility = Visibility.Hidden;
+            MenuSettings.Visibility = Visibility.Hidden;
+            MenuInventory.Visibility = Visibility.Hidden;
+            MenuAnalytics.Visibility = Visibility.Hidden;
+        }
+
+        private void Analytics_Click(object sender, RoutedEventArgs e)
+        {
+            MenuAnalytics.Visibility = Visibility.Visible;
+            MenuGarage.Visibility = Visibility.Hidden;
+            MenuListParts.Visibility = Visibility.Hidden;
+            MenuNavigation.Visibility = Visibility.Hidden;
+            MenuSettings.Visibility = Visibility.Hidden;
+            MenuOrders.Visibility = Visibility.Hidden;
+            MenuInventory.Visibility = Visibility.Hidden;
+        }
+
+
         #endregion NavigationButtonClick
 
-        
+
+        #region SettingMenu
+
+        private void PrewItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if(THtml.Text != null && THtml.Text != "") WBPreview.NavigateToString(THtml.Text);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        #endregion SettingMenu
+
+
     }
 }
