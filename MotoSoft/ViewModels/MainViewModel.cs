@@ -1,5 +1,5 @@
 ﻿using DevExpress.Mvvm;
-using MotoSoft.Command;
+using MotoSoft.Assets.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -10,10 +10,10 @@
 
 
     <Grid Background="#FFE8EAEB" MinWidth="500">
-        <Canvas x:Name="NavPanel" Background="#FF021D2A" Margin="0,0,552,0" Width="240" MinWidth="{DynamicResource {x:Static SystemParameters.MinimizedWindowWidthKey}}" HorizontalAlignment="Left" MinHeight="500" d:IsLocked="True">
-            <Image x:Name="Logo" Height="100" Canvas.Left="70" Canvas.Top="20" Width="100" d:IsLocked="True">
+        <Canvas x:Name="NavPanel" Background="#FF021D2A" Margin="0,0,552,0" Width="240" MinWidth="{DynamicResource {x:Static SystemParameters.MinimizedWindowWidthKey}}" HorizontalAlignment="Left" MinHeight="500">
+            <Image x:Name="Logo" Height="100" Canvas.Left="70" Canvas.Top="20" Width="100">
                 <Image.Source>
-                    <BitmapImage UriSource="/images/logo.png"/>
+                    <ImageSource>Assets/images/logo.png</ImageSource>
                 </Image.Source>
             </Image>
             <Label x:Name="Label" Content="RECYCLE | REBUILD" Canvas.Left="50" Canvas.Top="115" Foreground="#FF3399CC" FontSize="15" FontWeight="DemiBold" d:IsLocked="True"/>

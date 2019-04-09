@@ -60,7 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Command\ReplayCommand.cs" />
+    <Compile Include="Assets\Command\ReplayCommand.cs" />
     <Compile Include="Pages\Analytics.xaml.cs">
       <DependentUpon>Analytics.xaml</DependentUpon>
     </Compile>
@@ -165,20 +165,20 @@
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\logo.ico" />
-    <Resource Include="images\logo.png">
+    <Resource Include="Assets\images\logo.ico" />
+    <Resource Include="Assets\images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Inventory.png" />
+    <Resource Include="Assets\images\Inventory.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Garage.png" />
-    <Resource Include="images\ListParts.png" />
+    <Resource Include="Assets\images\Garage.png" />
+    <Resource Include="Assets\images\ListParts.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Settings.png" />
+    <Resource Include="Assets\images\Settings.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpressMvvm">
@@ -192,10 +192,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Orders.png" />
+    <Resource Include="Assets\images\Orders.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Analytics.png" />
+    <Resource Include="Assets\images\Analytics.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
