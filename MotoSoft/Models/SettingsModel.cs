@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MotoSoft.Model
+namespace MotoSoft.Models
 {
     [DataContract]
     public class SettingsModel

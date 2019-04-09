@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MotoSoft"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="MotoSoft.MainWindow"
         mc:Ignorable="d"
-        Title="MotoSoft" MinHeight="530" MinWidth="900" d:DesignHeight="531" Visibility="Visible" Icon="images/logo.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowState="Maximized" Width="900" Height="530">
+        Title="MotoSoft" MinHeight="530" MinWidth="900" d:DesignHeight="531" Visibility="Visible" Icon="/MotoSoft;component/images/logo.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowState="Maximized" Width="900" Height="530">
 
 
     <Grid Background="#FFE8EAEB" MinWidth="500">
@@ -17,145 +17,19 @@
                 </Image.Source>
             </Image>
             <Label x:Name="Label" Content="RECYCLE | REBUILD" Canvas.Left="50" Canvas.Top="115" Foreground="#FF3399CC" FontSize="15" FontWeight="DemiBold" d:IsLocked="True"/>
-            <Button x:Name="Home" Content="Home" Width="240" Canvas.Top="160" Height="30" Click="Home_Click" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Inventory" Content="Inventory" Width="240" Canvas.Top="200" Height="30" Click="Inventory_Click" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="ListParts" Content="List Parts" Width="240" Canvas.Top="240" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929" Click="ListParts_Click"/>
-            <Button x:Name="Garage" Content="Garage" Width="240" Canvas.Top="280" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929" Click="Garage_Click"/>
-            <Button x:Name="Orders" Content="Orders" Width="240" Canvas.Top="320" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929" Click="Orders_Click"/>
-            <Button x:Name="Analytics" Content="Analytics" Width="240" Canvas.Top="360" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929" Click="Analytics_Click"/>
-            <Button x:Name="Settings" Content="Settings" Width="240" Canvas.Top="400" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929" Click="Settings_Click"/>
-            <Button x:Name="Exit" Content="Exit" Width="240" Canvas.Top="440" Height="30" Click="Exit_Click" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Home" Command="{Binding BMenuHome_Click}" Content="Home" Width="240" Canvas.Top="160" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Inventory" Command="{Binding BMenuInventory_Click}" Content="Inventory" Width="240" Canvas.Top="200" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="ListParts" Command="{Binding BMenuListParts_Click}" Content="List Parts" Width="240" Canvas.Top="240" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Garage" Command="{Binding BMenuGarage_Click}" Content="Garage" Width="240" Canvas.Top="280" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Orders" Command="{Binding BMenuOrders_Click}" Content="Orders" Width="240" Canvas.Top="320" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Analytics" Command="{Binding BMenuAnalytics_Click}" Content="Analytics" Width="240" Canvas.Top="360" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Settings" Command="{Binding BMenuSettings_Click}" Content="Settings" Width="240" Canvas.Top="400" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Exit" Command="{Binding BExit_Click}" Content="Exit" Width="240" Canvas.Top="440" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
         </Canvas>
-        <Grid x:Name="MenuNavigation" Margin="240,0,-3,0" Background="#FFD0D3DA" d:IsLocked="True" d:IsHidden="True">
-            <Grid x:Name="Title" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="HOME" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-            <Grid x:Name="NavMenu" Margin="0,50,0,0" MinWidth="100" MinHeight="100">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="NavInventory" Content="" Margin="5" Click="Inventory_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="images/Inventory.png"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="NavListParts" Content="" Margin="5" Grid.Column="1" Click="ListParts_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="images/ListParts.png"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="NavGarage" Content="" Margin="5" Grid.Column="2" Click="Garage_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="images/Garage.png"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="NavOrders" Content="" Margin="5" Click="Orders_Click" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                    <Button.Background>
-                        <ImageBrush ImageSource="images/Orders.png"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="NavAnalytics" Content="" Margin="5" Click="Analytics_Click" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1">
-                    <Button.Background>
-                        <ImageBrush ImageSource="images/Analytics.png"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="NavSettings" Content="" Margin="5" Click="Settings_Click" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2">
-                    <Button.Background>
-                        <ImageBrush ImageSource="images/Settings.png"/>
-                    </Button.Background>
-                </Button>
-            </Grid>
-        </Grid>
-        <Grid x:Name="MenuInventory" Margin="240,0,-3,0" Background="#FFD0D3DA" Visibility="Hidden">
-            <Grid x:Name="Title1" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="INVENTORY" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-        </Grid>
-        <Grid x:Name="MenuListParts" Margin="240,0,-3,0" Background="#FFD0D3DA" Visibility="Hidden">
-            <Grid x:Name="Title2" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="LIST PARTS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-        </Grid>
-        <Grid x:Name="MenuGarage" Margin="240,0,-3,0" Background="#FFD0D3DA" Visibility="Hidden">
-            <Grid x:Name="Title4" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="GARAGE" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-        </Grid>
-        <Grid x:Name="MenuOrders" Margin="240,0,-3,0" Background="#FFD0D3DA" Visibility="Hidden">
-            <Grid x:Name="Title5" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="ORDERS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-        </Grid>
-        <Grid x:Name="MenuAnalytics" Margin="240,0,-3,0" Background="#FFD0D3DA" Visibility="Hidden">
-            <Grid x:Name="Title6" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="ANALYTICS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-        </Grid>
-        <Grid x:Name="MenuSettings" Margin="240,0,-3,0" Background="#FFD0D3DA">
-            <Grid x:Name="Title3" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="SETTINGS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-            <Grid Margin="0,50,0,180">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="185*"/>
-                    <ColumnDefinition Width="143*"/>
-                    <ColumnDefinition Width="164*"/>
-                    <ColumnDefinition Width="163*"/>
-                </Grid.ColumnDefinitions>
-                <Label Content="FirstName" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="64"/>
-                <TextBox x:Name="TFirstName" Height="23" Margin="80,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.435" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label Content="SecondName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,25,0,0" Height="26" Width="81"/>
-                <TextBox x:Name="TSecondName" Height="23" Margin="80,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.435" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label Content="PayPal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Grid.Column="1"/>
-                <TextBox x:Name="TPayPal" Grid.Column="1" Height="23" Margin="50,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <Label Content="Phone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Grid.Column="1" Margin="0,27,0,0"/>
-                <TextBox x:Name="TPhone" Grid.Column="1" Height="23" Margin="50,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <Label Content="Postal Code" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Margin="2,-1,0,0"/>
-                <TextBox x:Name="TPostalCode" Grid.Column="2" Height="23" Margin="72,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <Label Content="Country" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Margin="2,25,0,0"/>
-                <TextBox x:Name="TCountry" Grid.Column="2" Height="23" Margin="72,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <Button Content="Cancel" Grid.Column="3" Margin="0,2,5,0" Width="75" Height="25" MinWidth="75" MinHeight="20" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF021D2A" Foreground="White"/>
-                <Button Content="Save" Grid.Column="3" Width="75" Height="26" MinWidth="75" MinHeight="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,2,83,0" Foreground="White" Background="#FF021D2A" Click="Button_Click"/>
-            </Grid>
-            <Grid Margin="0,320,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="31*"/>
-                    <RowDefinition Height="Auto" MaxHeight="20"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TabControl Margin="0" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FFF8F6F6">
-                    <TabItem x:Name="PrewItem" Header="Preview" HorizontalAlignment="Left" Width="57" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FF3399CC" Margin="-2,-1,0,0" MouseEnter="PrewItem_MouseEnter">
-                        <Grid Background="#FFE5E5E5">
-                            <WebBrowser x:Name="WBPreview" Margin="0" OpacityMask="#FF021D2A"/>
-                        </Grid>
-                    </TabItem>
-                    <TabItem Header="Html" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FF3399CC" Margin="-3,-1,0,-1">
-                        <Grid Background="#FFE5E5E5">
-                            <TextBox x:Name="THtml" Margin="0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" AutomationProperties.IsRequiredForForm="True" Background="White" Foreground="#FF021D2A">
-                                <TextBox.ContextMenu>
-                                    <ContextMenu HorizontalContentAlignment="Center" HorizontalAlignment="Center" IsTabStop="True"/>
-                                </TextBox.ContextMenu>
-                            </TextBox>
-                        </Grid>
-                    </TabItem>
-                </TabControl>
-            </Grid>
-        </Grid>
+        <Frame Margin="240,0,0,0" Panel.ZIndex="-3"
+               Grid.Column="1"
+               Content="{Binding CurrentPage}"
+               NavigationUIVisibility="Hidden"
+               Opacity="1"/>
     </Grid>
 </Window>
