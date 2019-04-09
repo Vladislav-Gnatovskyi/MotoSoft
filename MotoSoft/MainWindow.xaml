@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MotoSoft"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="MotoSoft.MainWindow"
         mc:Ignorable="d"
-        Title="MotoSoft" MinHeight="530" MinWidth="900" d:DesignHeight="531" Visibility="Visible" Icon="/MotoSoft;component/images/logo.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowState="Maximized" Width="900" Height="530">
+        Title="MotoSoft" MinHeight="530" MinWidth="900" d:DesignHeight="531" Visibility="Visible" Icon="/MotoSoft;component/Assets/images/logo.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowState="Maximized" Width="900" Height="530">
 
 
     <Grid Background="#FFE8EAEB" MinWidth="500">
