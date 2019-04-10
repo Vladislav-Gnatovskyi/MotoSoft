@@ -23,7 +23,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="NavInventory" Content="" Margin="5" >
+                <Button x:Name="NavInventory" Command="{Binding BMenuInventory_Click}" Content="" Margin="5" >
                     <Button.Background>
                         <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Inventory.png"/>
                     </Button.Background>

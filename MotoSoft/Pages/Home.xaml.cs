@@ -24,7 +24,7 @@ namespace MotoSoft.Pages
         public Home()
         {
             InitializeComponent();
-           
+            DataContext = new HomeViewModel();
         }
     }
 }

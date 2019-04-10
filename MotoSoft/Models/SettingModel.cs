@@ -1,9 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using MotoSoft.Models.Enums;
+using System.Runtime.Serialization;
 
 namespace MotoSoft.Models
 {
     [DataContract]
-    public class SettingsModel
+    public class SettingModel
     {
         [DataMember]
         public string FirstName { get; set; }
@@ -21,5 +22,17 @@ namespace MotoSoft.Models
         public string TemplateBuilder { get; set; }
         [DataMember]
         public string Html { get; set; }
+        [DataMember]
+        public bool PaymentRequired { get; set; }
+        [DataMember]
+        public bool CreditCards { get; set; }
+        [DataMember]
+        public bool BestOffer { get; set; }
+        [DataMember]
+        public bool PartCompatibility { get; set; }
+        [DataMember]
+        public ETitleStyle TitleStyle { get; set; }
+        [DataMember]
+        public EInventoryNumber TypeNumber { get; set;}
     }
 }

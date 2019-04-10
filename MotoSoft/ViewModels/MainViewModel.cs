@@ -10,9 +10,8 @@ using System.Windows.Input;
 
 namespace MotoSoft.ViewModels
 {
-    class MainViewModel:ViewModelBase
+    class MainViewModel : ViewModelBase
     {
-
         private Page Home;
         private Page Inventory;
         private Page ListParts;
@@ -22,6 +21,7 @@ namespace MotoSoft.ViewModels
         private Page Settings;
 
         public Page CurrentPage { get; set; }
+        public string User { get => $"{SettingViewModel.SettingModel.FirstName} {SettingViewModel.SettingModel.SecondName}"; }
 
         public MainViewModel()
         {
@@ -32,7 +32,6 @@ namespace MotoSoft.ViewModels
             Analytics = new Pages.Analytics();
             Garage = new Pages.Garage();
             Settings = new Pages.Settings();
-
             CurrentPage = Home;
         }
 
