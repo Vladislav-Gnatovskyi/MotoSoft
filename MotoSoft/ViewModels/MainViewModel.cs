@@ -1,10 +1,12 @@
 ﻿using DevExpress.Mvvm;
+using MotoSoft.Assets;
 using MotoSoft.Assets.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -20,10 +22,14 @@ namespace MotoSoft.ViewModels
         private Page Garage;
         private Page Settings;
 
+        private static MainViewModel _instance;
+        public static MainViewModel Instance => _instance ?? (_instance = new MainViewModel());
+
+
         public Page CurrentPage { get; set; }
         public string User { get => $"{SettingViewModel.SettingModel.FirstName} {SettingViewModel.SettingModel.SecondName}"; }
 
-        public MainViewModel()
+        private MainViewModel()
         {
             Home = new Pages.Home();
             Inventory = new Pages.Inventory();

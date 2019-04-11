@@ -28,27 +28,27 @@
                         <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Inventory.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="NavListParts" Content="" Margin="5" Grid.Column="1">
+                <Button x:Name="NavListParts" Command="{Binding BMenuListParts_Click}" Content="" Margin="5" Grid.Column="1">
                     <Button.Background>
                         <ImageBrush ImageSource="/MotoSoft;component/Assets/images/ListParts.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="NavGarage" Content="" Margin="5" Grid.Column="2" >
+                <Button x:Name="NavGarage" Command="{Binding BMenuGarage_Click}"  Content="" Margin="5" Grid.Column="2" >
                     <Button.Background>
                         <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Garage.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="NavOrders" Content="" Margin="5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <Button x:Name="NavOrders" Command="{Binding BMenuOrders_Click}"  Content="" Margin="5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                     <Button.Background>
                         <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Orders.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="NavAnalytics" Content="" Margin="5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" >
+                <Button x:Name="NavAnalytics" Command="{Binding BMenuAnalytics_Click}"  Content="" Margin="5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" >
                     <Button.Background>
                         <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Analytics.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="NavSettings" Content="" Margin="5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" >
+                <Button x:Name="NavSettings" Command="{Binding BMenuSettings_Click}" Content="" Margin="5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" >
                     <Button.Background>
                         <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Settings.png"/>
                     </Button.Background>
