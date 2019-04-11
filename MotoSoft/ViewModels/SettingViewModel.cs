@@ -14,9 +14,12 @@ namespace MotoSoft.ViewModels
 {
     class SettingViewModel:ViewModelBase
     {
-        public static SettingModel SettingModel { get; set; }
+        public SettingModel SettingModel { get; set; }
 
-        public SettingViewModel()
+        private static SettingViewModel _instance;
+        public static SettingViewModel Instance => _instance ?? (_instance = new SettingViewModel());
+
+        private SettingViewModel()
         {
             SettingModel = new SettingModel();
             SettingModel = SettingRepository.Load();

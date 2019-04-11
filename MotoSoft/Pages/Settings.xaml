@@ -10,10 +10,7 @@
 
     <Grid>
         <Grid x:Name="MenuSettings" Margin="0" Background="#FFD0D3DA">
-            <Grid x:Name="Title3" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="SETTINGS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-            <Grid Margin="0,50,0,195">
+            <Grid Margin="0,0,0,285">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="0*"/>
@@ -69,16 +66,8 @@
                     <ComboBoxItem Content="Incremental"/>
                 </ComboBox>
             </Grid>
-            <Grid Margin="0,260,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="31*"/>
-                    <RowDefinition Height="Auto" MaxHeight="20"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TabControl Margin="0" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FFF8F6F6" Grid.ColumnSpan="2">
+            <Grid Margin="0,170,0,0">
+                <TabControl Margin="0,0,0,0" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FFF8F6F6" Grid.ColumnSpan="2">
                     <TabItem x:Name="PrewItem" Header="Preview" HorizontalAlignment="Left" Width="57" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FF3399CC" Margin="-2,0,0,0">
                         <Grid Background="#FFE5E5E5">
                             <WebBrowser x:Name="WBPreview" Margin="0" OpacityMask="#FF021D2A"/>

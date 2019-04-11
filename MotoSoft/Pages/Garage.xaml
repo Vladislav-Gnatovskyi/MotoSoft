@@ -9,11 +9,7 @@
       Title="Garage">
 
     <Grid>
-        <Grid x:Name="MenuGarage" Background="#FFD0D3DA">
-            <Grid x:Name="Title4" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="GARAGE" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-        </Grid>
+        <Grid x:Name="MenuGarage" Background="#FFD0D3DA"/>
 
     </Grid>
 </Page>

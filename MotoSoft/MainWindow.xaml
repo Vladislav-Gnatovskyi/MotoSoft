@@ -27,10 +27,12 @@
             <Button x:Name="Exit" Command="{Binding BExit_Click}" Content="Exit" Width="240" Canvas.Top="440" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
             <Label Content="{Binding User, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="132" Width="240" Height="25" Foreground="#FF3399CC" HorizontalContentAlignment="Center"/>
         </Canvas>
-        <Frame Margin="240,0,0,0" Panel.ZIndex="-3"
-               Grid.Column="1"
+        <Frame Margin="240,50,0,0" Panel.ZIndex="-3"
                NavigationUIVisibility="Hidden"
                Opacity="1"
                Content="{Binding CurrentPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Grid Height="50" VerticalAlignment="Top" Background="#FF021D2A" Margin="240,0,0,0">
+            <Label Content="{Binding CurrentPage.Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
+        </Grid>
     </Grid>
 </Window>

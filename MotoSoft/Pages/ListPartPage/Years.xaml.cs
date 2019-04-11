@@ -1,5 +1,4 @@
-﻿using MotoSoft.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MotoSoft.Pages
+namespace MotoSoft.Pages.ListPartPage
 {
     /// <summary>
-    /// Interaction logic for ListParts.xaml
+    /// Interaction logic for Years.xaml
     /// </summary>
-    public partial class ListParts : Page
+    public partial class Years : Page
     {
-        public ListParts()
+        public Years()
         {
             InitializeComponent();
-            DataContext = new ListPartsViewModel();
         }
     }
 }

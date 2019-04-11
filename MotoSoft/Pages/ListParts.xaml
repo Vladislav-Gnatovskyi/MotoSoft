@@ -10,9 +10,7 @@
 
     <Grid>
         <Grid x:Name="MenuListParts" Background="#FFD0D3DA" Visibility="Visible">
-            <Grid x:Name="Title2" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="LIST PARTS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
+            <Frame Content="{Binding CurrentPage}"/>
         </Grid>
 
     </Grid>

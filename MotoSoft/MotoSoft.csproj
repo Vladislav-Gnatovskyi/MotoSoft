@@ -73,6 +73,9 @@
     <Compile Include="Pages\Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ListPartPage\Years.xaml.cs">
+      <DependentUpon>Years.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ListParts.xaml.cs">
       <DependentUpon>ListParts.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ListPartPage\Years.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,10 +10,7 @@
 
     <Grid>
         <Grid x:Name="MenuNavigation" Background="#FFD0D3DA">
-            <Grid x:Name="Title" Height="50" VerticalAlignment="Top" Background="#FF021D2A">
-                <Label Content="HOME" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
-            </Grid>
-            <Grid x:Name="NavMenu" Margin="0,50,0,0" MinWidth="100" MinHeight="100">
+            <Grid x:Name="NavMenu" MinWidth="100" MinHeight="100">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
