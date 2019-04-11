@@ -4,14 +4,14 @@ using System.Windows.Controls;
 namespace MotoSoft.Pages
 {
     /// <summary>
-    /// Interaction logic for Inventory.xaml
+    /// Interaction logic for Product.xaml
     /// </summary>
-    public partial class Inventory : Page
+    public partial class Product : Page
     {
-        public Inventory()
+        public Product()
         {
             InitializeComponent();
-            DataContext = InventoryViewModel.Instance;
+            DataContext = ProductViewModel.Instance;
         }
     }
 }

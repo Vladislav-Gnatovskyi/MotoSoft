@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +48,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MotoSoft.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -63,6 +81,8 @@
     <Compile Include="Assets\Command\ReplayCommand.cs" />
     <Compile Include="Models\Enums\EInventoryNumber.cs" />
     <Compile Include="Models\Enums\ETitleStyle.cs" />
+    <Compile Include="Models\Enums\ETypePage.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SettingRepository.cs" />
     <Compile Include="Pages\Analytics.xaml.cs">
       <DependentUpon>Analytics.xaml</DependentUpon>
@@ -73,14 +93,14 @@
     <Compile Include="Pages\Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ListPartPage\Years.xaml.cs">
-      <DependentUpon>Years.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ListParts.xaml.cs">
       <DependentUpon>ListParts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Orders.xaml.cs">
       <DependentUpon>Orders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Product.xaml.cs">
+      <DependentUpon>Product.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\GarageViewModel.cs" />
@@ -88,6 +108,7 @@
     <Compile Include="ViewModels\ListPartsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -117,15 +138,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ListPartPage\Years.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\ListParts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Orders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,6 +232,26 @@
   <ItemGroup>
     <Resource Include="Assets\images\Analytics.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\Apparel.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

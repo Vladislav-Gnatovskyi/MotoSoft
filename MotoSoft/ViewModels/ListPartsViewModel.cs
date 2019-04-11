@@ -10,6 +10,6 @@ namespace MotoSoft.ViewModels
 {
     class ListPartsViewModel : ViewModelBase
     {
-        public Page CurrentPage { get; set; } = new Pages.ListPartPage.Years();
+        
     }
 }
