@@ -83,6 +83,8 @@
     <Compile Include="Models\Enums\ETitleStyle.cs" />
     <Compile Include="Models\Enums\ETypePage.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductList.cs" />
+    <Compile Include="Models\ProductsRepository.cs" />
     <Compile Include="Models\SettingRepository.cs" />
     <Compile Include="Pages\Analytics.xaml.cs">
       <DependentUpon>Analytics.xaml</DependentUpon>

@@ -22,96 +22,96 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Command="{Binding ProductItem}">
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Command="{Binding ProductItem}" CommandParameter="0">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[0].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
                 </Button>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Column="1">
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Column="1" Command="{Binding ProductItem}" CommandParameter="1">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[1].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Column="2">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Column="2" Command="{Binding ProductItem}" CommandParameter="2">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[2].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Column="3">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Column="3" Command="{Binding ProductItem}" CommandParameter="3">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[3].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Column="4">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Column="4" Command="{Binding ProductItem}" CommandParameter="4">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[4].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Command="{Binding ProductItem}" CommandParameter="5">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[5].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="1">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="1" Command="{Binding ProductItem}" CommandParameter="6">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" FontSize="16" Foreground="#FF3399CC"/>
+                        <Label Content="{Binding Items[6].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" FontSize="16" Foreground="#FF3399CC"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="2">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="2" Command="{Binding ProductItem}" CommandParameter="7">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[7].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="3">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="3" Command="{Binding ProductItem}" CommandParameter="8">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[8].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="4">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="4" Command="{Binding ProductItem}" CommandParameter="9">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[9].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Command="{Binding ProductItem}" CommandParameter="10">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[10].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Grid.Column="1">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Grid.Column="1" Command="{Binding ProductItem}" CommandParameter="11">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" FontSize="16" Foreground="#FF3399CC"/>
+                        <Label Content="{Binding Items[11].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" FontSize="16" Foreground="#FF3399CC"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Grid.Column="2">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Grid.Column="2" Command="{Binding ProductItem}" CommandParameter="12">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[12].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Grid.Column="3">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Grid.Column="3" Command="{Binding ProductItem}" CommandParameter="13">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[13].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
-                <Border BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Grid.Column="4">
+                </Button>
+                <Button BorderBrush="#FF021D2A" BorderThickness="1" Margin="5" Grid.Row="2" Grid.Column="4" Command="{Binding ProductItem}" CommandParameter="14">
                     <Grid>
                         <Image Margin="0,5,0,25" HorizontalAlignment="Center" Source="/MotoSoft;component/Assets/images/Inventory.png"/>
-                        <Label Content="Item" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
+                        <Label Content="{Binding Items[14].Name}" Margin="0,49,0,-3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Bottom" Foreground="#FF3399CC" FontSize="16"/>
                     </Grid>
-                </Border>
+                </Button>
             </Grid>
             <Grid Height="80" VerticalAlignment="Top" Background="#FF021D2A" Margin="0">
                 <Label Content="{Binding CurrentPage.Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
