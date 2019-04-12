@@ -24,17 +24,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Background="#FF9E2A2A">
-                <Image Margin="50,20,100,35" MaxWidth="200" MaxHeight="200" MinWidth="200" MinHeight="200">
-                    <Image.OpacityMask>
-                        <RadialGradientBrush>
-                            <GradientStop Color="Black" Offset="1"/>
-                            <GradientStop Color="#FF59B050"/>
-                        </RadialGradientBrush>
-                    </Image.OpacityMask>
-                </Image>
-            </Grid>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Background="#FF021D2A">
                 <TextBox Height="23" Margin="5,22,5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC"/>
                 <TextBox Height="60" Margin="5,65,5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC"/>
                 <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26"/>
@@ -58,6 +48,7 @@
                     <Label Content="MPN:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26" Grid.Column="2" FontFamily="Times New Roman"/>
                 </Grid>
             </Grid>
+            <Frame Content="{Binding ImageControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
         </Grid>
     </Grid>
 </Page>

@@ -1,0 +1,35 @@
+﻿using MotoSoft.Assets.Command;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
+
+namespace MotoSoft.ViewModels
+{
+    class ImageViewModel
+    {
+        private static ImageViewModel _instance;
+        public static ImageViewModel Instance => _instance ?? (_instance = new ImageViewModel());
+        public string URI { get; set; }
+        private Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+
+        public ICommand BFile_Click
+        {
+            get
+            {
+                return new RelayCommand(x => 
+                {                 
+                    Nullable<bool> result = dialog.ShowDialog();
+                    if (result == true)
+                    {
+                        URI = dialog.FileName;
+                    }
+                });
+            }
+        }
+    }
+}

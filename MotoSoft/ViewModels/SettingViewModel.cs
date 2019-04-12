@@ -22,7 +22,7 @@ namespace MotoSoft.ViewModels
         private SettingViewModel()
         {
             SettingModel = new SettingModel();
-            SettingModel = SettingRepository.Load();
+            SettingModel = SettingJsonRepository.Load();
         }
 
         #region OnClick
@@ -31,7 +31,7 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => MessageBox.Show(SettingRepository.Save(SettingModel).ToString()));
+                return new RelayCommand(x => MessageBox.Show(SettingJsonRepository.Save(SettingModel).ToString()));
             }
         }
 
@@ -39,7 +39,7 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => SettingModel = SettingRepository.Load());
+                return new RelayCommand(x => SettingModel = SettingJsonRepository.Load());
             }
         }
         #endregion OnClick

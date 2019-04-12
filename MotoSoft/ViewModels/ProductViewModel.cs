@@ -1,9 +1,5 @@
 ﻿using MotoSoft.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace MotoSoft.ViewModels
 {
@@ -12,5 +8,11 @@ namespace MotoSoft.ViewModels
         public Product ItemProduct { get; set; }
         private static ProductViewModel _instance;
         public static ProductViewModel Instance => _instance ?? (_instance = new ProductViewModel());
+        public Page ImageControl { get; set; }
+
+        private ProductViewModel()
+        {
+            ImageControl = new Pages.Image();
+        }
     }
 }

@@ -84,13 +84,16 @@
     <Compile Include="Models\Enums\ETypePage.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductList.cs" />
-    <Compile Include="Models\ProductsRepository.cs" />
-    <Compile Include="Models\SettingRepository.cs" />
+    <Compile Include="Models\ProductsJsonRepository.cs" />
+    <Compile Include="Models\SettingJsonRepository.cs" />
     <Compile Include="Pages\Analytics.xaml.cs">
       <DependentUpon>Analytics.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Garage.xaml.cs">
       <DependentUpon>Garage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Image.xaml.cs">
+      <DependentUpon>Image.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
@@ -106,6 +109,7 @@
     </Compile>
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\GarageViewModel.cs" />
+    <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\InventoryViewModel.cs" />
     <Compile Include="ViewModels\ListPartsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -133,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Image.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,6 +262,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\images\Apparel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\PhotoButton.png" />
+    <Resource Include="Assets\images\PictureButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\LightButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\RemoveButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\SaveButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MotoSoft.Models
 {
@@ -20,7 +17,7 @@ namespace MotoSoft.Models
         {
             _products = new List<List<Product>>();
             Products = new List<Product>();
-            Products = ProductsRepository.Load();
+            Products = ProductsJsonRepository.Load();
         }
 
 

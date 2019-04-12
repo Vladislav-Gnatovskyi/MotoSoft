@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace MotoSoft.Models
 {
-    class SettingRepository
+    class SettingJsonRepository
     {
         public static SettingModel Load()
         {
