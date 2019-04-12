@@ -14,14 +14,7 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image Margin="20,20,10,20" MinWidth="200" MinHeight="200" Source="{Binding URI, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                <Image.OpacityMask>
-                    <RadialGradientBrush>
-                        <GradientStop Color="Black" Offset="1"/>
-                        <GradientStop Color="#FF59B050"/>
-                    </RadialGradientBrush>
-                </Image.OpacityMask>
-            </Image>
+            <Image Margin="20,20,10,20" MinWidth="200" MinHeight="200" Source="{Binding URI, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Stretch="Fill"/>
             <Grid Margin="5,0,0,0" Background="#FF021D2A" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>

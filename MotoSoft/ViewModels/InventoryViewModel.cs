@@ -5,7 +5,6 @@ using MotoSoft.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MotoSoft.ViewModels
@@ -17,10 +16,12 @@ namespace MotoSoft.ViewModels
 
         private int PageCount
         {
-            get => _pageCount <= 0 ? 1 : _pageCount;
+            get => _pageCount <= 0 
+                ? 1 : _pageCount > ProductList.Instance.CountPage
+                ? ProductList.Instance.CountPage : _pageCount;
             set
             {
-                if (_pageCount >= 0 && value < ProductList.Instance.CountPage) _pageCount = value;
+                if (_pageCount >= 0 && value <= ProductList.Instance.CountPage) _pageCount = value;
             }
         }
 
@@ -86,7 +87,11 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => ++PageCount);
+                return new RelayCommand(x =>
+                {
+                    if(PageCount + 1 <= ProductList.Instance.CountPage)
+                        Items = ProductList.Instance.ProductsPage(++PageCount);
+                });
             }
         }
 
@@ -94,7 +99,7 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => --PageCount);
+                return new RelayCommand(x => Items = ProductList.Instance.ProductsPage(--PageCount));
             }
         }
 

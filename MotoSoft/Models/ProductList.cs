@@ -29,7 +29,7 @@ namespace MotoSoft.Models
                 int count = 0, page = 0;
                 Products.ForEach(x =>
                 {
-                    if (count.Equals(14))
+                    if (count.Equals(15))
                     {
                         _products.Add(new List<Product>());
                         count = 0;
@@ -50,7 +50,8 @@ namespace MotoSoft.Models
         public List<Product> ProductsPage(int page = 1)
         {
             ProductPage();
-            return (_products.Count > 0 && _products.Count > page-1) ? _products[page-1] : null;
+            return (_products.Count > 0 && _products.Count > page-1) ? 
+                _products[page <= 0? 1: page-1] : null;
         }
 
         public Product ProductPage(int page, int ID)
