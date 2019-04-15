@@ -1,9 +1,10 @@
-﻿using MotoSoft.Models;
+﻿using DevExpress.Mvvm;
+using MotoSoft.Models;
 using System.Windows.Controls;
 
 namespace MotoSoft.ViewModels
 {
-    class ProductViewModel
+    class ProductViewModel : ViewModelBase
     {
         public Product ItemProduct { get; set; }
         private static ProductViewModel _instance;

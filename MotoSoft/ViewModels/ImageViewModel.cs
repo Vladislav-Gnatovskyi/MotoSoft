@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace MotoSoft.ViewModels
@@ -25,8 +26,8 @@ namespace MotoSoft.ViewModels
                 {                 
                     Nullable<bool> result = dialog.ShowDialog();
                     if (result == true)
-                    {
-                        URI = dialog.FileName;
+                    { 
+                        URI = $"/MotoSoft;component/{dialog.FileName}";
                     }
                 });
             }
