@@ -61,7 +61,7 @@ namespace MotoSoft.Models
             {
                 return (items.Count > 0 && items.Count > ID - 1) ? items[ID] : null;
             }
-            catch (ArgumentOutOfRangeException EX)
+            catch (ArgumentOutOfRangeException e)
             {
                 return null;
             }

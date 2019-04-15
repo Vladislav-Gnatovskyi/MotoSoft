@@ -7,13 +7,13 @@ namespace MotoSoft.ViewModels
 {
     class MainViewModel : ViewModelBase
     {
-        private Page Home;
-        private Page Inventory;
-        private Page ListParts;
-        private Page Orders;
-        private Page Analytics;
-        private Page Garage;
-        private Page Settings;
+        private readonly Page Home;
+        private readonly Page Inventory;
+        private readonly Page ListParts;
+        private readonly Page Orders;
+        private readonly Page Analytics;
+        private readonly Page Garage;
+        private readonly Page Settings;
 
         private static MainViewModel _instance;
         public static MainViewModel Instance => _instance ?? (_instance = new MainViewModel());

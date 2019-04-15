@@ -8,47 +8,73 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Product">
 
-    <Grid>
+    <Grid Background="#FF021D2A">
         <Grid.RowDefinitions>
             <RowDefinition Height="17*"/>
             <RowDefinition Height="13*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="0" Grid.Row="1" Background="#FF93A059">
+        <Grid Margin="0" Grid.Row="1" RenderTransformOrigin="0.5,0.513">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <Grid MinHeight="50" Background="#FF1A89CC" MaxHeight="50" Height="50" Margin="0,5,0,0" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="29*"/>
+                    <ColumnDefinition Width="28*"/>
+                    <ColumnDefinition Width="32*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Search" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Height="26" Margin="5,12,0,12" Width="48" Foreground="#FF021D2A"/>
+                <Label Content="Min $" Grid.Column="1" HorizontalAlignment="Left" Margin="5,12,0,12" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="14" Height="26" Width="44" Foreground="#FF021D2A"/>
+                <TextBox Grid.Column="1" Margin="50,12,5,12" TextWrapping="Wrap" Text="0" FontFamily="Times New Roman" FontSize="14" VerticalAlignment="Center" Height="26" BorderBrush="#FF021D2A" Foreground="#FF021D2A" MaxLines="1" VerticalContentAlignment="Center"/>
+                <Label Content="Max $" Grid.Column="2" Margin="5,12,0,12" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="14" Height="26" Foreground="#FF021D2A" HorizontalAlignment="Left" Width="46"/>
+                <TextBox Grid.Column="2" Margin="50,12,5,12" TextWrapping="Wrap" Text="0" FontFamily="Times New Roman" FontSize="14" VerticalAlignment="Center" Height="26" BorderBrush="#FF021D2A" MaxLines="1" VerticalContentAlignment="Center"/>
+                <TextBox Margin="55,12,5,12" TextWrapping="Wrap" FontFamily="Times New Roman" FontSize="14" VerticalAlignment="Center" Height="26" BorderBrush="#FF021D2A" Foreground="#FF021D2A" MaxLines="1" VerticalContentAlignment="Center"/>
+                <Button Content="Submit" Grid.Column="4" Margin="5,12" VerticalAlignment="Center" Background="#FF021D2A" Foreground="#FF1A89CC" BorderBrush="{x:Null}" Height="26"/>
+                <ComboBox Grid.Column="3" Margin="5,12" VerticalAlignment="Center" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FF1A89CC" FontFamily="Times New Roman" FontSize="14" Height="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <ComboBoxItem Content="Lowest to Highest" Background="#FF021D2A" BorderBrush="{x:Null}"/>
+                    <ComboBoxItem Content="Highest to Lowest" IsSelected="True" Background="#FF021D2A" Foreground="#FF1A89CC" BorderBrush="{x:Null}"/>
+                </ComboBox>
+            </Grid>
+            <ListBox Margin="0,55,0,5"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1" Background="#FF021D2A">
-                <TextBox Height="23" Margin="5,22,5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC"/>
-                <TextBox Height="60" Margin="5,65,5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC"/>
+            <Grid Grid.Column="1">
+                <TextBox Height="23" Margin="5,22,5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC" UndoLimit="80" MaxLines="1" MaxLength="80"/>
+                <TextBox Height="60" Margin="5,65,5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC" MaxLines="4" MaxLength="997"/>
                 <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26"/>
                 <Label Content="Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,45,0,0" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26"/>
-                <CheckBox Content="Best Offer" HorizontalAlignment="Left" Margin="5,195,0,0" VerticalAlignment="Top" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC"/>
-                <Grid Margin="0,130,0,65" Height="60" MaxHeight="60" VerticalAlignment="Top">
+                <CheckBox Content="Best Offer" HorizontalAlignment="Left" Margin="5,190,0,0" VerticalAlignment="Top" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC"/>
+                <Grid Margin="0,130,0,0" Height="60" MaxHeight="60" VerticalAlignment="Top">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Height="23" Margin="5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC" Grid.Row="1"/>
-                    <Label Content="Price:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="1,0,0,0" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26" FontFamily="Times New Roman"/>
-                    <TextBox Height="23" Margin="5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.Brand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC" Grid.Row="1" Grid.Column="1"/>
-                    <TextBox Height="24" Margin="5,0" TextWrapping="Wrap" Text="{Binding ItemProduct.MPN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC" Grid.Row="1" Grid.Column="2"/>
-                    <Label Content="Brand:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26" Grid.Column="1" FontFamily="Times New Roman"/>
-                    <Label Content="MPN:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26" Grid.Column="2" FontFamily="Times New Roman"/>
+                    <TextBox Height="22" Margin="5,10,5,8" TextWrapping="Wrap" Text="{Binding ItemProduct.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC" Grid.Row="1" VerticalContentAlignment="Center" MaxLines="1"/>
+                    <Label Content="Price:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="1,0,0,34" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26" FontFamily="Times New Roman" Height="26" Grid.RowSpan="2" Width="44"/>
+                    <TextBox Height="22" Margin="5,10,5,8" TextWrapping="Wrap" Text="{Binding ItemProduct.Brand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" MaxLines="1"/>
+                    <TextBox Height="24" Margin="5,8" TextWrapping="Wrap" Text="{Binding ItemProduct.MPN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="#FF1A89CC" BorderBrush="#FF1A89CC" Grid.Row="1" Grid.Column="2" VerticalContentAlignment="Center" MaxLines="1"/>
+                    <Label Content="Brand:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,34" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26" Grid.Column="1" FontFamily="Times New Roman" Height="26" Grid.RowSpan="2" Width="44"/>
+                    <Label Content="MPN:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,34" Foreground="#FF1A89CC" MinWidth="44" MinHeight="26" Grid.Column="2" FontFamily="Times New Roman" Height="26" Grid.RowSpan="2" Width="44"/>
                 </Grid>
             </Grid>
-            <Frame Content="{Binding ImageControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+            <Frame Content="{Binding ImageControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="White" Margin="0,5,0,0"/>
         </Grid>
     </Grid>
 </Page>
