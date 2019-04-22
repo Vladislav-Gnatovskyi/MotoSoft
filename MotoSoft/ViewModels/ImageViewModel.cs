@@ -15,7 +15,7 @@ namespace MotoSoft.ViewModels
     {
         private static ImageViewModel _instance;
         public static ImageViewModel Instance => _instance ?? (_instance = new ImageViewModel());
-        public string URI { get; set; }
+        public string DispayImagePath { get; set; }
         private Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
 
         public ICommand BFile_Click
@@ -26,8 +26,8 @@ namespace MotoSoft.ViewModels
                 {                 
                     Nullable<bool> result = dialog.ShowDialog();
                     if (result == true)
-                    { 
-                        URI = $"/MotoSoft;component/{dialog.FileName}";
+                    {
+                        DispayImagePath = $@"{dialog.FileName}";
                     }
                 });
             }

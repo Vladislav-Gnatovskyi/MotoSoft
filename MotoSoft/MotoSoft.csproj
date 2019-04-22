@@ -79,6 +79,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Assets\Command\ReplayCommand.cs" />
+    <Compile Include="Assets\Extentions\WebBrowserExtentions.cs" />
     <Compile Include="Models\Enums\EInventoryNumber.cs" />
     <Compile Include="Models\Enums\ETitleStyle.cs" />
     <Compile Include="Models\Enums\ETypePage.cs" />
@@ -276,5 +277,6 @@
   <ItemGroup>
     <Resource Include="Assets\images\SaveButton.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

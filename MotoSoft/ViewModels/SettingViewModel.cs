@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace MotoSoft.ViewModels
 {
-    class SettingViewModel:ViewModelBase
+    class SettingViewModel : ViewModelBase
     {
         public SettingModel SettingModel { get; set; }
 
@@ -24,7 +24,6 @@ namespace MotoSoft.ViewModels
             SettingModel = new SettingModel();
             SettingModel = SettingJsonRepository.Load();
         }
-
         #region OnClick
 
         public ICommand BSave_Click
