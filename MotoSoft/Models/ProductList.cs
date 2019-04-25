@@ -9,9 +9,7 @@ namespace MotoSoft.Models
         private static ProductList _instance;
         public static ProductList Instance => _instance ?? (_instance = new ProductList());
         public int CountPage { get => _products.Count; }
-
         public List<Product> Products { get; set; }
-
 
         private ProductList()
         {
@@ -19,8 +17,6 @@ namespace MotoSoft.Models
             Products = new List<Product>();
             Products = ProductsJsonRepository.Load();
         }
-
-
         public List<List<Product>> ProductPage()
         {
             if (!Products.Count.Equals(0))
@@ -29,7 +25,7 @@ namespace MotoSoft.Models
                 int count = 0, page = 0;
                 Products.ForEach(x =>
                 {
-                    if (count.Equals(15))
+                    if (count.Equals(100))
                     {
                         _products.Add(new List<Product>());
                         count = 0;
@@ -47,19 +43,19 @@ namespace MotoSoft.Models
             return null;
         }
 
-        public List<Product> ProductsPage(int page = 1)
+        public List<Product> GetProductsForPage(int page = 1)
         {
             ProductPage();
             return (_products.Count > 0 && _products.Count > page-1) ? 
                 _products[page <= 0? 1: page-1] : null;
         }
 
-        public Product ProductPage(int page, int ID)
+        public Product GetProductFromPage(int page, int indexOnPage)
         {
-            List<Product> items = ProductsPage(page);
+            List<Product> items = GetProductsForPage(page);
             try
             {
-                return (items.Count > 0 && items.Count > ID - 1) ? items[ID] : null;
+                return (items.Count > 0 && items.Count > indexOnPage - 1) ? items[indexOnPage] : null;
             }
             catch (ArgumentOutOfRangeException e)
             {

@@ -36,7 +36,7 @@ namespace MotoSoft.ViewModels
 
         private InventoryViewModel()
         {
-            Items = ProductList.Instance.ProductsPage();
+            Items = ProductList.Instance.GetProductsForPage();
         }
 
         public ICommand ProductItem
@@ -45,7 +45,7 @@ namespace MotoSoft.ViewModels
             {
                 return new RelayCommand(x => {
                     int id = Int32.Parse(x.ToString());
-                    Product product = ProductList.Instance.ProductPage(PageCount, id);
+                    Product product = ProductList.Instance.GetProductFromPage(PageCount, id);
                     if (product != null)
                     {
                         ProductViewModel.Instance.ItemProduct = product;
@@ -90,7 +90,7 @@ namespace MotoSoft.ViewModels
                 return new RelayCommand(x =>
                 {
                     if(PageCount + 1 <= ProductList.Instance.CountPage)
-                        Items = ProductList.Instance.ProductsPage(++PageCount);
+                        Items = ProductList.Instance.GetProductsForPage(++PageCount);
                 });
             }
         }
@@ -99,7 +99,7 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => Items = ProductList.Instance.ProductsPage(--PageCount));
+                return new RelayCommand(x => Items = ProductList.Instance.GetProductsForPage(--PageCount));
             }
         }
 
