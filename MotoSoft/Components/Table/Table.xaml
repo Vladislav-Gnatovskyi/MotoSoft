@@ -11,18 +11,30 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding Items}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="20" FontFamily="Times New Roman" Margin="0,50,0,0"/>
-        <Grid Margin="0,0,0,400" MaxHeight="50" VerticalAlignment="Top">
-            <Button Content="" Margin="0" MaxWidth="50" MaxHeight="50" HorizontalAlignment="Left" MinWidth="50" MinHeight="50" VerticalAlignment="Top">
+        <Grid MaxHeight="50" VerticalAlignment="Top" Height="50">
+            <Button Content="" Margin="0" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="40" VerticalAlignment="Top" Command="{Binding BackPage}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Left.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="" Margin="0" MaxWidth="50" MaxHeight="50" HorizontalAlignment="Right" MinWidth="50" MinHeight="50" VerticalAlignment="Top" Width="50" Height="50">
+            <Button Content="" Margin="0" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Right" MinWidth="50" MinHeight="40" VerticalAlignment="Top" Width="50" Height="50" Command="{Binding NextPage}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Right.png"/>
                 </Button.Background>
             </Button>
-            <Label Content="Label" Margin="50,0" Foreground="#FF3399CC" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Grid HorizontalAlignment="Center" Height="50" Margin="0" VerticalAlignment="Center" Width="250">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox Height="23" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#FF3399CC" BorderBrush="#FF3399CC" FontFamily="Times New Roman" FontSize="14" Grid.Row="1" Text="{Binding PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="0"/>
+                <Label Content="{Binding PageIDFromLabel}" Margin="0" Foreground="#FF3399CC" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" FontFamily="Times New Roman"/>
+                <Label Content="Enter number page:" VerticalAlignment="Top" Grid.Row="1" Margin="0" Foreground="#FF3399CC" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Times New Roman"/>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

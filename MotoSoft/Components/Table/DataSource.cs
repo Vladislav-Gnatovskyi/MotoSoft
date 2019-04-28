@@ -13,7 +13,9 @@ namespace MotoSoft.Components.Table
 
         public IList GetItems(int page = 0)
         {
-            return Items[page];
+            if(page >= 0 && page < Items.Count)
+                return Items[page];
+            return null;
         }
 
         public int GetPageCount()
