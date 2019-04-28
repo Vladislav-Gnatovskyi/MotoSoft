@@ -99,9 +99,13 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => Items = ProductList.Instance.GetProductsForPage(--PageCount));
+                return new RelayCommand(x =>
+                {
+                    if (PageCount - 1 >= 0)
+                        Items = ProductList.Instance.GetProductsForPage(--PageCount);
+
+                });
             }
         }
-
     }
 }

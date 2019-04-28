@@ -1,6 +1,8 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Models;
+using MotoSoft.Models.DataSources;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +12,12 @@ namespace MotoSoft.Components.Table
 {
     class TableViewModel:ViewModelBase
     {
-        public DataSource<Product> Source { get; set; }
+        public IDataSource Source { get; set; }
+        public IList Items { get; set; }
         public TableViewModel()
         {
-            Source = new DataSource<Product>();
-            Source.SetItems(ProductList.Instance.Products);
+            Source = new ProductDataSource();
+            Items = Source.GetItems();
         }
     }
 }

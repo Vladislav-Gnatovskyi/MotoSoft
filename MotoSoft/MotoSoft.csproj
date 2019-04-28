@@ -87,6 +87,7 @@
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Table\TableViewModel.cs" />
+    <Compile Include="Models\DataSources\ProductDataSource.cs" />
     <Compile Include="Models\Enums\EInventoryNumber.cs" />
     <Compile Include="Models\Enums\ETitleStyle.cs" />
     <Compile Include="Models\Enums\ETypePage.cs" />

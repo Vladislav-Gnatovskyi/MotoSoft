@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MotoSoft.Components.Table
 {
-    interface IDataSource <T>
+    interface IDataSource
     {
         int GetPageCount();
-        List<T> GetItems(int page = 1);
+        IList GetItems(int page = 1);
     }
 }

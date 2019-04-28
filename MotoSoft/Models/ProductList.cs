@@ -5,7 +5,7 @@ namespace MotoSoft.Models
 {
     class ProductList
     {
-        private List<List<Product>> _products;
+        public IList<List<Product>> _products;
         private static ProductList _instance;
         public static ProductList Instance => _instance ?? (_instance = new ProductList());
         public int CountPage { get => _products.Count; }
@@ -17,7 +17,7 @@ namespace MotoSoft.Models
             Products = new List<Product>();
             Products = ProductsJsonRepository.Load();
         }
-        public List<List<Product>> ProductPage()
+        public IList<List<Product>> ProductPage()
         {
             if (!Products.Count.Equals(0))
             {
@@ -25,7 +25,7 @@ namespace MotoSoft.Models
                 int count = 0, page = 0;
                 Products.ForEach(x =>
                 {
-                    if (count.Equals(100))
+                    if (count.Equals(15))
                     {
                         _products.Add(new List<Product>());
                         count = 0;

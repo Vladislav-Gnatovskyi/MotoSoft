@@ -1,5 +1,5 @@
-﻿using MotoSoft.Models;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,27 +7,18 @@ using System.Threading.Tasks;
 
 namespace MotoSoft.Components.Table
 {
-    class DataSource<T> : IDataSource<T>
+    abstract class DataSource<T> : IDataSource
     {
-        public List<T> Items { get; set; }
-        public DataSource()
+        public IList<List<T>> Items { get; set; }
+
+        public IList GetItems(int page = 0)
         {
-            Items = new List<T>();
+            return Items[page];
         }
 
         public int GetPageCount()
         {
-            return ProductList.Instance.CountPage;
-        }
-
-        public List<T> GetItems(int page = 1)
-        {
-            return Items;
-        }
-
-        public void SetItems(List<T> list)
-        {
-            Items = list;
+            return Items.Count();
         }
     }
 }
