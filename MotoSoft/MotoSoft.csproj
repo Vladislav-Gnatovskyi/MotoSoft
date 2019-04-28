@@ -82,10 +82,12 @@
     <Compile Include="Assets\Extentions\WebBrowserExtentions.cs" />
     <Compile Include="Components\Table\Column.cs" />
     <Compile Include="Components\Table\IDataSource.cs" />
+    <Compile Include="Components\Table\IPageItem.cs" />
     <Compile Include="Components\Table\Table.xaml.cs">
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Table\TableViewModel.cs" />
+    <Compile Include="ViewModels\PageItemsViewModel.cs" />
     <Compile Include="Data\DataSources\ProductDataSource.cs" />
     <Compile Include="Data\Enums\EInventoryNumber.cs" />
     <Compile Include="Data\Enums\ETitleStyle.cs" />

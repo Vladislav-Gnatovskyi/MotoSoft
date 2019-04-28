@@ -9,8 +9,9 @@ namespace MotoSoft.ViewModels
         public Product ItemProduct { get; set; }
         public Page ImageControl { get; set; }
 
-        public ProductViewModel()
+        public ProductViewModel(Product product)
         {
+            ItemProduct = product;
             ImageControl = new Pages.Image();
         }
     }

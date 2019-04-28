@@ -1,8 +1,11 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Assets.Command;
+using MotoSoft.Components.Table;
 using MotoSoft.Models;
+using MotoSoft.Models.DataSources;
 using MotoSoft.Models.Enums;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
@@ -11,99 +14,82 @@ namespace MotoSoft.ViewModels
 {
     public class InventoryViewModel: ViewModelBase
     {
-        //private string _pageNumber;
-        //private int _pageCount;
+        public IDataSource Source { get; set; }
+        public PageItemsViewModel PageItemsContol { get; set; }
+        public IList Items { get; set; }
+        private ETypePage Type { get; set; }
+        
+        public InventoryViewModel()
+        {
+            Source = new ProductDataSource();
+            PageItemsContol = new PageItemsViewModel(Source);
+            Items = Source.GetItems(PageItemsContol.PageID);
+        }
 
-        //private int PageCount
-        //{
-        //    get => _pageCount <= 0 
-        //        ? 1 : _pageCount > ProductList.Instance.CountPage
-        //        ? ProductList.Instance.CountPage : _pageCount;
-        //    set
-        //    {
-        //        if (_pageCount >= 0 && value <= ProductList.Instance.CountPage) _pageCount = value;
-        //    }
-        //}
+        public ICommand ProductItem
+        {
+            get
+            {
+                return new RelayCommand(x =>
+                {
+                    int id = Int32.Parse(x.ToString());
+                    Product product = (Product)Items[id];
+                    if (product != null)
+                    {
+                        Router.Instance.GoToProduct(product);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Product is not exist!");
+                    }
+                });
+            }
+        }
 
-        //public string PageNumber { get => _pageNumber = $"Page {PageCount}/{ProductList.Instance.CountPage}"; set => _pageNumber = value; }
-        //private ETypePage Type { get; set; }
+        public ICommand Apparel_Click
+        {
+            get
+            {
+                return new RelayCommand(x => Type = ETypePage.Apparel);
+            }
+        }
 
-        //public List<Product> Items { get; set; }
+        public ICommand SeeAll_Click
+        {
+            get
+            {
+                return new RelayCommand(x => Type = ETypePage.SeeAll);
+            }
+        }
 
+        public ICommand Tires_Click
+        {
+            get
+            {
+                return new RelayCommand(x => Type = ETypePage.Tires);
+            }
+        }
 
+        public ICommand NextPage
+        {
+            get
+            {
+                return new RelayCommand(x =>
+                {
+                        Items = PageItemsContol.NextPage();
+                });
+            }
+        }
 
-        //public InventoryViewModel()
-        //{
-        //    Items = ProductList.Instance.GetProductsForPage();
-        //}
-
-        //public ICommand ProductItem
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(x => {
-        //            int id = Int32.Parse(x.ToString());
-        //            Product product = ProductList.Instance.GetProductFromPage(PageCount, id);
-        //            if (product != null)
-        //            {
-        //                ProductViewModel.Instance.ItemProduct = product;
-        //                MainViewModel.Instance.CurrentPage = new Pages.Product();
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Product is not exist!");
-        //            }
-        //        });
-        //    }
-        //}
-
-        //public ICommand Apparel_Click
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(x => Type = ETypePage.Apparel);
-        //    }
-        //}
-
-        //public ICommand SeeAll_Click
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(x => Type = ETypePage.SeeAll);
-        //    }
-        //}
-
-        //public ICommand Tires_Click
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(x => Type = ETypePage.Tires);
-        //    }
-        //}
-
-        //public ICommand NextPage
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(x =>
-        //        {
-        //            if(PageCount + 1 <= ProductList.Instance.CountPage)
-        //                Items = ProductList.Instance.GetProductsForPage(++PageCount);
-        //        });
-        //    }
-        //}
-
-        //public ICommand BackPage
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(x =>
-        //        {
-        //            if (PageCount - 1 >= 0)
-        //                Items = ProductList.Instance.GetProductsForPage(--PageCount);
-
-        //        });
-        //    }
-        //}
+        public ICommand BackPage
+        {
+            get
+            {
+                return new RelayCommand(x =>
+                {
+                        Items = PageItemsContol.BackPage();
+                });
+            }
+        }
     }
 }

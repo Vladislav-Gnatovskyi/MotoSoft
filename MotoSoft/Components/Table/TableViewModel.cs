@@ -2,6 +2,7 @@
 using MotoSoft.Assets.Command;
 using MotoSoft.Models;
 using MotoSoft.Models.DataSources;
+using MotoSoft.ViewModels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,38 +15,14 @@ namespace MotoSoft.Components.Table
 {
     class TableViewModel:ViewModelBase
     {
-        private int _pageID = 0;
-        private string _pageIDFromLabel;
         public IDataSource Source { get; set; }
-        public IList Items { get; set; }
-        private int PageID
-        {
-            get => _pageID;
-            set
-            {
-                if (value >= 0 && value < Source.GetPageCount())
-                    _pageID = value;
-                Items = Source.GetItems(_pageID);
-            }
-        }
-
-        public int PageIDFromTextBox
-        {
-            get => PageID+1;
-            set => PageID = value-1;
-        }
-
-        public string PageIDFromLabel
-        {
-            get => $"Page {PageID + 1}/{Source.GetPageCount()}";
-            set => _pageIDFromLabel = value;
-        }
+        public IPageItem PageItemsContol { get; set; }
+        
         public TableViewModel()
         {
             Source = new ProductDataSource();
-            Items = Source.GetItems(_pageID);
+            PageItemsContol = new PageItemsViewModel(Source, 40);            
         }
-
 
         #region Command
         public ICommand NextPage
@@ -54,7 +31,7 @@ namespace MotoSoft.Components.Table
             {
                 return new RelayCommand(x =>
                 {
-                    Items = Source.GetItems(++PageID) ?? Source.GetItems(Source.GetPageCount()-1);
+                    PageItemsContol.NextPage();
                 });
             }
         }
@@ -64,7 +41,7 @@ namespace MotoSoft.Components.Table
             {
                 return new RelayCommand(x =>
                 {
-                    Items = Source.GetItems(--PageID) ?? Source.GetItems(PageID = 0);
+                    PageItemsContol.BackPage();
                 });
             }
         }

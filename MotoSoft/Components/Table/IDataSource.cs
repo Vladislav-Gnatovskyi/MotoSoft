@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MotoSoft.Components.Table
 {
-    interface IDataSource
+    public interface IDataSource
     {
         int GetPageCount();
-        IList GetItems(int page = 1);
+        IList GetItems(int page = 0, int pageCountItems = 15);
     }
 }

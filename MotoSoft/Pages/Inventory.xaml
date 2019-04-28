@@ -140,7 +140,7 @@
                     <Button Content="See all vehicle" Command="{Binding SeeAll_Click}" Width="155" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF3399CC" HorizontalAlignment="Center" Grid.Column="2" Margin="57,0,55,0" Grid.Row="2"/>
                     <Button Content="Tires and Accessories" Command="{Binding Tires_Click}" Margin="56,0,54,0" HorizontalAlignment="Center" Width="156" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF3399CC" Grid.Column="1" Grid.Row="2"/>
                     <TextBox Height="20" Margin="0" TextWrapping="Wrap" Text="Search" BorderBrush="#FF3399CC" Background="#FF021D2A" Foreground="#FF3399CC" VerticalAlignment="Center" MinWidth="198" HorizontalContentAlignment="Center" SelectionBrush="#FF3490D8" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Width="200"/>
-                    <Label Content="{Binding PageNumber}" Margin="0" VerticalAlignment="Center" Foreground="#FF3399CC" FontSize="14" HorizontalAlignment="Center" Grid.Column="1" RenderTransformOrigin="0.6,1.4" FontFamily="Sylfaen" Height="35" MinWidth="200" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label Content="{Binding PageItemsContol.PageIDFromLabel}" Margin="0" VerticalAlignment="Center" Foreground="#FF3399CC" FontSize="14" HorizontalAlignment="Center" Grid.Column="1" RenderTransformOrigin="0.6,1.4" FontFamily="Sylfaen" Height="35" MinWidth="200" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                 </Grid>
             </Grid>
 
