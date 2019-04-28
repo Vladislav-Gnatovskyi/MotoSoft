@@ -11,7 +11,7 @@ namespace MotoSoft.Pages
         public Settings()
         {
             InitializeComponent();
-            DataContext = SettingViewModel.Instance;
+            DataContext = new SettingViewModel();
         }
     }
 }

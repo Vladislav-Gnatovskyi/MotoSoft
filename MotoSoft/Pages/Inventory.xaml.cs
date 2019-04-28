@@ -11,7 +11,7 @@ namespace MotoSoft.Pages
         public Inventory()
         {
             InitializeComponent();
-            DataContext = InventoryViewModel.Instance;
+            DataContext = new InventoryViewModel();
         }
     }
 }

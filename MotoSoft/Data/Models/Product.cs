@@ -1,6 +1,6 @@
 ﻿namespace MotoSoft.Models
 {
-    class Product
+    public class Product
     {
         public string Images { get; set; }
         public string Name { get; set; }

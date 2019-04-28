@@ -11,10 +11,8 @@ using System.Windows.Media.Imaging;
 
 namespace MotoSoft.ViewModels
 {
-    class ImageViewModel
+    public class ImageViewModel
     {
-        private static ImageViewModel _instance;
-        public static ImageViewModel Instance => _instance ?? (_instance = new ImageViewModel());
         public string DispayImagePath { get; set; }
         private Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
 

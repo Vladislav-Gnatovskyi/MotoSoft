@@ -82,19 +82,20 @@
     <Compile Include="Assets\Extentions\WebBrowserExtentions.cs" />
     <Compile Include="Components\Table\Column.cs" />
     <Compile Include="Components\Table\IDataSource.cs" />
-    <Compile Include="Components\Table\DataSource.cs" />
     <Compile Include="Components\Table\Table.xaml.cs">
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Table\TableViewModel.cs" />
-    <Compile Include="Models\DataSources\ProductDataSource.cs" />
-    <Compile Include="Models\Enums\EInventoryNumber.cs" />
-    <Compile Include="Models\Enums\ETitleStyle.cs" />
-    <Compile Include="Models\Enums\ETypePage.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductList.cs" />
-    <Compile Include="Models\ProductsJsonRepository.cs" />
-    <Compile Include="Models\SettingJsonRepository.cs" />
+    <Compile Include="Data\DataSources\ProductDataSource.cs" />
+    <Compile Include="Data\Enums\EInventoryNumber.cs" />
+    <Compile Include="Data\Enums\ETitleStyle.cs" />
+    <Compile Include="Data\Enums\ETypePage.cs" />
+    <Compile Include="Data\IProductsRepository.cs" />
+    <Compile Include="Data\ISettingsRepository.cs" />
+    <Compile Include="Data\Models\Product.cs" />
+    <Compile Include="Data\ProductsJsonRepository.cs" />
+    <Compile Include="Data\ServiceProvider.cs" />
+    <Compile Include="Data\SettingJsonRepository.cs" />
     <Compile Include="Pages\Analytics.xaml.cs">
       <DependentUpon>Analytics.xaml</DependentUpon>
     </Compile>
@@ -116,6 +117,7 @@
     <Compile Include="Pages\Product.xaml.cs">
       <DependentUpon>Product.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Context.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\GarageViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="Router.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Page Include="Components\Table\Table.xaml">
       <SubType>Designer</SubType>
@@ -179,7 +182,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\SettingModel.cs" />
+    <Compile Include="Data\Models\SettingModel.cs" />
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>

@@ -11,7 +11,7 @@ namespace MotoSoft
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = MainViewModel.Instance;
+            DataContext = new MainViewModel();
         }
     }
 }

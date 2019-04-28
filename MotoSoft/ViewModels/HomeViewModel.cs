@@ -1,4 +1,5 @@
 ﻿using DevExpress.Mvvm;
+using MotoSoft.Assets.Command;
 using System.Windows.Input;
 
 namespace MotoSoft.ViewModels
@@ -8,43 +9,43 @@ namespace MotoSoft.ViewModels
         public ICommand BMenuInventory_Click
         {
             get
-            {                
-                return MainViewModel.Instance.BMenuInventory_Click;
+            {
+                return new RelayCommand(x => Router.Instance.GoToInventory());
             }
         }
         public ICommand BMenuListParts_Click
         {
             get
             {
-                return MainViewModel.Instance.BMenuListParts_Click;
-            }
-        }
-        public ICommand BMenuGarage_Click
-        {
-            get
-            {
-                return MainViewModel.Instance.BMenuGarage_Click;
+                return new RelayCommand(x => Router.Instance.GoToListParts());
             }
         }
         public ICommand BMenuOrders_Click
         {
             get
             {
-                return MainViewModel.Instance.BMenuOrders_Click;
+                return new RelayCommand(x => Router.Instance.GoToOrders());
             }
         }
         public ICommand BMenuAnalytics_Click
         {
             get
             {
-                return MainViewModel.Instance.BMenuAnalytics_Click;
+                return new RelayCommand(x => Router.Instance.GoToAnalytics());
+            }
+        }
+        public ICommand BMenuGarage_Click
+        {
+            get
+            {
+                return new RelayCommand(x => Router.Instance.GoToGarage());
             }
         }
         public ICommand BMenuSettings_Click
         {
             get
             {
-                return MainViewModel.Instance.BMenuSettings_Click;
+                return new RelayCommand(x => Router.Instance.GoToSettings());
             }
         }
     }

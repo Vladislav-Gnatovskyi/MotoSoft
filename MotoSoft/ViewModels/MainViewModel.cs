@@ -1,36 +1,21 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Assets.Command;
+using MotoSoft.Models;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MotoSoft.ViewModels
 {
-    class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
-        private readonly Page Home;
-        private readonly Page Inventory;
-        private readonly Page ListParts;
-        private readonly Page Orders;
-        private readonly Page Analytics;
-        private readonly Page Garage;
-        private readonly Page Settings;
-
-        private static MainViewModel _instance;
-        public static MainViewModel Instance => _instance ?? (_instance = new MainViewModel());
-
+        private Context currentContext { get; }
         public Page CurrentPage { get; set; }
-        public string User { get => $"{SettingViewModel.Instance.SettingModel.FirstName} {SettingViewModel.Instance.SettingModel.SecondName}"; }
+        public string User { get => $"{currentContext.Settings.FirstName} {currentContext.Settings.SecondName}"; }
 
-        private MainViewModel()
+        public MainViewModel()
         {
-            Home = new Pages.Home();
-            Inventory = new Pages.Inventory();
-            ListParts = new Pages.ListParts();
-            Orders = new Pages.Orders();
-            Analytics = new Pages.Analytics();
-            Garage = new Pages.Garage();
-            Settings = new Pages.Settings();
-            CurrentPage = Home;
+            Router.Instance.InitRouter(this);
+            currentContext = ServiceProvider.Instance.CurrentContext;
         }
 
         #region OnClick
@@ -39,49 +24,49 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => CurrentPage = Home);
+                return new RelayCommand(x => Router.Instance.GoToHome());
             }
         }
         public ICommand BMenuInventory_Click
         {
             get
             {
-                return new RelayCommand(x => CurrentPage = Inventory);
+                return new RelayCommand(x => Router.Instance.GoToInventory());
             }
         }
         public ICommand BMenuListParts_Click
         {
             get
             {
-                return new RelayCommand(x => CurrentPage = ListParts);
+                return new RelayCommand(x => Router.Instance.GoToListParts());
             }
         }
         public ICommand BMenuOrders_Click
         {
             get
             {
-                return new RelayCommand(x => CurrentPage = Orders);
+                return new RelayCommand(x => Router.Instance.GoToOrders());
             }
         }
         public ICommand BMenuAnalytics_Click
         {
             get
             {
-                return new RelayCommand(x => CurrentPage = Analytics);
+                return new RelayCommand(x => Router.Instance.GoToAnalytics());
             }
         }
         public ICommand BMenuGarage_Click
         {
             get
             {
-                return new RelayCommand(x => CurrentPage = Garage);
+                return new RelayCommand(x => Router.Instance.GoToGarage());
             }
         }
         public ICommand BMenuSettings_Click
         {
             get
             {
-                return new RelayCommand(x => CurrentPage = Settings);
+                return new RelayCommand(x => Router.Instance.GoToSettings());
             }
         }
 
@@ -92,6 +77,8 @@ namespace MotoSoft.ViewModels
                 return new RelayCommand(x => App.Current.Shutdown());
             }
         }
+
+        public object CurrentContext { get; private set; }
         #endregion OnClick
 
     }

@@ -11,7 +11,7 @@ namespace MotoSoft.Pages
         public Product()
         {
             InitializeComponent();
-            DataContext = ProductViewModel.Instance;
+            DataContext = new ProductViewModel();
         }
     }
 }

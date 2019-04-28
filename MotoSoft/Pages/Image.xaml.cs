@@ -24,7 +24,7 @@ namespace MotoSoft.Pages
         public Image()
         {
             InitializeComponent();
-            DataContext = ImageViewModel.Instance;
+            DataContext = new ImageViewModel();
         }
     }
 }

@@ -2,27 +2,20 @@
 using MotoSoft.Assets.Command;
 using MotoSoft.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MotoSoft.ViewModels
 {
     class SettingViewModel : ViewModelBase
     {
-        public SettingModel SettingModel { get; set; }
+        private ISettingsRepository settingsRepository;
+        public SettingsModel SettingModel { get; set; }
 
-        private static SettingViewModel _instance;
-        public static SettingViewModel Instance => _instance ?? (_instance = new SettingViewModel());
-
-        private SettingViewModel()
+        public SettingViewModel()
         {
-            SettingModel = new SettingModel();
-            SettingModel = SettingJsonRepository.Load();
+            settingsRepository = ServiceProvider.Instance.SettingsRepository;
+            SettingModel = settingsRepository.Load();
         }
         #region OnClick
 
@@ -30,7 +23,18 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => MessageBox.Show(SettingJsonRepository.Save(SettingModel).ToString()));
+                return new RelayCommand(x =>
+                {
+                    try
+                    {
+                        settingsRepository.Save(SettingModel);
+                        MessageBox.Show("Success");
+                    }
+                    catch(Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
+                });
             }
         }
 
@@ -38,7 +42,7 @@ namespace MotoSoft.ViewModels
         {
             get
             {
-                return new RelayCommand(x => SettingModel = SettingJsonRepository.Load());
+                return new RelayCommand(x => SettingModel = settingsRepository.Load());
             }
         }
         #endregion OnClick
