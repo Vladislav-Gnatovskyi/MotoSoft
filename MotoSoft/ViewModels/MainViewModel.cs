@@ -71,6 +71,28 @@ namespace MotoSoft.ViewModels
             }
         }
 
+        public ICommand BMenuLotSheets_Click
+        {
+            get
+            {
+                return new RelayCommand(x => Router.Instance.GoToLotSheets());
+            }
+        }
+        public ICommand BMenuActiveLotSheets_Click
+        {
+            get
+            {
+                return new RelayCommand(x => Router.Instance.GoToActiveLotSheets());
+            }
+        }
+        public ICommand BMenuSoldLotSheets_Click
+        {
+            get
+            {
+                return new RelayCommand(x => Router.Instance.GoToSoldLotSheets());
+            }
+        }
+
         public ICommand BExit_Click
         {
             get

@@ -101,6 +101,15 @@
     <Compile Include="Data\Models\LotSheet.cs" />
     <Compile Include="Data\Models\SoldLotSheet.cs" />
     <Compile Include="Data\Repository\SoldLotSheetRepository.cs" />
+    <Compile Include="Pages\Tables\ActiveLotSheets.xaml.cs">
+      <DependentUpon>ActiveLotSheets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\LotSheets.xaml.cs">
+      <DependentUpon>LotSheets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\SoldLotSheets.xaml.cs">
+      <DependentUpon>SoldLotSheets.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\PageItemsViewModel.cs" />
     <Compile Include="Data\DataSources\ProductDataSource.cs" />
     <Compile Include="Data\Enums\EInventoryNumber.cs" />
@@ -144,6 +153,9 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Router.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
+    <Compile Include="ViewModels\Table\ActiveLotSheetsViewModel.cs" />
+    <Compile Include="ViewModels\Table\LotSheetsViewModel.cs" />
+    <Compile Include="ViewModels\Table\SoldLotSheetsViewModel.cs" />
     <Page Include="Components\Table\Table.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,6 +205,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\ActiveLotSheets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\LotSheets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\SoldLotSheets.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
