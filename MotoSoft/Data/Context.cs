@@ -1,6 +1,6 @@
-﻿using MotoSoft.Models;
+﻿using MotoSoft.Data.Models;
 
-namespace MotoSoft.ViewModels
+namespace MotoSoft.Data
 {
     public class Context
     {

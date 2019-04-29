@@ -8,7 +8,7 @@ namespace MotoSoft.Pages
     /// </summary>
     public partial class Product : Page
     {
-        public Product(Models.Product product)
+        public Product(Data.Models.Product product)
         {
             InitializeComponent();
             DataContext = new ProductViewModel(product);

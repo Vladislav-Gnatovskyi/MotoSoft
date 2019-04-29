@@ -1,6 +1,10 @@
-﻿using MotoSoft.ViewModels;
+﻿using MotoSoft.Data;
+using MotoSoft.Data.Models;
+using MotoSoft.Data.Repository;
+using MotoSoft.Data.Repository.Interfaces;
+using MotoSoft.ViewModels;
 
-namespace MotoSoft.Models
+namespace MotoSoft.Data
 {
     public class ServiceProvider
     {
@@ -21,6 +25,38 @@ namespace MotoSoft.Models
             get
             {
                 return new ProductsJsonRepository();
+            }
+        }
+
+        public ISheetRepository<LotSheet> LotSheetRepository
+        {
+            get
+            {
+                return new LotSheetJsonRepository();
+            }
+        }
+
+        public ISheetRepository<ActiveLotSheet> ActiveLotSheetRepository
+        {
+            get
+            {
+                return new ActiveLotSheetJsonRepository();
+            }
+        }
+
+        public ISheetRepository<SoldLotSheet> SoldLotSheetRepository
+        {
+            get
+            {
+                return new SoldLotSheetRepository();
+            }
+        }
+
+        public ISheetRepository<LotAnalyticSheet> LotAnalyticSheetRepository
+        {
+            get
+            {
+                return new LotAnalyticSheetJsonRepository();
             }
         }
 

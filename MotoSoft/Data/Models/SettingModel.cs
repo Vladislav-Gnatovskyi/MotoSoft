@@ -1,6 +1,6 @@
 ﻿using MotoSoft.Models.Enums;
 
-namespace MotoSoft.Models
+namespace MotoSoft.Data.Models
 {
     public class SettingsModel
     {

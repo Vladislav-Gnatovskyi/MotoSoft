@@ -1,9 +1,10 @@
-﻿<UserControl x:Class="MotoSoft.Components.Table.Table"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MotoSoft.Components.Table"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="MotoSoft.Components.Table.Table"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FF021D2A">
@@ -17,7 +18,7 @@
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Left.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="" Margin="0" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Right" MinWidth="50" MinHeight="40" VerticalAlignment="Top" Width="50" Height="50" Command="{Binding NextPage}" BorderBrush="{x:Null}">
+            <Button Content="" Margin="0" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Right" MinWidth="50" MinHeight="40" VerticalAlignment="Top" Command="{Binding NextPage}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Right.png"/>
                 </Button.Background>

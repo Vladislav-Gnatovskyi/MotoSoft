@@ -1,5 +1,5 @@
 ﻿using DevExpress.Mvvm;
-using MotoSoft.Models;
+using MotoSoft.Data.Models;
 using System.Windows.Controls;
 
 namespace MotoSoft.ViewModels

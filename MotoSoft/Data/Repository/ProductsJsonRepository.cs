@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using MotoSoft.Data.Models;
+using MotoSoft.Data.Repository.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MotoSoft.Models
+namespace MotoSoft.Data.Repository
 {
     public class ProductsJsonRepository: IProductsRepository
     {

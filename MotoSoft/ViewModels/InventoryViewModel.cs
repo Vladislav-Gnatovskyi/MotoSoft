@@ -1,8 +1,8 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Assets.Command;
 using MotoSoft.Components.Table;
-using MotoSoft.Models;
-using MotoSoft.Models.DataSources;
+using MotoSoft.Data.DataSources;
+using MotoSoft.Data.Models;
 using MotoSoft.Models.Enums;
 using System;
 using System.Collections;
@@ -33,10 +33,9 @@ namespace MotoSoft.ViewModels
                 return new RelayCommand(x =>
                 {
                     int id = Int32.Parse(x.ToString());
-                    Product product = (Product)Items[id];
-                    if (product != null)
+                    if (Items.Count > id)
                     {
-                        Router.Instance.GoToProduct(product);
+                        Router.Instance.GoToProduct((Product)Items[id]);
                     }
                     else
                     {

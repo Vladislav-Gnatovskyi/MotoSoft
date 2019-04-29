@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
+using MotoSoft.Data.Models;
+using MotoSoft.Data.Repository.Interfaces;
 using Newtonsoft.Json;
 
-namespace MotoSoft.Models
+namespace MotoSoft.Data.Repository
 {
     public class SettingJsonRepository: ISettingsRepository
     {

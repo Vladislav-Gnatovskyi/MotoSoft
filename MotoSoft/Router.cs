@@ -70,7 +70,7 @@ namespace MotoSoft
             mainViewModel.CurrentPage = Settings;
         }
 
-        public void GoToProduct(Models.Product product)
+        public void GoToProduct(Data.Models.Product product)
         {
             mainViewModel.CurrentPage = new Pages.Product(product);
         }

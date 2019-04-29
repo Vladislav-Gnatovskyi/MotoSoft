@@ -1,4 +1,7 @@
-﻿namespace MotoSoft.Models
+﻿
+using MotoSoft.Data.Models;
+
+namespace MotoSoft.Data.Repository.Interfaces
 {
     public interface ISettingsRepository
     {

@@ -1,6 +1,8 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Assets.Command;
-using MotoSoft.Models;
+using MotoSoft.Data;
+using MotoSoft.Data.Models;
+using MotoSoft.Data.Repository.Interfaces;
 using System;
 using System.Windows;
 using System.Windows.Input;

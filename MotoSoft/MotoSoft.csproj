@@ -87,17 +87,31 @@
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Table\TableViewModel.cs" />
+    <Compile Include="Data\DataSources\SheetDataSource.cs" />
+    <Compile Include="Data\DataSources\LotAnalyticSheetDataSource.cs" />
+    <Compile Include="Data\Repository\ActiveLotSheetJsonRepository.cs" />
+    <Compile Include="Data\DataSources\ActiveLotSheetDataSource.cs" />
+    <Compile Include="Data\DataSources\LotSheetDataSource.cs" />
+    <Compile Include="Data\DataSources\SoldLotSheetDataSource.cs" />
+    <Compile Include="Data\Repository\Interfaces\ISheetRepository.cs" />
+    <Compile Include="Data\Repository\LotAnalyticSheetJsonRepository.cs" />
+    <Compile Include="Data\Repository\LotSheetJsonRepository.cs" />
+    <Compile Include="Data\Models\ActiveLotSheet.cs" />
+    <Compile Include="Data\Models\LotAnalyticSheet.cs" />
+    <Compile Include="Data\Models\LotSheet.cs" />
+    <Compile Include="Data\Models\SoldLotSheet.cs" />
+    <Compile Include="Data\Repository\SoldLotSheetRepository.cs" />
     <Compile Include="ViewModels\PageItemsViewModel.cs" />
     <Compile Include="Data\DataSources\ProductDataSource.cs" />
     <Compile Include="Data\Enums\EInventoryNumber.cs" />
     <Compile Include="Data\Enums\ETitleStyle.cs" />
     <Compile Include="Data\Enums\ETypePage.cs" />
-    <Compile Include="Data\IProductsRepository.cs" />
-    <Compile Include="Data\ISettingsRepository.cs" />
+    <Compile Include="Data\Repository\Interfaces\IProductsRepository.cs" />
+    <Compile Include="Data\Repository\Interfaces\ISettingsRepository.cs" />
     <Compile Include="Data\Models\Product.cs" />
-    <Compile Include="Data\ProductsJsonRepository.cs" />
+    <Compile Include="Data\Repository\ProductsJsonRepository.cs" />
     <Compile Include="Data\ServiceProvider.cs" />
-    <Compile Include="Data\SettingJsonRepository.cs" />
+    <Compile Include="Data\Repository\SettingJsonRepository.cs" />
     <Compile Include="Pages\Analytics.xaml.cs">
       <DependentUpon>Analytics.xaml</DependentUpon>
     </Compile>

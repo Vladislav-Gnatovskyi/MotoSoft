@@ -1,14 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Assets.Command;
-using MotoSoft.Models;
-using MotoSoft.Models.DataSources;
+using MotoSoft.Data.DataSources;
 using MotoSoft.ViewModels;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MotoSoft.Components.Table
@@ -20,7 +13,7 @@ namespace MotoSoft.Components.Table
         
         public TableViewModel()
         {
-            Source = new ProductDataSource();
+            Source = new SoldLotSheetDataSource();
             PageItemsContol = new PageItemsViewModel(Source, 40);            
         }
 

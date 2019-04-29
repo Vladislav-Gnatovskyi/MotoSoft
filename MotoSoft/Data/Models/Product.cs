@@ -1,4 +1,4 @@
-﻿namespace MotoSoft.Models
+﻿namespace MotoSoft.Data.Models
 {
     public class Product
     {
