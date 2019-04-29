@@ -6,21 +6,21 @@ using System.IO;
 
 namespace MotoSoft.Data.Repository
 {
-    public class SoldLotSheetRepository:ISheetRepository<SoldLotSheet>
+    public class ActiveListingsJsonRepository:ISheetRepository<ActiveListings>
     {
         private const string sheetFilename = "ActiveLotSheet.json";
-        public IList<SoldLotSheet> GetSheet()
+        public IList<ActiveListings> GetSheet()
         {
             if (File.Exists(sheetFilename))
             {
                 string json = File.ReadAllText(sheetFilename);
-                List<SoldLotSheet> obj = JsonConvert.DeserializeObject<List<SoldLotSheet>>(json);
+                List<ActiveListings> obj = JsonConvert.DeserializeObject<List<ActiveListings>>(json);
                 return obj;
             }
-            return new List<SoldLotSheet>();
+            return new List<ActiveListings>();
         }
 
-        public void Save(IList<SoldLotSheet> sheet)
+        public void Save(IList<ActiveListings> sheet)
         {
             string json = JsonConvert.SerializeObject(sheet);
             File.WriteAllText(sheetFilename, json);

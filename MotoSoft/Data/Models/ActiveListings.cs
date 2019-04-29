@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MotoSoft.Data.Models
 {
-    public class ActiveLotSheet
+    public class ActiveListings
     {
         public int ITEM_ID { get; set; }
         public string CUSTOM_LABEL { get; set; }

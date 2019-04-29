@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MotoSoft.Data.Models
 {
-    public class SoldLotSheet
+    public class SoldListings
     {
         public int ITEM_ID { get; set; }
         public DateTime DATE { get; set; }

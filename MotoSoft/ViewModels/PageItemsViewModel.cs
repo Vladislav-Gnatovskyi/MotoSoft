@@ -36,7 +36,11 @@ namespace MotoSoft.ViewModels
 
         public string PageIDFromLabel
         {
-            get => $"Page {PageID + 1}/{Source.GetPageCount()}";
+            get
+            {
+                int totalPage = Source.GetPageCount().Equals(0) ? 1 : Source.GetPageCount();
+                return $"Page {PageID + 1}/{totalPage}";
+            }
         }
 
         public IList NextPage()

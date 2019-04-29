@@ -36,19 +36,19 @@ namespace MotoSoft.Data
             }
         }
 
-        public ISheetRepository<ActiveLotSheet> ActiveLotSheetRepository
+        public ISheetRepository<ActiveListings> ActiveLotSheetRepository
         {
             get
             {
-                return new ActiveLotSheetJsonRepository();
+                return new ActiveListingsJsonRepository();
             }
         }
 
-        public ISheetRepository<SoldLotSheet> SoldLotSheetRepository
+        public ISheetRepository<SoldListings> SoldLotSheetRepository
         {
             get
             {
-                return new SoldLotSheetRepository();
+                return new SoldListingsRepository();
             }
         }
 

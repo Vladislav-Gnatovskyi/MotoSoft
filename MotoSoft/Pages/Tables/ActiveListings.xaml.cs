@@ -1,18 +1,17 @@
 ﻿using MotoSoft.ViewModels.Table;
 using System.Windows.Controls;
 
-
 namespace MotoSoft.Pages.Tables
 {
     /// <summary>
-    /// Interaction logic for SoldLotSheets.xaml
+    /// Interaction logic for ActiveLotSheets.xaml
     /// </summary>
-    public partial class SoldLotSheets : Page
+    public partial class ActiveListings : Page
     {
-        public SoldLotSheets()
+        public ActiveListings()
         {
             InitializeComponent();
-            LotSheetContext.DataContext = new SoldLotSheetsViewModel();
+            LotSheetContext.DataContext = new ActiveListingsViewModel();
         }
     }
 }

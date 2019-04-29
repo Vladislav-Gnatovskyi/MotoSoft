@@ -2,9 +2,9 @@
 
 namespace MotoSoft.Data.DataSources
 {
-    public class SoldLotSheetDataSource:SheetDataSource<SoldLotSheet>
+    public class SoldListingsDataSource:SheetDataSource<SoldListings>
     {       
-        public SoldLotSheetDataSource()
+        public SoldListingsDataSource()
         {
             sheetRepository = ServiceProvider.Instance.SoldLotSheetRepository;
             lotSheets = sheetRepository.GetSheet();

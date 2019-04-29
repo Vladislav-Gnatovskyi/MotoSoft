@@ -18,8 +18,8 @@ namespace MotoSoft
         private readonly Page Garage;
         private readonly Page Settings;
         private readonly Page LotSheets;
-        private readonly Page ActiveLotSheets;
-        private readonly Page SoldLotSheets;
+        private readonly Page ActiveListings;
+        private readonly Page SoldListings;
 
         private Router()
         {
@@ -31,8 +31,8 @@ namespace MotoSoft
             Garage = new Pages.Garage();
             Settings = new Pages.Settings();
             LotSheets = new Pages.Tables.LotSheets();
-            ActiveLotSheets = new Pages.Tables.ActiveLotSheets();
-            SoldLotSheets = new Pages.Tables.SoldLotSheets();
+            ActiveListings = new Pages.Tables.ActiveListings();
+            SoldListings = new Pages.Tables.SoldListings();
         }
 
         public void InitRouter(MainViewModel mainViewModel)
@@ -80,13 +80,13 @@ namespace MotoSoft
         {
             mainViewModel.CurrentPage = LotSheets;
         }
-        public void GoToActiveLotSheets()
+        public void GoToActiveListings()
         {
-            mainViewModel.CurrentPage = ActiveLotSheets;
+            mainViewModel.CurrentPage = ActiveListings;
         }
-        public void GoToSoldLotSheets()
+        public void GoToSoldListings()
         {
-            mainViewModel.CurrentPage = SoldLotSheets;
+            mainViewModel.CurrentPage = SoldListings;
         }
 
         public void GoToProduct(Data.Models.Product product)

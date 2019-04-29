@@ -89,26 +89,26 @@
     <Compile Include="Components\Table\TableViewModel.cs" />
     <Compile Include="Data\DataSources\SheetDataSource.cs" />
     <Compile Include="Data\DataSources\LotAnalyticSheetDataSource.cs" />
-    <Compile Include="Data\Repository\ActiveLotSheetJsonRepository.cs" />
-    <Compile Include="Data\DataSources\ActiveLotSheetDataSource.cs" />
+    <Compile Include="Data\Repository\ActiveListingsJsonRepository.cs" />
+    <Compile Include="Data\DataSources\ActiveListingsDataSource.cs" />
     <Compile Include="Data\DataSources\LotSheetDataSource.cs" />
-    <Compile Include="Data\DataSources\SoldLotSheetDataSource.cs" />
+    <Compile Include="Data\DataSources\SoldListingsDataSource.cs" />
     <Compile Include="Data\Repository\Interfaces\ISheetRepository.cs" />
     <Compile Include="Data\Repository\LotAnalyticSheetJsonRepository.cs" />
     <Compile Include="Data\Repository\LotSheetJsonRepository.cs" />
-    <Compile Include="Data\Models\ActiveLotSheet.cs" />
+    <Compile Include="Data\Models\ActiveListings.cs" />
     <Compile Include="Data\Models\LotAnalyticSheet.cs" />
     <Compile Include="Data\Models\LotSheet.cs" />
-    <Compile Include="Data\Models\SoldLotSheet.cs" />
-    <Compile Include="Data\Repository\SoldLotSheetRepository.cs" />
-    <Compile Include="Pages\Tables\ActiveLotSheets.xaml.cs">
-      <DependentUpon>ActiveLotSheets.xaml</DependentUpon>
+    <Compile Include="Data\Models\SoldListings.cs" />
+    <Compile Include="Data\Repository\SoldListingsRepository.cs" />
+    <Compile Include="Pages\Tables\ActiveListings.xaml.cs">
+      <DependentUpon>ActiveListings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Tables\LotSheets.xaml.cs">
       <DependentUpon>LotSheets.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Tables\SoldLotSheets.xaml.cs">
-      <DependentUpon>SoldLotSheets.xaml</DependentUpon>
+    <Compile Include="Pages\Tables\SoldListings.xaml.cs">
+      <DependentUpon>SoldListings.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PageItemsViewModel.cs" />
     <Compile Include="Data\DataSources\ProductDataSource.cs" />
@@ -153,9 +153,9 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Router.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
-    <Compile Include="ViewModels\Table\ActiveLotSheetsViewModel.cs" />
+    <Compile Include="ViewModels\Table\ActiveListingsViewModel.cs" />
     <Compile Include="ViewModels\Table\LotSheetsViewModel.cs" />
-    <Compile Include="ViewModels\Table\SoldLotSheetsViewModel.cs" />
+    <Compile Include="ViewModels\Table\SoldListingsViewModel.cs" />
     <Page Include="Components\Table\Table.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,7 +208,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Tables\ActiveLotSheets.xaml">
+    <Page Include="Pages\Tables\ActiveListings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,7 +216,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Tables\SoldLotSheets.xaml">
+    <Page Include="Pages\Tables\SoldListings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

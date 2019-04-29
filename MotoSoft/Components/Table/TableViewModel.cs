@@ -13,7 +13,7 @@ namespace MotoSoft.Components.Table
         
         public TableViewModel()
         {
-            Source = new SoldLotSheetDataSource();
+            Source = new SoldListingsDataSource();
             PageItemsContol = new PageItemsViewModel(Source, 40);            
         }
 

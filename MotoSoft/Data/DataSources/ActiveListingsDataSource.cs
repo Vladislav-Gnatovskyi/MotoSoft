@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace MotoSoft.Data.DataSources
 {
-    class ActiveLotSheetDataSource:SheetDataSource<ActiveLotSheet>
+    class ActiveListingsDataSource:SheetDataSource<ActiveListings>
     {
-        public ActiveLotSheetDataSource()
+        public ActiveListingsDataSource()
         {
             sheetRepository = ServiceProvider.Instance.ActiveLotSheetRepository;
             lotSheets = sheetRepository.GetSheet();

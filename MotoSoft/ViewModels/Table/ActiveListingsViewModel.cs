@@ -3,12 +3,12 @@ using MotoSoft.Data.DataSources;
 
 namespace MotoSoft.ViewModels.Table
 {
-    class ActiveLotSheetsViewModel:TableViewModel
+    class ActiveListingsViewModel : TableViewModel
     {
         private const int itemsOnPage = 40;
-        public ActiveLotSheetsViewModel()
+        public ActiveListingsViewModel()
         {
-            Source = new ActiveLotSheetDataSource();
+            Source = new ActiveListingsDataSource();
             PageItemsContol = new PageItemsViewModel(Source, itemsOnPage);
         }
     }
