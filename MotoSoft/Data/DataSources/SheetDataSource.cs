@@ -12,6 +12,12 @@ namespace MotoSoft.Data.DataSources
 
         protected ISheetRepository<T> sheetRepository;
         protected IList<T> lotSheets { get; set; }
+        public IList<Column> Columns { get; set; }
+
+        protected SheetDataSource()
+        {
+            Columns = new List<Column>();
+        }
 
         public IList GetItems(int page = 0, int pageCountItems = 15)
         {

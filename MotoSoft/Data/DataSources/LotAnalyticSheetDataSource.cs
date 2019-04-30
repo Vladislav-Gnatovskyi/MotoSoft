@@ -13,6 +13,7 @@ namespace MotoSoft.Data.DataSources
         {
             sheetRepository = ServiceProvider.Instance.LotAnalyticSheetRepository;
             lotSheets = sheetRepository.GetSheet();
+            Columns.Add(new Column { Title = "Item ID" });
         }
     }
 }

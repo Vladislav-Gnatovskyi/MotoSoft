@@ -14,6 +14,7 @@ namespace MotoSoft.Data.DataSources
 
         private IProductsRepository productsRepository;
         private List<Product> products { get; set; }
+        public IList<Column> Columns { get; set; }
 
         public IList GetItems(int page = 0, int pageCountItems = 15)
         {
@@ -32,6 +33,7 @@ namespace MotoSoft.Data.DataSources
 
         public ProductDataSource()
         {
+            Columns = new List<Column>();
             productsRepository = ServiceProvider.Instance.ProductsRepository;
             products = productsRepository.GetProducts();
         }

@@ -11,7 +11,9 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding PageItemsContol.Items}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="20" FontFamily="Times New Roman" Margin="0,50,0,0"/>
+        <DataGrid ItemsSource="{Binding PageItemsContol.Items}" HorizontalContentAlignment="Stretch" CanUserAddRows="False" VerticalContentAlignment="Stretch" ColumnWidth="*" AutoGenerateColumns="True" FontSize="20" FontFamily="Times New Roman" Margin="0,50,0,0">
+           
+        </DataGrid>
         <Grid MaxHeight="50" VerticalAlignment="Top" Height="50">
             <Button Content="" Margin="0" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="40" VerticalAlignment="Top" Command="{Binding BackPage}" BorderBrush="{x:Null}">
                 <Button.Background>

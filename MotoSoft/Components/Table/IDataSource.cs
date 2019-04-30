@@ -10,6 +10,7 @@ namespace MotoSoft.Components.Table
     public interface IDataSource
     {
         int GetPageCount();
+        IList<Column> Columns { get; set; }
         IList GetItems(int page = 0, int pageCountItems = 15);
     }
 }

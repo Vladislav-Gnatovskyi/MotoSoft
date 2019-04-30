@@ -79,8 +79,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Assets\Command\ReplayCommand.cs" />
+    <Compile Include="Assets\Extentions\DataGridExtentions.cs" />
     <Compile Include="Assets\Extentions\WebBrowserExtentions.cs" />
     <Compile Include="Components\Table\Column.cs" />
+    <Compile Include="Components\Table\EColumnType.cs" />
     <Compile Include="Components\Table\IDataSource.cs" />
     <Compile Include="Components\Table\IPageItem.cs" />
     <Compile Include="Components\Table\Table.xaml.cs">
