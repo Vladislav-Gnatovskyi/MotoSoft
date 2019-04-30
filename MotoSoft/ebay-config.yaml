@@ -1,0 +1,13 @@
+﻿name: ebay-config
+
+api.sandbox.ebay.com:
+    appid: Vladisla-MotoSoft-SBX-beaa02434-56302677
+    certid: SBX-eaa024340ab1-50a9-4e1e-9adf-dd69
+    devid: 4a0a3d23-faba-49cb-8651-d32492ca4ca3
+    redirecturi: Vladislav_Gnato-Vladisla-MotoSo-ijvkgi
+
+api.ebay.com:
+    appid: Vladisla-MotoSoft-PRD-6ea920fd0-baef81df
+    certid: PRD-ea920fd07250-4174-4006-9425-6fe7
+    devid: 4a0a3d23-faba-49cb-8651-d32492ca4ca3
+    redirecturi: Vladislav_Gnato-Vladisla-MotoSo-ypsfzj

@@ -1,4 +1,5 @@
-﻿using MotoSoft.ViewModels;
+﻿using MotoSoft.Data;
+using MotoSoft.ViewModels;
 using System.Windows.Controls;
 
 namespace MotoSoft
@@ -33,6 +34,8 @@ namespace MotoSoft
             LotSheets = new Pages.Tables.LotSheets();
             ActiveListings = new Pages.Tables.ActiveListings();
             SoldListings = new Pages.Tables.SoldListings();
+
+            EbayApiService ebayApi = new EbayApiService();
         }
 
         public void InitRouter(MainViewModel mainViewModel)
