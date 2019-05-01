@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MotoSoft.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="APP_ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vladisla-MotoSoft-PRD-6ea920fd0-baef81df</Value>
+    </Setting>
+    <Setting Name="DEV_ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4a0a3d23-faba-49cb-8651-d32492ca4ca3</Value>
+    </Setting>
+    <Setting Name="CER_ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PRD-ea920fd07250-4174-4006-9425-6fe7</Value>
+    </Setting>
+    <Setting Name="eBayToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AgAAAA**AQAAAA**aAAAAA**j9LJXA**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6ACloWoDZOBoAidj6x9nY+seQ**M/wFAA**AAMAAA**JbTjG4xi7lm/2e4PB71br/H8bZ4Fkh4t505kiD2CIPvTrHCNkq8FqgcHrUrm6RIi1fbcAwQS6pdKAt7hZpl2fFmt7MAIjzs0Z5FJVh5OaCG0sWRmfQ4zVGPIlxdkYT/urBq4lBafmT7MsxZG/vnSUv44crcVqJdczVXtk7qCzCGv6xgd2h+yHGYFQwub2h/ZpxqsIpyl6fG+TbuDEg9WabJME4vYgEUGyrgXVNrDYMvXjJ8BCL/sEkIvrhxoi9SsuP3Obf/ZFlpLBuGsANJfka3XMntw67IfMOD84fwLpaKn9YRA+4ZYQm0qw4TlTckjXCmxQ/jaxMduCJysmtGXLMKpWxgHKRcwLlQ9RBOjrMzXuK/xMwUDSbjFD6DqqDpTo/FvpYBD7lojtOfcDG23Pv4JKRl/4FJdSZ7alZgLXxqEfXlSXPywDE257cRMTlr3xj1MDILyb0AVXr1usR2KZrBhA79EBcBcH4SA/PDoFAxyuad3ni1/ABk+MGQc9UgkRA/WVQwHE73Sx7idr334LMTEfj1yWY+SS7E1fAPqgoxoXN9hToa7Oc2zGPt67D7e6NJ8awf9ObRlItMz8CfIqqwym4x9B1gD/9s8HH6Q/Ag7zuYNS0tR1QO0k6pAPpjddxN4fp9/T47Cnrq+HUxuRukmS3q7rA+9t0ki5i4StLuH3O5iFtFeGyoPE+qhFA3can6yiSIqysMqpsFsGpcBGS61eJqutRw1FFfaCH7Ez4zLXul2At7GYCLfH6bCLOtc</Value>
+    </Setting>
+    <Setting Name="redirecturi" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vladislav_Gnato-Vladisla-MotoSo-ypsfzj</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

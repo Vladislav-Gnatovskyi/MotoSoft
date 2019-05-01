@@ -8,22 +8,78 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MotoSoft.Properties
-{
-
-
+namespace MotoSoft.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.0.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Vladisla-MotoSoft-PRD-6ea920fd0-baef81df")]
+        public string APP_ID {
+            get {
+                return ((string)(this["APP_ID"]));
+            }
+            set {
+                this["APP_ID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4a0a3d23-faba-49cb-8651-d32492ca4ca3")]
+        public string DEV_ID {
+            get {
+                return ((string)(this["DEV_ID"]));
+            }
+            set {
+                this["DEV_ID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PRD-ea920fd07250-4174-4006-9425-6fe7")]
+        public string CER_ID {
+            get {
+                return ((string)(this["CER_ID"]));
+            }
+            set {
+                this["CER_ID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"AgAAAA**AQAAAA**aAAAAA**j9LJXA**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6ACloWoDZOBoAidj6x9nY+seQ**M/wFAA**AAMAAA**JbTjG4xi7lm/2e4PB71br/H8bZ4Fkh4t505kiD2CIPvTrHCNkq8FqgcHrUrm6RIi1fbcAwQS6pdKAt7hZpl2fFmt7MAIjzs0Z5FJVh5OaCG0sWRmfQ4zVGPIlxdkYT/urBq4lBafmT7MsxZG/vnSUv44crcVqJdczVXtk7qCzCGv6xgd2h+yHGYFQwub2h/ZpxqsIpyl6fG+TbuDEg9WabJME4vYgEUGyrgXVNrDYMvXjJ8BCL/sEkIvrhxoi9SsuP3Obf/ZFlpLBuGsANJfka3XMntw67IfMOD84fwLpaKn9YRA+4ZYQm0qw4TlTckjXCmxQ/jaxMduCJysmtGXLMKpWxgHKRcwLlQ9RBOjrMzXuK/xMwUDSbjFD6DqqDpTo/FvpYBD7lojtOfcDG23Pv4JKRl/4FJdSZ7alZgLXxqEfXlSXPywDE257cRMTlr3xj1MDILyb0AVXr1usR2KZrBhA79EBcBcH4SA/PDoFAxyuad3ni1/ABk+MGQc9UgkRA/WVQwHE73Sx7idr334LMTEfj1yWY+SS7E1fAPqgoxoXN9hToa7Oc2zGPt67D7e6NJ8awf9ObRlItMz8CfIqqwym4x9B1gD/9s8HH6Q/Ag7zuYNS0tR1QO0k6pAPpjddxN4fp9/T47Cnrq+HUxuRukmS3q7rA+9t0ki5i4StLuH3O5iFtFeGyoPE+qhFA3can6yiSIqysMqpsFsGpcBGS61eJqutRw1FFfaCH7Ez4zLXul2At7GYCLfH6bCLOtc")]
+        public string eBayToken {
+            get {
+                return ((string)(this["eBayToken"]));
+            }
+            set {
+                this["eBayToken"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Vladislav_Gnato-Vladisla-MotoSo-ypsfzj")]
+        public string redirecturi {
+            get {
+                return ((string)(this["redirecturi"]));
+            }
+            set {
+                this["redirecturi"] = value;
             }
         }
     }

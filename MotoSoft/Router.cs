@@ -1,4 +1,5 @@
 ﻿using MotoSoft.Data;
+using MotoSoft.Data.eBay;
 using MotoSoft.ViewModels;
 using System.Windows.Controls;
 
@@ -21,13 +22,13 @@ namespace MotoSoft
         private readonly Page LotSheets;
         private readonly Page ActiveListings;
         private readonly Page SoldListings;
-        public EbayApiService ebayApi { get; }
+        public EBayAuthorize ebayApi { get; }
 
         private Router()
         {
-            ebayApi = new EbayApiService();
-
+            ebayApi = new EBayAuthorize();
             if (ebayApi.Code == null) App.Current.Shutdown();
+            new EbayApiService().GetStore();
             Home = new Pages.Home();
             Inventory = new Pages.Inventory();
             ListParts = new Pages.ListParts();
