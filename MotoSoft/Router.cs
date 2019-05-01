@@ -21,9 +21,13 @@ namespace MotoSoft
         private readonly Page LotSheets;
         private readonly Page ActiveListings;
         private readonly Page SoldListings;
+        public EbayApiService ebayApi { get; }
 
         private Router()
         {
+            ebayApi = new EbayApiService();
+
+            if (ebayApi.Code == null) App.Current.Shutdown();
             Home = new Pages.Home();
             Inventory = new Pages.Inventory();
             ListParts = new Pages.ListParts();
@@ -34,8 +38,6 @@ namespace MotoSoft
             LotSheets = new Pages.Tables.LotSheets();
             ActiveListings = new Pages.Tables.ActiveListings();
             SoldListings = new Pages.Tables.SoldListings();
-
-            EbayApiService ebayApi = new EbayApiService();
         }
 
         public void InitRouter(MainViewModel mainViewModel)

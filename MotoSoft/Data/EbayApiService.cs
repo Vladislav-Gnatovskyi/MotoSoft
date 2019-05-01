@@ -18,48 +18,53 @@ using MotoSoft.Data.Models;
 
 namespace MotoSoft.Data
 {
-    class EbayApiService
+    public class EbayApiService
     {
         private string pathConfig { get => "ebay-config.yaml"; }
-        private string state { get => "State"; }
+
+        public string Code { get; private set; }
+
+        private string state { get => "current_page"; }
+
         private OAuth2Api oAuth2Api = new OAuth2Api();
-        private readonly IList<String> scopes = new List<String>()
-        {
-                "https://api.ebay.com/oauth/api_scope/buy.marketing",
-                "https://api.ebay.com/oauth/api_scope"
-        };
+
         private readonly IList<String> userScopes = new List<String>()
         {
-                "https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly",
-                "https://api.ebay.com/oauth/api_scope/buy.shopping.cart"
+                "https://api.ebay.com/oauth/api_scope",
         };
 
         public EbayApiService()
         {            
             CredentialUtil.Load(pathConfig);
             string authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(OAuthEnvironment.PRODUCTION, userScopes, state);
-            MessageBox.Show(GetAuthorizationCode(authorizationUrl, new UserCredential { UserName = "gnatovskyi@gmail.com", Pwd = "********" }));
+            Code = GetAuthorizationCode(authorizationUrl);
+            var reposn = oAuth2Api.ExchangeCodeForAccessToken(OAuthEnvironment.PRODUCTION, Code);
+            MessageBox.Show("ERROR: " + reposn.ErrorMessage);
+            MessageBox.Show("ACCESS TOKEN: " + reposn.AccessToken.Token);
+            MessageBox.Show("REFRESH TOKEN: " + reposn.RefreshToken.Token);
         }
 
-        private String GetAuthorizationCode(String authorizationUrl, UserCredential userCredential)
+        private String GetAuthorizationCode(String authorizationUrl)
         {
-
-            IWebDriver driver = new ChromeDriver("./");
-
+            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+            service.HideCommandPromptWindow = true;
+            IWebDriver driver = new ChromeDriver(service);
+            string successUrl = null;
             //Submit login form
             driver.Navigate().GoToUrl(authorizationUrl);
-            IWebElement userId = driver.FindElement(By.Id("userid"));
-            IWebElement password = driver.FindElement(By.Id("pass"));
-            IWebElement submit = driver.FindElement(By.Id("sgnBt"));
-            userId.SendKeys(userCredential.UserName);
-            password.SendKeys(userCredential.Pwd);
-            submit.Click();
-
+            //IWebElement userId = driver.FindElement(By.Id("userid"));
+            //IWebElement password = driver.FindElement(By.Id("pass"));
+            //IWebElement submit = driver.FindElement(By.Id("sgnBt"));
+            //userId.SendKeys(userCredential.UserName);
+            //password.SendKeys(userCredential.Pwd);
+            //submit.Click();
             //Wait for success page
-            Thread.Sleep(2000);
-
-            String successUrl = driver.Url;
-
+            //Thread.Sleep(30000);
+            do
+            {
+                successUrl = driver.Url;                
+            }
+            while (!successUrl.Contains("code="));
             //Handle consent
             if (successUrl.Contains("/consents"))
             {
@@ -68,18 +73,12 @@ namespace MotoSoft.Data
                 Thread.Sleep(2000);
                 successUrl = driver.Url;
             }
-
             int iqs = successUrl.IndexOf('?');
             String querystring = (iqs < successUrl.Length - 1) ? successUrl.Substring(iqs + 1) : String.Empty;
-            // Parse the query string variables into a NameValueCollection.
             NameValueCollection queryParams = HttpUtility.ParseQueryString(querystring);
             String code = queryParams.Get("code");
             driver.Quit();
-
             return code;
-
         }
-
-
     }
 }
