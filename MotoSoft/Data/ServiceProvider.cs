@@ -40,7 +40,7 @@ namespace MotoSoft.Data
         {
             get
             {
-                return new ActiveListingsJsonRepository();
+                return new ActiveListingsEBayRepository();
             }
         }
 

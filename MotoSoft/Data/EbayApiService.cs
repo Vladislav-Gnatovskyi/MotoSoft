@@ -6,14 +6,14 @@ using eBay.ApiClient.Auth.OAuth2.Model;
 using System.Windows;
 using System;
 using System.Threading;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace MotoSoft.Data
 {
     public class EbayApiService
     {
-        public EbayApiService()
-        {
-        }
         private ApiContext GetApiContext()
         {
             ApiContext context = new ApiContext();
@@ -27,20 +27,14 @@ namespace MotoSoft.Data
             return context;
         }
 
-
-        public void GetStore()
-        {            
-            GetCategoriesCall call = new GetCategoriesCall(GetApiContext());
+        public OrderTypeCollection GetOrdersCall(TimeFilter timeFilter, TradingRoleCodeType tradingRole,  OrderStatusCodeType orderStatus)
+        {
+            GetOrdersCall call = new GetOrdersCall(GetApiContext());
             call.EnableCompression = true;
             call.DetailLevelList = new DetailLevelCodeTypeCollection(new DetailLevelCodeType[] { DetailLevelCodeType.ReturnAll });
-            call.LevelLimit = 1;
-            call.Timeout = 300000;
-
-            var cats = call.GetCategories();        
-                        
-            MessageBox.Show("Count: " + call.CategoryCount);
-
-            call.Execute();
+            call.Timeout = 20000;
+            MessageBox.Show(call.GetOrders(timeFilter, tradingRole, orderStatus).Count.ToString());
+            return call.GetOrders(timeFilter, tradingRole, orderStatus);
         }
     }
 }

@@ -95,6 +95,7 @@
     <Compile Include="Data\EbayApiService.cs" />
     <Compile Include="Data\eBay\EBayAuthorize.cs" />
     <Compile Include="Data\Enums\EbayAuthorizeState.cs" />
+    <Compile Include="Data\Repository\ActiveListingsEBayRepository.cs" />
     <Compile Include="Data\Repository\ActiveListingsJsonRepository.cs" />
     <Compile Include="Data\DataSources\ActiveListingsDataSource.cs" />
     <Compile Include="Data\DataSources\LotSheetDataSource.cs" />

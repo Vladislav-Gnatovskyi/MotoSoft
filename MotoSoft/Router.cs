@@ -28,7 +28,6 @@ namespace MotoSoft
         {
             ebayApi = new EBayAuthorize();
             if (ebayApi.Code == null) App.Current.Shutdown();
-            new EbayApiService().GetStore();
             Home = new Pages.Home();
             Inventory = new Pages.Inventory();
             ListParts = new Pages.ListParts();
