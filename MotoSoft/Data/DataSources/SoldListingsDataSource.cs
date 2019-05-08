@@ -3,7 +3,7 @@ using MotoSoft.Data.Models;
 
 namespace MotoSoft.Data.DataSources
 {
-    public class SoldListingsDataSource:SheetDataSource<SoldListings>
+    public class SoldListingsDataSource: SheetDataSourceBase<SoldListings>
     {       
         public SoldListingsDataSource()
         {

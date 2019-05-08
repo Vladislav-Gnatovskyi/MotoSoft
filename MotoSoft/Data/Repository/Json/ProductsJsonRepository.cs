@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MotoSoft.Data.Repository
+namespace MotoSoft.Data.Repository.Json
 {
     public class ProductsJsonRepository: IProductsRepository
     {

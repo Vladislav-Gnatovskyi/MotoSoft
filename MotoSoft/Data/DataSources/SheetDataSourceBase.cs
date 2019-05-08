@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace MotoSoft.Data.DataSources
 {
-    public abstract class SheetDataSource<T>: IDataSource
+    public abstract class SheetDataSourceBase<T>: IDataSource
     {
         private int pageCount = 15;
 
@@ -14,7 +14,7 @@ namespace MotoSoft.Data.DataSources
         protected IList<T> lotSheets { get; set; }
         public IList<Column> Columns { get; set; }
 
-        protected SheetDataSource()
+        protected SheetDataSourceBase ()
         {
             Columns = new List<Column>();
         }

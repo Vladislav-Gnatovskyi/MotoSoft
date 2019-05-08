@@ -12,6 +12,7 @@ namespace MotoSoft.Data.Models
         public string PostalCode { get; set; }
         public string TemplateBuilder { get; set; }
         public string Html { get; set; }
+        public string Token { get; set; }
         public bool PaymentRequired { get; set; }
         public bool CreditCards { get; set; }
         public bool BestOffer { get; set; }

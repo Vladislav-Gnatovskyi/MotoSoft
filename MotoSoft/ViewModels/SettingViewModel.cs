@@ -21,6 +21,20 @@ namespace MotoSoft.ViewModels
         }
         #region OnClick
 
+        public ICommand BSingOut_Click
+        {
+            get
+            {
+                return new RelayCommand(x =>
+                {
+                    var settingModel = ServiceProvider.Instance.CurrentContext.Settings;
+                    settingModel.Token = null;
+                    settingsRepository.Save(settingModel);
+                    App.Current.Shutdown();
+                });
+            }
+        }
+
         public ICommand BSave_Click
         {
             get
@@ -30,7 +44,6 @@ namespace MotoSoft.ViewModels
                     try
                     {
                         settingsRepository.Save(SettingModel);
-                        MessageBox.Show("Success");
                     }
                     catch(Exception e)
                     {

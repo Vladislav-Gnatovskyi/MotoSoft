@@ -1,5 +1,6 @@
 ﻿using eBay.ApiClient.Auth.OAuth2;
 using eBay.ApiClient.Auth.OAuth2.Model;
+using MotoSoft.Data.Repository.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -12,34 +13,47 @@ namespace MotoSoft.Data.eBay
 {
     public class EBayAuthorize
     {
+        #region PrivateProperty
         private string pathConfig { get => "ebay-config.yaml"; }
-        public static bool IsAuthorize {
+        private OAuthEnvironment Environment { get => OAuthEnvironment.PRODUCTION; }
+        private string state { get => "State"; }
+        private OAuth2Api oAuth2Api = new OAuth2Api();
+        private readonly IList<string> userScopes = new List<String>()
+        {
+                "https://api.ebay.com/oauth/api_scope",
+        };
+        #endregion PrivateProperty
+
+        #region PublicProperty
+        public bool IsAuthorize
+        {
             get
             {
                 return Token != null ? true : false;
             }
         }
-        public string Code { get; private set; }
-        public static string Token { get; private set; }
-        private string state { get => "State"; }
-
-        private OAuth2Api oAuth2Api = new OAuth2Api();
-
-        private readonly IList<string> userScopes = new List<String>()
-        {
-                "https://api.ebay.com/oauth/api_scope",
-        };
+        public string Token { get; private set; }
+        #endregion PublicProperty
 
         public EBayAuthorize()
         {
-            CredentialUtil.Load(pathConfig);
-            string authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(OAuthEnvironment.PRODUCTION, userScopes, state);
-            Code = GetAuthorizationCode(authorizationUrl);
-            var reposn = oAuth2Api.ExchangeCodeForAccessToken(OAuthEnvironment.PRODUCTION, Code);
-            Token = reposn.AccessToken.Token;
+            Initial();
+        }
+        private void Initial()
+        {
+            if (ServiceProvider.Instance.CurrentContext.Settings.Token == null)
+            {
+                CredentialUtil.Load(pathConfig);
+                string authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(Environment, userScopes, state);
+                var reposn = oAuth2Api.ExchangeCodeForAccessToken(Environment, GetAuthorizationCode(authorizationUrl));
+                Token = reposn.AccessToken.Token;
+                var settingModel = ServiceProvider.Instance.CurrentContext.Settings;
+                settingModel.Token = Token;
+                new SettingJsonRepository().Save(settingModel);
+            }
         }
 
-        private String GetAuthorizationCode(String authorizationUrl)
+        private string GetAuthorizationCode(string authorizationUrl)
         {
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = true;
@@ -47,17 +61,17 @@ namespace MotoSoft.Data.eBay
             string successUrl = null;
             //Submit login form
             driver.Navigate().GoToUrl(authorizationUrl);
-            //IWebElement userId = driver.FindElement(By.Id("userid"));
-            //IWebElement password = driver.FindElement(By.Id("pass"));
-            //IWebElement submit = driver.FindElement(By.Id("sgnBt"));
-            //userId.SendKeys(userCredential.UserName);
-            //password.SendKeys(userCredential.Pwd);
-            //submit.Click();
+            IWebElement userId = driver.FindElement(By.Id("userid"));
+            IWebElement password = driver.FindElement(By.Id("pass"));
+            IWebElement submit = driver.FindElement(By.Id("sgnBt"));
+            userId.SendKeys("gnatovskyi@gmail.com");
+            password.SendKeys("YfcnzDkfl34426");
+            submit.Click();
             //Wait for success page
             //Thread.Sleep(30000);
             do
-            {
-                successUrl = driver.Url;
+            {               
+                    successUrl = driver.Url;
             }
             while (!successUrl.Contains("code="));
             //Handle consent

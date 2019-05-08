@@ -1,8 +1,9 @@
-﻿using MotoSoft.Data;
+﻿using MotoSoft.Data.eBay;
+using MotoSoft.Data.Interfaces;
 using MotoSoft.Data.Models;
-using MotoSoft.Data.Repository;
+using MotoSoft.Data.Repository.eBay;
 using MotoSoft.Data.Repository.Interfaces;
-using MotoSoft.ViewModels;
+using MotoSoft.Data.Repository.Json;
 
 namespace MotoSoft.Data
 {
@@ -32,11 +33,11 @@ namespace MotoSoft.Data
         {
             get
             {
-                return new LotSheetJsonRepository();
+                return new LotSheetEBayRepository();
             }
         }
 
-        public ISheetRepository<ActiveListings> ActiveLotSheetRepository
+        public ISheetRepository<ActiveListings> ActiveListingsRepository
         {
             get
             {
@@ -48,7 +49,7 @@ namespace MotoSoft.Data
         {
             get
             {
-                return new SoldListingsRepository();
+                return new SoldListingsEBayRepository();
             }
         }
 
@@ -56,7 +57,15 @@ namespace MotoSoft.Data
         {
             get
             {
-                return new LotAnalyticSheetJsonRepository();
+                return new LotAnalyticsSheetEBayRepository();
+            }
+        }
+
+        public IEBayApiService eBayService
+        {
+            get
+            {
+                return new FakeEBayService();
             }
         }
 

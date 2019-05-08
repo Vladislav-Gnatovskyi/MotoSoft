@@ -90,24 +90,30 @@
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Table\TableViewModel.cs" />
-    <Compile Include="Data\DataSources\SheetDataSource.cs" />
+    <Compile Include="Data\DataSources\SheetDataSourceBase.cs" />
     <Compile Include="Data\DataSources\LotAnalyticSheetDataSource.cs" />
-    <Compile Include="Data\EbayApiService.cs" />
+    <Compile Include="Data\eBay\EbayApiService.cs" />
     <Compile Include="Data\eBay\EBayAuthorize.cs" />
+    <Compile Include="Data\eBay\FakeEBayService.cs" />
     <Compile Include="Data\Enums\EbayAuthorizeState.cs" />
-    <Compile Include="Data\Repository\ActiveListingsEBayRepository.cs" />
-    <Compile Include="Data\Repository\ActiveListingsJsonRepository.cs" />
+    <Compile Include="Data\Interfaces\IEBayApiService.cs" />
+    <Compile Include="Data\Repository\eBay\ActiveListingsEBayRepository.cs" />
+    <Compile Include="Data\Repository\eBay\LotAnalyticsSheetEBayRepository.cs" />
+    <Compile Include="Data\Repository\eBay\SoldListingsEBayRepository.cs" />
+    <Compile Include="Data\Repository\Json\ActiveListingsJsonRepository.cs" />
     <Compile Include="Data\DataSources\ActiveListingsDataSource.cs" />
     <Compile Include="Data\DataSources\LotSheetDataSource.cs" />
     <Compile Include="Data\DataSources\SoldListingsDataSource.cs" />
     <Compile Include="Data\Repository\Interfaces\ISheetRepository.cs" />
-    <Compile Include="Data\Repository\LotAnalyticSheetJsonRepository.cs" />
-    <Compile Include="Data\Repository\LotSheetJsonRepository.cs" />
+    <Compile Include="Data\Repository\Json\FakeEBaySellerListJsonRepository.cs" />
+    <Compile Include="Data\Repository\Json\LotAnalyticSheetJsonRepository.cs" />
+    <Compile Include="Data\Repository\eBay\LotSheetEBayRepository.cs" />
+    <Compile Include="Data\Repository\Json\LotSheetJsonRepository.cs" />
     <Compile Include="Data\Models\ActiveListings.cs" />
     <Compile Include="Data\Models\LotAnalyticSheet.cs" />
     <Compile Include="Data\Models\LotSheet.cs" />
     <Compile Include="Data\Models\SoldListings.cs" />
-    <Compile Include="Data\Repository\SoldListingsRepository.cs" />
+    <Compile Include="Data\Repository\Json\SoldListingsRepository.cs" />
     <Compile Include="Pages\Tables\ActiveListings.xaml.cs">
       <DependentUpon>ActiveListings.xaml</DependentUpon>
     </Compile>
@@ -125,9 +131,9 @@
     <Compile Include="Data\Repository\Interfaces\IProductsRepository.cs" />
     <Compile Include="Data\Repository\Interfaces\ISettingsRepository.cs" />
     <Compile Include="Data\Models\Product.cs" />
-    <Compile Include="Data\Repository\ProductsJsonRepository.cs" />
+    <Compile Include="Data\Repository\Json\ProductsJsonRepository.cs" />
     <Compile Include="Data\ServiceProvider.cs" />
-    <Compile Include="Data\Repository\SettingJsonRepository.cs" />
+    <Compile Include="Data\Repository\Json\SettingJsonRepository.cs" />
     <Compile Include="Pages\Analytics.xaml.cs">
       <DependentUpon>Analytics.xaml</DependentUpon>
     </Compile>

@@ -8,7 +8,7 @@ namespace MotoSoft.Data.Models
 {
     public class SoldListings
     {
-        public int ITEM_ID { get; set; }
+        public string ITEM_ID { get; set; }
         public DateTime DATE { get; set; }
         public int SALES_RECORD_NUMBER { get; set; }
         public string ITEM_TITLE { get; set; }

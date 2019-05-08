@@ -7,13 +7,12 @@ using System.Linq;
 
 namespace MotoSoft.Data.DataSources
 {
-    public class LotAnalyticSheetDataSource:SheetDataSource<LotAnalyticSheet>
+    public class LotAnalyticSheetDataSource: SheetDataSourceBase<LotAnalyticSheet>
     {
         public LotAnalyticSheetDataSource()
         {
             sheetRepository = ServiceProvider.Instance.LotAnalyticSheetRepository;
             lotSheets = sheetRepository.GetSheet();
-            Columns.Add(new Column { Title = "Item ID" });
         }
     }
 }

@@ -4,23 +4,23 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MotoSoft.Data.Repository
+namespace MotoSoft.Data.Repository.Json
 {
-    public class LotAnalyticSheetJsonRepository : ISheetRepository<LotAnalyticSheet>
+    public class ActiveListingsJsonRepository:ISheetRepository<ActiveListings>
     {
-        private const string sheetFilename = "LotAnalyticSheet.json";
-        public IList<LotAnalyticSheet> GetSheet()
+        private const string sheetFilename = "ActiveLotSheet.json";
+        public IList<ActiveListings> GetSheet()
         {
             if (File.Exists(sheetFilename))
             {
                 string json = File.ReadAllText(sheetFilename);
-                List<LotAnalyticSheet> obj = JsonConvert.DeserializeObject<List<LotAnalyticSheet>>(json);
+                List<ActiveListings> obj = JsonConvert.DeserializeObject<List<ActiveListings>>(json);
                 return obj;
             }
-            return new List<LotAnalyticSheet>();
+            return new List<ActiveListings>();
         }
 
-        public void Save(IList<LotAnalyticSheet> sheet)
+        public void Save(IList<ActiveListings> sheet)
         {
             string json = JsonConvert.SerializeObject(sheet);
             File.WriteAllText(sheetFilename, json);

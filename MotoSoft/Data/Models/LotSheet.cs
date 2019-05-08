@@ -8,7 +8,7 @@ namespace MotoSoft.Data.Models
 {
     public class LotSheet
     {
-        public int LOT { get; set; }
+        public string LOT { get; set; }
         public string TYPE { get; set; }
         public DateTime DATE { get; set; }
         public string MAKE { get; set; }
@@ -18,7 +18,7 @@ namespace MotoSoft.Data.Models
         public string NOTES { get; set; }
         public string TITLE { get; set; }
         public string BOS { get; set; }
-        public int COST { get; set; }
+        public double COST { get; set; }
         public string PROFIT { get; set; }
         public string PARTS_ACTIVE { get; set; }
         public int PARTS_SOLD { get; set; }

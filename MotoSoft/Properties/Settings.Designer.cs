@@ -82,5 +82,65 @@ namespace MotoSoft.Properties {
                 this["redirecturi"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Vladisla-MotoSoft-SBX-beaa02434-56302677")]
+        public string SAPP_ID {
+            get {
+                return ((string)(this["SAPP_ID"]));
+            }
+            set {
+                this["SAPP_ID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4a0a3d23-faba-49cb-8651-d32492ca4ca3")]
+        public string SDEV_ID {
+            get {
+                return ((string)(this["SDEV_ID"]));
+            }
+            set {
+                this["SDEV_ID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SBX-eaa024340ab1-50a9-4e1e-9adf-dd69")]
+        public string SCER_ID {
+            get {
+                return ((string)(this["SCER_ID"]));
+            }
+            set {
+                this["SCER_ID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"AgAAAA**AQAAAA**aAAAAA**eybMXA**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wFk4aiCZKCqQmdj6x9nY+seQ**FvwEAA**AAMAAA**ngTjt9WsvfwlYsKj/j5VdHs0C61gHRVkQnfCoha+AThGzRdh9dV8cAP+s1y0UekrYV+Y3n7KRvIJdEGXI5x5ok7yOTxjTD9M6Ch2tYOs/IY4dKGaoK+x6wgWi83BwQe7kQNvA2bxSgb17qILmR1S+ScL0Lzq9Pdj9UiKZN4H4UuprrrWr7Wn9KKEPv2Vf6iWfwZrWXIY0kfCVkVMEwgZDKodNtDtfcAzDY3rET8LFkuFpCet+sqIiLkEhodVW8vE7u2Yj7Nwc8WLvWgdAi0NTtu3ADi6eytMomMTjkeUKxbNyI5ROsTcPy1JCCivUHxS1EbCOjoOG3dz++37Xxog7vX5KfXIGR72AR3r+Q0onbxXvrh8VYpxMvK4sFyieiDGohdTnkatIYtxcT8O+mEsMh0Ch784Z1ba7yLAU+ybWV/EVsQd8T34VzzPZv3PuukWaebs+TW6tNbNlwMF8/sWjwue/ENHy99dqusGDXSveGXBVIB6G9gVl3lCv64+ywRwzg9hoPR6gi2+EQ5bR4TlWizljQP8/YP4GWdTcA77BfcqLuofJp3ZHt1TvDNXtcMqiXbSiq51ZVS1PUZu7VXM3MY0aiX297/rnl8n1MyO0k5qbgYEWUCn7JaPeFFK+JucaRv1e5lczTz5mbuGW2mIZ3Nm4I1a2jXTzsCgmQGQzMYWq+uG0c62/PViUPa1wt54jEc+9pkcFx48ALRzUVor4JxJtD54CWvecbrziSL+HoVBB9Y3YQcncGUUmLrxx427")]
+        public string SeBayToken {
+            get {
+                return ((string)(this["SeBayToken"]));
+            }
+            set {
+                this["SeBayToken"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Vladislav_Gnato-Vladisla-MotoSo-ijvkgi")]
+        public string Sredirecturi {
+            get {
+                return ((string)(this["Sredirecturi"]));
+            }
+            set {
+                this["Sredirecturi"] = value;
+            }
+        }
     }
 }

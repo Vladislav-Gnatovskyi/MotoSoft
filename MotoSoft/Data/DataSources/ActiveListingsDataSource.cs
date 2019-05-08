@@ -7,13 +7,12 @@ using System.Linq;
 
 namespace MotoSoft.Data.DataSources
 {
-    class ActiveListingsDataSource:SheetDataSource<ActiveListings>
+    class ActiveListingsDataSource:SheetDataSourceBase<ActiveListings>
     {
         public ActiveListingsDataSource()
         {
-            sheetRepository = ServiceProvider.Instance.ActiveLotSheetRepository;
+            sheetRepository = ServiceProvider.Instance.ActiveListingsRepository;
             lotSheets = sheetRepository.GetSheet();
-            Columns.Add(new Column { Title = "Item ID" });
         }
     }
 }

@@ -4,7 +4,7 @@ using MotoSoft.Data.Models;
 using MotoSoft.Data.Repository.Interfaces;
 using Newtonsoft.Json;
 
-namespace MotoSoft.Data.Repository
+namespace MotoSoft.Data.Repository.Json
 {
     public class SettingJsonRepository: ISettingsRepository
     {

@@ -37,8 +37,8 @@
                 <TextBox x:Name="TPostalCode" Text="{Binding SettingModel.PostalCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Column="2" Height="23" Margin="72,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 <Label Content="Country" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Margin="2,25,0,0" Height="25" Width="52"/>
                 <TextBox x:Name="TCountry" Text="{Binding SettingModel.Country, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Column="2" Height="23" Margin="72,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <Button Content="Cancel" Command="{Binding BCancel_Click}" Grid.Column="3" Margin="0,2,5,0" Width="75" Height="25" MinWidth="75" MinHeight="20" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF021D2A" Foreground="White"/>
-                <Button Content="Save" Command="{Binding BSave_Click}" Grid.Column="3" Width="75" Height="25" MinWidth="75" MinHeight="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,2,83,0" Foreground="White" Background="#FF021D2A"/>
+                <Button Content="Sing Out" Command="{Binding BSingOut_Click}" Grid.Column="3" Margin="0,5,5,0" Width="75" Height="25" MinWidth="75" MinHeight="20" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF021D2A" Foreground="White"/>
+                <Button Content="Save" Command="{Binding BSave_Click}" Grid.Column="3" Width="75" Height="25" MinWidth="75" MinHeight="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,65,5,0" Foreground="White" Background="#FF021D2A"/>
                 <CheckBox Content="Add Part Compatibility" Margin="5,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="18" Width="145" Grid.Column="2" IsChecked="{Binding SettingModel.PartCompatibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <ComboBox Margin="80,52,0,0" BorderBrush="White" VerticalAlignment="Top" Height="23">
                     <ComboBox.Background>
@@ -66,6 +66,7 @@
                     <ComboBoxItem Content="eBay Item Number"/>
                     <ComboBoxItem Content="Incremental"/>
                 </ComboBox>
+                <Button Content="Cancel" Command="{Binding BCancel_Click}" Grid.Column="3" Margin="0,35,5,0" Width="75" Height="25" MinWidth="75" MinHeight="20" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#FF021D2A" Foreground="White"/>
             </Grid>
             <Grid Margin="0,170,0,0">
                 <TabControl Margin="0,0,0,0" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FFF8F6F6" Grid.ColumnSpan="2">
