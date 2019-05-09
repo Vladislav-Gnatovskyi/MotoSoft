@@ -1,9 +1,4 @@
-﻿using eBay.Service.Core.Soap;
-using MotoSoft.Data;
-using MotoSoft.Data.eBay;
-using MotoSoft.Data.Repository.Json;
-using MotoSoft.ViewModels;
-using System;
+﻿using MotoSoft.ViewModels;
 using System.Windows.Controls;
 
 namespace MotoSoft

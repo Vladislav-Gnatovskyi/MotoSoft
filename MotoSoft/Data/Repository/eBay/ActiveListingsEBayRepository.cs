@@ -13,7 +13,7 @@ namespace MotoSoft.Data.Repository.eBay
         public IList<ActiveListings> GetSheet()
         {
             IList<ActiveListings> list = new List<ActiveListings>();
-            List<ItemType> orders = new EbayApiService().GetSellerList().ToList();
+            List<ItemType> orders = ServiceProvider.Instance.eBayService.GetSellerList().ToList();
             orders.ForEach(x =>
             {
                 list.Add(new ActiveListings

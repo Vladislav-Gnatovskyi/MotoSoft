@@ -1,9 +1,4 @@
-﻿using MotoSoft.Components.Table;
-using MotoSoft.Data.Models;
-using MotoSoft.Data.Repository.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using MotoSoft.Data.Models;
 
 namespace MotoSoft.Data.DataSources
 {

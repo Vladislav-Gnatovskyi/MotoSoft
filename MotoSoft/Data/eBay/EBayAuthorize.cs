@@ -1,5 +1,6 @@
 ﻿using eBay.ApiClient.Auth.OAuth2;
 using eBay.ApiClient.Auth.OAuth2.Model;
+using MotoSoft.Data.Enums;
 using MotoSoft.Data.Repository.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -15,6 +16,7 @@ namespace MotoSoft.Data.eBay
     {
         #region PrivateProperty
         private string pathConfig { get => "ebay-config.yaml"; }
+        private static string Token { get; set; }
         private OAuthEnvironment Environment { get => OAuthEnvironment.PRODUCTION; }
         private string state { get => "State"; }
         private OAuth2Api oAuth2Api = new OAuth2Api();
@@ -25,14 +27,13 @@ namespace MotoSoft.Data.eBay
         #endregion PrivateProperty
 
         #region PublicProperty
-        public bool IsAuthorize
+        public EbayAuthorizeState IsAuthorize
         {
             get
             {
-                return Token != null ? true : false;
+                return Token != null ? EbayAuthorizeState.Authorized : EbayAuthorizeState.NotAuthorized;
             }
         }
-        public string Token { get; private set; }
         #endregion PublicProperty
 
         public EBayAuthorize()
@@ -41,16 +42,22 @@ namespace MotoSoft.Data.eBay
         }
         private void Initial()
         {
-            if (ServiceProvider.Instance.CurrentContext.Settings.Token == null)
+            if (IsAuthorize.Equals(EbayAuthorizeState.NotAuthorized) && ServiceProvider.Instance.CurrentContext.Settings.Token == null)
             {
-                CredentialUtil.Load(pathConfig);
-                string authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(Environment, userScopes, state);
-                var reposn = oAuth2Api.ExchangeCodeForAccessToken(Environment, GetAuthorizationCode(authorizationUrl));
-                Token = reposn.AccessToken.Token;
-                var settingModel = ServiceProvider.Instance.CurrentContext.Settings;
-                settingModel.Token = Token;
-                new SettingJsonRepository().Save(settingModel);
+                GetToken();
             }
+        }
+
+        public string GetToken()
+        {
+            CredentialUtil.Load(pathConfig);
+            string authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(Environment, userScopes, state);
+            var reposn = oAuth2Api.ExchangeCodeForAccessToken(Environment, GetAuthorizationCode(authorizationUrl));
+            Token = reposn.AccessToken.Token;
+            var settingModel = ServiceProvider.Instance.CurrentContext.Settings;
+            settingModel.Token = Token;
+            new SettingJsonRepository().Save(settingModel);
+            return Token;
         }
 
         private string GetAuthorizationCode(string authorizationUrl)
@@ -59,7 +66,6 @@ namespace MotoSoft.Data.eBay
             service.HideCommandPromptWindow = true;
             IWebDriver driver = new ChromeDriver(service);
             string successUrl = null;
-            //Submit login form
             driver.Navigate().GoToUrl(authorizationUrl);
             IWebElement userId = driver.FindElement(By.Id("userid"));
             IWebElement password = driver.FindElement(By.Id("pass"));
