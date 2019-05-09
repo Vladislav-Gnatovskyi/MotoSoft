@@ -70,9 +70,9 @@ namespace MotoSoft.Data.eBay
             IWebElement userId = driver.FindElement(By.Id("userid"));
             IWebElement password = driver.FindElement(By.Id("pass"));
             IWebElement submit = driver.FindElement(By.Id("sgnBt"));
-            userId.SendKeys("gnatovskyi@gmail.com");
-            password.SendKeys("YfcnzDkfl34426");
-            submit.Click();
+            //userId.SendKeys("gnatovskyi@gmail.com");
+            //password.SendKeys("");
+            //submit.Click();
             //Wait for success page
             //Thread.Sleep(30000);
             do
