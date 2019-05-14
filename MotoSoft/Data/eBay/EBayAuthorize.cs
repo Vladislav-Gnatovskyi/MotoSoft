@@ -27,7 +27,7 @@ namespace MotoSoft.Data.eBay
         #endregion PrivateProperty
 
         #region PublicProperty
-        public EbayAuthorizeState IsAuthorize
+        public static EbayAuthorizeState IsAuthorize
         {
             get
             {
@@ -38,62 +38,35 @@ namespace MotoSoft.Data.eBay
 
         public EBayAuthorize()
         {
-            Initial();
-        }
-        private void Initial()
-        {
-            if (IsAuthorize.Equals(EbayAuthorizeState.NotAuthorized) && ServiceProvider.Instance.CurrentContext.Settings.Token == null)
-            {
-                GetToken();
-            }
+            CredentialUtil.Load(pathConfig);
         }
 
-        public string GetToken()
+        public string GetAuthorizeURL()
         {
-            CredentialUtil.Load(pathConfig);
-            string authorizationUrl = oAuth2Api.GenerateUserAuthorizationUrl(Environment, userScopes, state);
-            var reposn = oAuth2Api.ExchangeCodeForAccessToken(Environment, GetAuthorizationCode(authorizationUrl));
+            return oAuth2Api.GenerateUserAuthorizationUrl(Environment, userScopes, state); 
+        }
+
+        public string GetToken(string code)
+        {          
+            var reposn = oAuth2Api.ExchangeCodeForAccessToken(Environment, code);
             Token = reposn.AccessToken.Token;
-            var settingModel = ServiceProvider.Instance.CurrentContext.Settings;
-            settingModel.Token = Token;
-            new SettingJsonRepository().Save(settingModel);
+            var setting = ServiceProvider.Instance.CurrentContext.Settings;
+            setting.Token = Token;
+            ServiceProvider.Instance.SettingsRepository.Save(setting);
             return Token;
         }
 
-        private string GetAuthorizationCode(string authorizationUrl)
+        public string GetAuthorizationCode(string authorizationUrl)
         {
-            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-            service.HideCommandPromptWindow = true;
-            IWebDriver driver = new ChromeDriver(service);
-            string successUrl = null;
-            driver.Navigate().GoToUrl(authorizationUrl);
-            IWebElement userId = driver.FindElement(By.Id("userid"));
-            IWebElement password = driver.FindElement(By.Id("pass"));
-            IWebElement submit = driver.FindElement(By.Id("sgnBt"));
-            //userId.SendKeys("gnatovskyi@gmail.com");
-            //password.SendKeys("");
-            //submit.Click();
-            //Wait for success page
-            //Thread.Sleep(30000);
-            do
-            {               
-                    successUrl = driver.Url;
-            }
-            while (!successUrl.Contains("code="));
-            //Handle consent
-            if (successUrl.Contains("/consents"))
+            if (authorizationUrl.Contains("code="))
             {
-                IWebElement consent = driver.FindElement(By.Id("submit"));
-                consent.Click();
-                Thread.Sleep(2000);
-                successUrl = driver.Url;
+                int iqs = authorizationUrl.IndexOf('?');
+                String querystring = (iqs < authorizationUrl.Length - 1) ? authorizationUrl.Substring(iqs + 1) : String.Empty;
+                NameValueCollection queryParams = HttpUtility.ParseQueryString(querystring);
+                String code = queryParams.Get("code");
+                return code;
             }
-            int iqs = successUrl.IndexOf('?');
-            String querystring = (iqs < successUrl.Length - 1) ? successUrl.Substring(iqs + 1) : String.Empty;
-            NameValueCollection queryParams = HttpUtility.ParseQueryString(querystring);
-            String code = queryParams.Get("code");
-            driver.Quit();
-            return code;
+            return null;
         }
     }
 }

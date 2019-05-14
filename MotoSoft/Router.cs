@@ -1,4 +1,6 @@
-﻿using MotoSoft.ViewModels;
+﻿using MotoSoft.Data.eBay;
+using MotoSoft.Data.Enums;
+using MotoSoft.ViewModels;
 using System.Windows.Controls;
 
 namespace MotoSoft
@@ -17,9 +19,6 @@ namespace MotoSoft
         private readonly Page Analytics;
         private readonly Page Garage;
         private readonly Page Settings;
-        private readonly Page LotSheets;
-        private readonly Page ActiveListings;
-        private readonly Page SoldListings;
 
         private Router()
         {
@@ -30,68 +29,94 @@ namespace MotoSoft
             Analytics = new Pages.Analytics();
             Garage = new Pages.Garage();
             Settings = new Pages.Settings();
-            LotSheets = new Pages.Tables.LotSheets();
-            ActiveListings = new Pages.Tables.ActiveListings();
-            SoldListings = new Pages.Tables.SoldListings();
         }
 
         public void InitRouter(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
-            mainViewModel.CurrentPage = Home;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = Home;
+            else GoToAuthorize();
         }
 
         public void GoToHome()
         {
-            mainViewModel.CurrentPage = Home;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = Home;
+            else GoToAuthorize();
         }
 
         public void GoToInventory()
         {
-            mainViewModel.CurrentPage = Inventory;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = Inventory;
+            else GoToAuthorize();
         }
 
         public void GoToListParts()
         {
-            mainViewModel.CurrentPage = ListParts;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = ListParts;
+            else GoToAuthorize();
         }
 
         public void GoToOrders()
         {
-            mainViewModel.CurrentPage = Orders;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = Orders;
+            else GoToAuthorize();
         }
 
         public void GoToAnalytics()
         {
-            mainViewModel.CurrentPage = Analytics;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = Analytics;
+            else GoToAuthorize();
         }
 
         public void GoToGarage()
         {
-            mainViewModel.CurrentPage = Garage;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = Garage;
+            else GoToAuthorize();
         }
 
         public void GoToSettings()
         {
-            mainViewModel.CurrentPage = Settings;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = Settings;
+            else GoToAuthorize();
         }
 
         public void GoToLotSheets()
         {
-            mainViewModel.CurrentPage = LotSheets;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = new Pages.Tables.ActiveListings();
+            else GoToAuthorize();
         }
         public void GoToActiveListings()
         {
-            mainViewModel.CurrentPage = ActiveListings;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = new Pages.Tables.ActiveListings();
+            else GoToAuthorize();
         }
         public void GoToSoldListings()
         {
-            mainViewModel.CurrentPage = SoldListings;
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = new Pages.Tables.SoldListings();
+            else GoToAuthorize();
         }
 
         public void GoToProduct(Data.Models.Product product)
         {
-            mainViewModel.CurrentPage = new Pages.Product(product);
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+                mainViewModel.CurrentPage = new Pages.Product(product);
+            else GoToAuthorize();
+        }
+
+        public void GoToAuthorize()
+        {
+            mainViewModel.CurrentPage = new Pages.Authorize();
         }
     }
 }

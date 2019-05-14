@@ -30,7 +30,7 @@ namespace MotoSoft.ViewModels
                     var settingModel = ServiceProvider.Instance.CurrentContext.Settings;
                     settingModel.Token = null;
                     settingsRepository.Save(settingModel);
-                    App.Current.Shutdown();
+                    Router.Instance.GoToAuthorize();
                 });
             }
         }

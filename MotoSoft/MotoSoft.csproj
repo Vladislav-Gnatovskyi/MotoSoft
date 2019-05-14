@@ -52,7 +52,28 @@
   <PropertyGroup>
     <StartupObject>MotoSoft.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -114,6 +135,9 @@
     <Compile Include="Data\Models\LotSheet.cs" />
     <Compile Include="Data\Models\SoldListings.cs" />
     <Compile Include="Data\Repository\Json\SoldListingsRepository.cs" />
+    <Compile Include="Pages\Authorize.xaml.cs">
+      <DependentUpon>Authorize.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Tables\ActiveListings.xaml.cs">
       <DependentUpon>ActiveListings.xaml</DependentUpon>
     </Compile>
@@ -123,6 +147,7 @@
     <Compile Include="Pages\Tables\SoldListings.xaml.cs">
       <DependentUpon>SoldListings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AuthorizeViewModel.cs" />
     <Compile Include="ViewModels\PageItemsViewModel.cs" />
     <Compile Include="Data\DataSources\ProductDataSource.cs" />
     <Compile Include="Data\Enums\EInventoryNumber.cs" />
@@ -186,6 +211,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Analytics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Authorize.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -295,6 +324,15 @@
     <Resource Include="Assets\images\Settings.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CefSharp.Common">
+      <Version>73.1.130</Version>
+    </PackageReference>
+    <PackageReference Include="CefSharp.OffScreen">
+      <Version>73.1.130</Version>
+    </PackageReference>
+    <PackageReference Include="CefSharp.Wpf">
+      <Version>73.1.130</Version>
+    </PackageReference>
     <PackageReference Include="DevExpressMvvm">
       <Version>18.2.3</Version>
     </PackageReference>

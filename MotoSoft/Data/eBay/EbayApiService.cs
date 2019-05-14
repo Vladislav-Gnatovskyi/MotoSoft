@@ -3,6 +3,7 @@ using eBay.Service.Core.Soap;
 using eBay.Service.Call;
 using MotoSoft.Data.Interfaces;
 using System;
+using MotoSoft.Data.Enums;
 
 namespace MotoSoft.Data.eBay
 {
@@ -37,22 +38,17 @@ namespace MotoSoft.Data.eBay
         {
             get
             {
-                try
+                if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
                 {
                     GetUserCall call = new GetUserCall(GetApiContext);
                     return call.GetUser();
                 }
-                catch
-                {
-                    ebayApi.GetToken();
-                    GetUserCall call = new GetUserCall(GetApiContext);
-                    return call.GetUser();
-                }
+                return new UserType();
             }
         }
         public ItemType[] GetSellerList()
         {
-            try
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
             {
                 GetSellerListCall call = new GetSellerListCall(GetApiContext);
                 call.DetailLevelList = new DetailLevelCodeTypeCollection();
@@ -60,24 +56,20 @@ namespace MotoSoft.Data.eBay
                 ItemTypeCollection collection = call.GetSellerList(GetUser.UserID, new UserIDArrayType(), new DateTime(2019, 4, 30), DateTime.Now, 0, new DateTime(2019, 4, 30), DateTime.Now, new PaginationType { EntriesPerPage = 25, PageNumber = 1 }, GranularityLevelCodeType.Fine, new StringCollection(), true, true, 162031, true);
                 return collection.ToArray();
             }
-            catch
-            {
-                ebayApi.GetToken();
-                GetSellerListCall call = new GetSellerListCall(GetApiContext);
-                call.DetailLevelList = new DetailLevelCodeTypeCollection();
-                call.DetailLevelList.Add(DetailLevelCodeType.ReturnAll);
-                ItemTypeCollection collection = call.GetSellerList(GetUser.UserID, new UserIDArrayType(), new DateTime(2019, 4, 30), DateTime.Now, 0, new DateTime(2019, 4, 30), DateTime.Now, new PaginationType { EntriesPerPage = 25, PageNumber = 1 }, GranularityLevelCodeType.Fine, new StringCollection(), true, true, 162031, true);
-                return collection.ToArray();
-            }
+            return new ItemType[] { };
         }
 
         public OrderTypeCollection GetOrdersCall(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
         {
-            GetOrdersCall call = new GetOrdersCall(GetApiContext);
-            call.EnableCompression = true;
-            call.DetailLevelList = new DetailLevelCodeTypeCollection();
-            call.DetailLevelList.Add(DetailLevelCodeType.ReturnAll);        
-            return call.GetOrders(timeFilter, tradingRole, orderStatus);
-        }               
+            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
+            {
+                GetOrdersCall call = new GetOrdersCall(GetApiContext);
+                call.EnableCompression = true;
+                call.DetailLevelList = new DetailLevelCodeTypeCollection();
+                call.DetailLevelList.Add(DetailLevelCodeType.ReturnAll);
+                return call.GetOrders(timeFilter, tradingRole, orderStatus);
+            }
+            return new OrderTypeCollection();
+        }
     }
 }

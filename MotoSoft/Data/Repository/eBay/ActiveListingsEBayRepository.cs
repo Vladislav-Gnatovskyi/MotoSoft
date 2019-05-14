@@ -1,8 +1,6 @@
 ﻿using eBay.Service.Core.Soap;
-using MotoSoft.Data.eBay;
 using MotoSoft.Data.Models;
 using MotoSoft.Data.Repository.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
