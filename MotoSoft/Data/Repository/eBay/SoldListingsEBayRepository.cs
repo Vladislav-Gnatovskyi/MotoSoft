@@ -10,9 +10,9 @@ namespace MotoSoft.Data.Repository.eBay
         public IList<SoldListings> GetSheet()
         {
             IList<SoldListings> list = new List<SoldListings>();
-            ItemType[] items = ServiceProvider.Instance.eBayService.GetSellerList();
+            ItemTypeCollection items = ServiceProvider.Instance.eBayService.GetSellerList();
 
-            foreach (var item in items)
+            foreach (ItemType item in items)
             {
                 list.Add(new SoldListings
                 {
@@ -21,8 +21,6 @@ namespace MotoSoft.Data.Repository.eBay
                     CUSTOM_LABEL = item.SubTitle,
                     ITEM_TITLE = item.Title,
                     DATE = item.ScheduleTime,
-                    SALES_RECORD_NUMBER = item.BestOfferDetails.BestOfferCount,
-                    SHIPPING_COST = item.ShippingDetails.DefaultShippingCost.Value,
                 });
             }
             return list;

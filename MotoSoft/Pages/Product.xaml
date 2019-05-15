@@ -42,6 +42,7 @@
                     <ComboBoxItem Content="Lowest to Highest" Background="#FF021D2A" BorderBrush="{x:Null}"/>
                     <ComboBoxItem Content="Highest to Lowest" IsSelected="True" Background="#FF021D2A" Foreground="#FF1A89CC" BorderBrush="{x:Null}"/>
                 </ComboBox>
+                <Button Content="Add New Item" Command="{Binding Add_Click}" Margin="0,-51,0,75" Background="#FF021D2A" Foreground="#FF1A89CC" BorderBrush="{x:Null}" Height="26" HorizontalAlignment="Left" Grid.Column="2" Width="95" VerticalAlignment="Top"/>
             </Grid>
             <ListBox Margin="0,55,0,5"/>
         </Grid>

@@ -8,7 +8,8 @@ namespace MotoSoft.ViewModels
         private string _url;
         public string URL
         {
-            get => _url; set
+            get => _url;
+            set
             {
                 _url = value;
                 var code = ebayAuthorize.GetAuthorizationCode(value);
@@ -21,6 +22,7 @@ namespace MotoSoft.ViewModels
                 }
             }
         }
+
         private EBayAuthorize ebayAuthorize;
         
         public AuthorizeViewModel()

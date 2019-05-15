@@ -1,13 +1,9 @@
 ﻿using eBay.ApiClient.Auth.OAuth2;
 using eBay.ApiClient.Auth.OAuth2.Model;
 using MotoSoft.Data.Enums;
-using MotoSoft.Data.Repository.Json;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Threading;
 using System.Web;
 
 namespace MotoSoft.Data.eBay
@@ -17,7 +13,7 @@ namespace MotoSoft.Data.eBay
         #region PrivateProperty
         private string pathConfig { get => "ebay-config.yaml"; }
         private static string Token { get; set; }
-        private OAuthEnvironment Environment { get => OAuthEnvironment.PRODUCTION; }
+        public static OAuthEnvironment Environment { get => OAuthEnvironment.SANDBOX; }
         private string state { get => "State"; }
         private OAuth2Api oAuth2Api = new OAuth2Api();
         private readonly IList<string> userScopes = new List<String>()
@@ -56,6 +52,12 @@ namespace MotoSoft.Data.eBay
             return Token;
         }
 
+        public static void SingOut()
+        {
+            var setting = ServiceProvider.Instance.CurrentContext.Settings;
+            setting.Token = Token = null;
+            ServiceProvider.Instance.SettingsRepository.Save(setting);
+        }
         public string GetAuthorizationCode(string authorizationUrl)
         {
             if (authorizationUrl.Contains("code="))

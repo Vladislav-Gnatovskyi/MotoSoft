@@ -11,5 +11,6 @@
 
     <Grid>
         <components:Table x:Name="LotSheetContext"/>
+        <Button Content="Add" Margin="0,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding AddClick}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF3893C0"/>
     </Grid>
 </Page>

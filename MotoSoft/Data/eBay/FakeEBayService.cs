@@ -12,12 +12,17 @@ namespace MotoSoft.Data.eBay
 
         public ApiContext GetApiContext => throw new NotImplementedException();
 
+        public string AddItem(string title, string description, string catecoryID, double price, string UUID, string location = "US", int DispathTimeMax = 7)
+        {
+            throw new NotImplementedException();
+        }
+
         public OrderTypeCollection GetOrdersCall(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
         {
             throw new NotImplementedException();
         }
 
-        public ItemType[] GetSellerList()
+        public ItemTypeCollection GetSellerList()
         {
             return new FakeEBaySellerListJsonRepository().Load();
         }

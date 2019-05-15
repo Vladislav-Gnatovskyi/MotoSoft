@@ -91,7 +91,7 @@ namespace MotoSoft
         public void GoToLotSheets()
         {
             if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = new Pages.Tables.ActiveListings();
+                mainViewModel.CurrentPage = new Pages.Tables.LotSheets();
             else GoToAuthorize();
         }
         public void GoToActiveListings()
@@ -107,7 +107,7 @@ namespace MotoSoft
             else GoToAuthorize();
         }
 
-        public void GoToProduct(Data.Models.Product product)
+        public void GoToProduct(Data.Models.Product product = null)
         {
             if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
                 mainViewModel.CurrentPage = new Pages.Product(product);

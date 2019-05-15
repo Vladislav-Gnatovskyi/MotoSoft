@@ -11,8 +11,8 @@ namespace MotoSoft.Data.Repository.eBay
         public IList<ActiveListings> GetSheet()
         {
             IList<ActiveListings> list = new List<ActiveListings>();
-            List<ItemType> orders = ServiceProvider.Instance.eBayService.GetSellerList().ToList();
-            orders.ForEach(x =>
+            ItemTypeCollection items = ServiceProvider.Instance.eBayService.GetSellerList();
+            foreach (ItemType x in items)
             {
                 list.Add(new ActiveListings
                 {
@@ -25,7 +25,7 @@ namespace MotoSoft.Data.Repository.eBay
                     CUSTOM_LABEL = x.SubTitle,
                     QTY = 0
                 });
-            });
+            }
             return list;
         }
     }

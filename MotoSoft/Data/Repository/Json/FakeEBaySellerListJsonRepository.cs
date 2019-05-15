@@ -7,15 +7,15 @@ namespace MotoSoft.Data.Repository.Json
     public class FakeEBaySellerListJsonRepository
     {
         string itemsFileName = "items.json";
-        public ItemType[] Load()
+        public ItemTypeCollection Load()
         {
             if (File.Exists(itemsFileName))
             {
                 string json = File.ReadAllText(itemsFileName);
-                ItemType[] obj = JsonConvert.DeserializeObject<ItemType[]>(json);
+                ItemTypeCollection obj = JsonConvert.DeserializeObject<ItemTypeCollection>(json);
                 return obj;
             }
-            return new ItemType[] { };
+            return new ItemTypeCollection { };
         }
 
         public void Save(ItemType[] model)

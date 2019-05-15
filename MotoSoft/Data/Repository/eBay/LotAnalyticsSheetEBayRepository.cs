@@ -14,7 +14,7 @@ namespace MotoSoft.Data.Repository.eBay
         public IList<LotAnalyticSheet> GetSheet()
         {
             IList<LotAnalyticSheet> list = new List<LotAnalyticSheet>();
-            ItemType[] items = ServiceProvider.Instance.eBayService.GetSellerList();
+            ItemTypeCollection items = ServiceProvider.Instance.eBayService.GetSellerList();
 
             foreach (var item in items)
             {

@@ -1,6 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Assets.Command;
 using MotoSoft.Data;
+using MotoSoft.Data.eBay;
 using MotoSoft.Data.Models;
 using MotoSoft.Data.Repository.Interfaces;
 using System;
@@ -11,7 +12,7 @@ namespace MotoSoft.ViewModels
 {
     class SettingViewModel : ViewModelBase
     {
-        private ISettingsRepository settingsRepository;
+        private readonly ISettingsRepository settingsRepository;
         public SettingsModel SettingModel { get; set; }
 
         public SettingViewModel()
@@ -27,9 +28,7 @@ namespace MotoSoft.ViewModels
             {
                 return new RelayCommand(x =>
                 {
-                    var settingModel = ServiceProvider.Instance.CurrentContext.Settings;
-                    settingModel.Token = null;
-                    settingsRepository.Save(settingModel);
+                    EBayAuthorize.SingOut();
                     Router.Instance.GoToAuthorize();
                 });
             }

@@ -12,6 +12,7 @@ namespace MotoSoft.Pages.Tables
         {
             InitializeComponent();
             LotSheetContext.DataContext = new LotSheetsViewModel();
+            DataContext = new LotSheetsViewModel();
         }
     }
 }

@@ -1,20 +1,14 @@
-﻿using MotoSoft.Assets.Command;
+﻿using Microsoft.Win32;
+using MotoSoft.Assets.Command;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace MotoSoft.ViewModels
 {
     public class ImageViewModel
     {
         public string DispayImagePath { get; set; }
-        private Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+        private readonly OpenFileDialog dialog = new OpenFileDialog();
 
         public ICommand BFile_Click
         {
