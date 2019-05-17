@@ -11,7 +11,7 @@ namespace MotoSoft.Data.Repository.eBay
         public IList<ActiveListings> GetSheet()
         {
             IList<ActiveListings> list = new List<ActiveListings>();
-            ItemTypeCollection items = ServiceProvider.Instance.eBayService.GetSellerList();
+            IEnumerable<ItemType> items = ServiceProvider.Instance.eBayService.GetSellerList(ListingStatusCodeType.Active);
             foreach (ItemType x in items)
             {
                 list.Add(new ActiveListings
@@ -32,7 +32,7 @@ namespace MotoSoft.Data.Repository.eBay
         public async Task<IList<ActiveListings>> GetSheetAsync()
         {
             IList<ActiveListings> list = new List<ActiveListings>();
-            ItemTypeCollection items = await ServiceProvider.Instance.eBayService.GetSellerListAsync();
+            IEnumerable<ItemType> items = await ServiceProvider.Instance.eBayService.GetSellerListAsync(ListingStatusCodeType.Active);
             foreach (ItemType x in items)
             {
                 list.Add(new ActiveListings

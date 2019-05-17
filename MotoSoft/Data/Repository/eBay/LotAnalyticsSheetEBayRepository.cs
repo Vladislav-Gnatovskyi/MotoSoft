@@ -3,8 +3,6 @@ using MotoSoft.Data.Models;
 using MotoSoft.Data.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MotoSoft.Data.Repository.eBay
@@ -14,7 +12,7 @@ namespace MotoSoft.Data.Repository.eBay
         public IList<LotAnalyticSheet> GetSheet()
         {
             IList<LotAnalyticSheet> list = new List<LotAnalyticSheet>();
-            ItemTypeCollection items = ServiceProvider.Instance.eBayService.GetSellerList();
+            IEnumerable<ItemType> items = ServiceProvider.Instance.eBayService.GetSellerList(ListingStatusCodeType.Active);
 
             foreach (var item in items)
             {

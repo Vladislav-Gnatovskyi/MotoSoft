@@ -1,4 +1,4 @@
-﻿using MotoSoft.Components.Table;
+﻿using System.Linq;
 using MotoSoft.Data.Models;
 
 namespace MotoSoft.Data.DataSources
@@ -8,7 +8,12 @@ namespace MotoSoft.Data.DataSources
         public SoldListingsDataSource()
         {
             sheetRepository = ServiceProvider.Instance.SoldLotSheetRepository;
-            lotSheets = sheetRepository.GetSheet();
+            GetLotSheetsAsync();
+        }
+
+        protected override async void GetLotSheetsAsync()
+        {
+            lotSheets = await sheetRepository.GetSheetAsync();
         }
     }
 }

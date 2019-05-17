@@ -1,4 +1,5 @@
-﻿using MotoSoft.Components.Table;
+﻿using eBay.Service.Core.Soap;
+using MotoSoft.Components.Table;
 using MotoSoft.Data.Repository.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace MotoSoft.Data.DataSources
             Columns = new List<Column>();
         }
 
-        protected async void GetLotSheetsAsync()
+        protected virtual async void GetLotSheetsAsync()
         {
             lotSheets = await sheetRepository.GetSheetAsync();
         }

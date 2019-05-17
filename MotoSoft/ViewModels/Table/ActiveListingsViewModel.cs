@@ -1,8 +1,5 @@
-﻿using MotoSoft.Assets.Command;
-using MotoSoft.Components.Table;
-using MotoSoft.Data;
+﻿using MotoSoft.Components.Table;
 using MotoSoft.Data.DataSources;
-using System.Windows.Input;
 
 namespace MotoSoft.ViewModels.Table
 {

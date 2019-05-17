@@ -3,9 +3,11 @@ using eBay.Service.Core.Soap;
 using eBay.Service.Call;
 using MotoSoft.Data.Interfaces;
 using System;
+using System.Linq;
 using MotoSoft.Data.Enums;
 using eBay.ApiClient.Auth.OAuth2.Model;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace MotoSoft.Data.eBay
 {
@@ -51,22 +53,10 @@ namespace MotoSoft.Data.eBay
                 return new UserType();
             }
         }
-        public ItemTypeCollection GetSellerList()
+        public IEnumerable<ItemType> GetSellerList(ListingStatusCodeType status)
         {
             if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
             {
-                //GetSellerListCall call = new GetSellerListCall(GetApiContext);
-                //call.DetailLevelList.Add(DetailLevelCodeType.ReturnAll);
-                //call.Pagination = new PaginationType();
-                //call.Pagination.PageNumber = 1;
-                //call.Pagination.EntriesPerPage = 10;
-                //call.UserID = GetUser.UserID;
-                //call.GranularityLevel = GranularityLevelCodeType.Fine;
-                //call.StartTimeFilter = new TimeFilter(DateTime.Now.AddDays(-2), DateTime.Now.AddDays(2));
-                //call.EndTimeFilter = new TimeFilter(DateTime.Now.AddHours(-5), DateTime.Now.AddHours(1));
-                //return call.GetSellerList();
-
-
                 GetSellerListCall oGetSellerListCall = new GetSellerListCall(GetApiContext);
                 oGetSellerListCall.Version = GetApiContext.Version;
                 oGetSellerListCall.Site = GetApiContext.Site;
@@ -80,13 +70,14 @@ namespace MotoSoft.Data.eBay
                 oGetSellerListCall.Pagination = oPagination;
                 oGetSellerListCall.EndTimeFilter = new TimeFilter(DateTime.Now, DateTime.Now.AddMonths(3));
                 oGetSellerListCall.Sort = 2;
-                return oGetSellerListCall.GetSellerList();
+                return oGetSellerListCall.GetSellerList().ToArray().ToList().Where(x => x.SellingStatus.ListingStatus.Equals(status));
             }
-            return new ItemTypeCollection();
+            return new ItemTypeCollection().ToArray();
         }
-        public async Task<ItemTypeCollection> GetSellerListAsync()
+
+        public async Task<IEnumerable<ItemType>> GetSellerListAsync(ListingStatusCodeType status)
         {
-            return await Task.Run(() => GetSellerList());
+            return await Task.Run(() => GetSellerList(status));
         }
 
         public async Task<OrderTypeCollection> GetOrdersCallAsync(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
@@ -161,8 +152,7 @@ namespace MotoSoft.Data.eBay
                 return item.ItemID;
             }
             return null;
-        }
-        
+        }        
 
         public ItemType GetItem(string ItemID)
         {

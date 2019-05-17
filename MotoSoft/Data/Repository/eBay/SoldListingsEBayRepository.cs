@@ -11,7 +11,7 @@ namespace MotoSoft.Data.Repository.eBay
         public IList<SoldListings> GetSheet()
         {
             IList<SoldListings> list = new List<SoldListings>();
-            ItemTypeCollection items = ServiceProvider.Instance.eBayService.GetSellerList();
+            IEnumerable<ItemType> items = ServiceProvider.Instance.eBayService.GetSellerList(ListingStatusCodeType.Ended);
 
             foreach (ItemType item in items)
             {
@@ -27,9 +27,22 @@ namespace MotoSoft.Data.Repository.eBay
             return list;
         }
 
-        public Task<IList<SoldListings>> GetSheetAsync()
+        public async Task<IList<SoldListings>> GetSheetAsync()
         {
-            throw new System.NotImplementedException();
+            IList<SoldListings> list = new List<SoldListings>();
+            IEnumerable<ItemType> items = await ServiceProvider.Instance.eBayService.GetSellerListAsync(ListingStatusCodeType.Completed);
+            foreach (ItemType item in items)
+            {
+                list.Add(new SoldListings
+                {
+                    ITEM_ID = item.ItemID,
+                    COST = item.ItemCompatibilityCount,
+                    CUSTOM_LABEL = item.SubTitle,
+                    ITEM_TITLE = item.Title,
+                    DATE = item.ScheduleTime,
+                });
+            }
+            return list;
         }
     }
 }
