@@ -13,12 +13,7 @@ namespace MotoSoft.Data
     {
         private static ServiceProvider instance;
         public static ServiceProvider Instance => instance ?? (instance = new ServiceProvider());
-
-        private readonly IDataSource ActiveListingsDataSource;
-        private ServiceProvider()
-        {
-            ActiveListingsDataSource = new ActiveListingsDataSource();
-        }
+        private ServiceProvider(){}
 
         public ISettingsRepository SettingsRepository
         {
@@ -78,7 +73,7 @@ namespace MotoSoft.Data
 
         public IDataSource GetActiveListingsDataSource
         {
-            get => ActiveListingsDataSource;
+            get => new ActiveListingsDataSource();
         }
 
         public IDataSource SoldListingsDataSource

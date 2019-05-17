@@ -19,7 +19,6 @@ namespace MotoSoft
         private readonly Page Analytics;
         private readonly Page Garage;
         private readonly Page Settings;
-        private readonly Page ActiveListings;
 
         private Router()
         {
@@ -30,7 +29,6 @@ namespace MotoSoft
             Analytics = new Pages.Analytics();
             Garage = new Pages.Garage();
             Settings = new Pages.Settings();
-            ActiveListings = new Pages.Tables.ActiveListings();
         }
 
         public void InitRouter(MainViewModel mainViewModel)
@@ -99,7 +97,7 @@ namespace MotoSoft
         public void GoToActiveListings()
         {
             if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = ActiveListings;
+                mainViewModel.CurrentPage = new Pages.Tables.ActiveListings();
             else GoToAuthorize();
         }
         public void GoToSoldListings()
