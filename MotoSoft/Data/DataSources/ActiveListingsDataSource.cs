@@ -7,7 +7,7 @@ namespace MotoSoft.Data.DataSources
         public ActiveListingsDataSource()
         {
             sheetRepository = ServiceProvider.Instance.ActiveListingsRepository;
-            lotSheets = sheetRepository.GetSheet();
+            GetLotSheetsAsync();
         }
     }
 }

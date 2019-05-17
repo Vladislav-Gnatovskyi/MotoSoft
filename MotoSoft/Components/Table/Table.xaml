@@ -11,8 +11,8 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding PageItemsContol.Items}" HorizontalContentAlignment="Stretch" CanUserAddRows="False" VerticalContentAlignment="Stretch" ColumnWidth="*" AutoGenerateColumns="True" FontSize="20" FontFamily="Times New Roman" Margin="0,50,0,0">
-           
+        <DataGrid ItemsSource="{Binding PageItemsContol.Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalContentAlignment="Stretch" CanUserAddRows="False" VerticalContentAlignment="Stretch" ColumnWidth="*" AutoGenerateColumns="True" FontSize="20" FontFamily="Times New Roman" Margin="0,50,0,0">
+
         </DataGrid>
         <Grid MaxHeight="50" VerticalAlignment="Top" Height="50">
             <Button Content="" Margin="0" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="40" VerticalAlignment="Top" Command="{Binding BackPage}" BorderBrush="{x:Null}">
@@ -25,18 +25,20 @@
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Right.png"/>
                 </Button.Background>
             </Button>
-            <Grid HorizontalAlignment="Center" Height="50" Margin="0" VerticalAlignment="Center" Width="250">
+            <Grid HorizontalAlignment="Center" Height="50" Margin="275,0,190,0" VerticalAlignment="Center" Width="335">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="22*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Height="23" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#FF3399CC" BorderBrush="#FF3399CC" FontFamily="Times New Roman" FontSize="14" Grid.Row="1" Text="{Binding PageItemsContol.PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="0"/>
-                <Label Content="{Binding PageItemsContol.PageIDFromLabel}" Margin="0" Foreground="#FF3399CC" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" FontFamily="Times New Roman"/>
-                <Label Content="Enter number page:" VerticalAlignment="Top" Grid.Row="1" Margin="0" Foreground="#FF3399CC" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Times New Roman"/>
+                <TextBox TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#FF3399CC" BorderBrush="#FF3399CC" FontFamily="Times New Roman" FontSize="14" Grid.Row="1" Text="{Binding PageItemsContol.PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="0,1"/>
+                <Label Content="{Binding PageItemsContol.PageIDFromLabel}" Foreground="#FF3399CC" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Times New Roman" Height="25" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label Content="Enter number page:" VerticalAlignment="Top" Grid.Row="1" Margin="0" Foreground="#FF3399CC" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Times New Roman" Height="24"/>
+                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="75" Background="#FF2199AB" BorderBrush="#FF021D2A" Foreground="#FF021D2A" FontFamily="Times New Roman"/>
             </Grid>
         </Grid>
     </Grid>

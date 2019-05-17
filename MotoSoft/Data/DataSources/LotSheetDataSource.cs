@@ -1,5 +1,4 @@
-﻿using MotoSoft.Components.Table;
-using MotoSoft.Data.Models;
+﻿using MotoSoft.Data.Models;
 
 namespace MotoSoft.Data.DataSources
 {
@@ -8,7 +7,7 @@ namespace MotoSoft.Data.DataSources
         public LotSheetDataSource()
         {
             sheetRepository = ServiceProvider.Instance.LotSheetRepository;
-            lotSheets = sheetRepository.GetSheet();
+            GetLotSheetsAsync();
         }
     }
 }

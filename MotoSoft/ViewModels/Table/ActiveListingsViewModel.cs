@@ -1,5 +1,8 @@
-﻿using MotoSoft.Components.Table;
+﻿using MotoSoft.Assets.Command;
+using MotoSoft.Components.Table;
+using MotoSoft.Data;
 using MotoSoft.Data.DataSources;
+using System.Windows.Input;
 
 namespace MotoSoft.ViewModels.Table
 {
@@ -10,6 +13,6 @@ namespace MotoSoft.ViewModels.Table
         {
             Source = new ActiveListingsDataSource();
             PageItemsContol = new PageItemsViewModel(Source, itemsOnPage);
-        }
+        }        
     }
 }

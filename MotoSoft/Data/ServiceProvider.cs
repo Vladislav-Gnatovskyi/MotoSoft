@@ -1,4 +1,6 @@
-﻿using MotoSoft.Data.eBay;
+﻿using MotoSoft.Components.Table;
+using MotoSoft.Data.DataSources;
+using MotoSoft.Data.eBay;
 using MotoSoft.Data.Interfaces;
 using MotoSoft.Data.Models;
 using MotoSoft.Data.Repository.eBay;
@@ -67,6 +69,16 @@ namespace MotoSoft.Data
             {
                 return new EbayApiService();
             }
+        }
+
+        public IDataSource ActiveListingsDataSource
+        {
+            get => new ActiveListingsDataSource();
+        }
+
+        public IDataSource SoldListingsDataSource
+        {
+            get => new SoldListingsDataSource();
         }
 
         public Context CurrentContext

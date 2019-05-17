@@ -1,6 +1,5 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Assets.Command;
-using MotoSoft.Data.DataSources;
 using MotoSoft.ViewModels;
 using System.Windows.Input;
 
@@ -8,14 +7,8 @@ namespace MotoSoft.Components.Table
 {
     class TableViewModel:ViewModelBase
     {
-        public IDataSource Source { get; set; }
         public IPageItem PageItemsContol { get; set; }
-        
-        public TableViewModel()
-        {
-            Source = new SoldListingsDataSource();
-            PageItemsContol = new PageItemsViewModel(Source, 40);            
-        }
+        public IDataSource Source { get; set; }
 
         #region Command
         public ICommand NextPage
@@ -37,6 +30,11 @@ namespace MotoSoft.Components.Table
                     PageItemsContol.BackPage();
                 });
             }
+        }
+
+        public ICommand Refresh
+        {
+            get => new RelayCommand(x => { PageItemsContol = new PageItemsViewModel(Source); });
         }
         #endregion Command
     }

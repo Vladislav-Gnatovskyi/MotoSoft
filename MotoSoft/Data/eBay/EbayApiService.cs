@@ -5,6 +5,7 @@ using MotoSoft.Data.Interfaces;
 using System;
 using MotoSoft.Data.Enums;
 using eBay.ApiClient.Auth.OAuth2.Model;
+using System.Threading.Tasks;
 
 namespace MotoSoft.Data.eBay
 {
@@ -83,7 +84,16 @@ namespace MotoSoft.Data.eBay
             }
             return new ItemTypeCollection();
         }
+        public async Task<ItemTypeCollection> GetSellerListAsync()
+        {
+            return await Task.Run(() => GetSellerList());
+        }
 
+        public async Task<OrderTypeCollection> GetOrdersCallAsync(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
+        {
+            OrderTypeCollection x = await Task.Factory.StartNew(() => GetOrdersCall(timeFilter, tradingRole, orderStatus));
+            return x;
+        }
 
         public OrderTypeCollection GetOrdersCall(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
         {
@@ -98,7 +108,8 @@ namespace MotoSoft.Data.eBay
             return new OrderTypeCollection();
         }
 
-        public string AddItem(string title, string description, string catecoryID, double price, string UUID, string location = "US",int DispathTimeMax = 7)
+        
+        public string AddItem(string title, string description, string catecoryID, double price, string UUID, string location = "US", int DispathTimeMax = 10)
         {
             if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
             {
@@ -108,7 +119,7 @@ namespace MotoSoft.Data.eBay
                 item.Country = CountryCodeType.US;
                 item.PaymentMethods = new BuyerPaymentMethodCodeTypeCollection();
                 item.PaymentMethods.AddRange(new BuyerPaymentMethodCodeType[] { BuyerPaymentMethodCodeType.PayPal });
-                item.PayPalEmailAddress = GetUser.Email;
+                item.PayPalEmailAddress = "test@test.com";
                 item.Title = title;
                 item.Quantity = 1;
                 item.PostalCode = ServiceProvider.Instance.CurrentContext.Settings.PostalCode;
@@ -118,6 +129,7 @@ namespace MotoSoft.Data.eBay
                 item.PrimaryCategory.CategoryID = catecoryID;
                 item.StartPrice = new AmountType();
                 item.StartPrice.currencyID = CurrencyCodeType.USD;
+                item.DispatchTimeMax = 7;
                 item.StartPrice.Value = price;
                 item.UUID = UUID;
 
@@ -133,7 +145,7 @@ namespace MotoSoft.Data.eBay
                 opt[0].ShippingService = "USPSPriority";
                 opt[0].ShippingServicePriority = 1;
                 item.ShippingDetails.ShippingServiceOptions.Add(opt[0]);
-                item.DispatchTimeMax = DispathTimeMax;
+               
                 opt[1] = new ShippingServiceOptionsType();
                 opt[1].ShippingServiceCost = new AmountType();
                 opt[1].ShippingServiceCost.currencyID = CurrencyCodeType.USD;

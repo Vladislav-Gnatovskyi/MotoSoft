@@ -2,6 +2,7 @@
 using MotoSoft.Data.Models;
 using MotoSoft.Data.Repository.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MotoSoft.Data.Repository.eBay
 {
@@ -24,6 +25,11 @@ namespace MotoSoft.Data.Repository.eBay
                 });
             }
             return list;
+        }
+
+        public Task<IList<SoldListings>> GetSheetAsync()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

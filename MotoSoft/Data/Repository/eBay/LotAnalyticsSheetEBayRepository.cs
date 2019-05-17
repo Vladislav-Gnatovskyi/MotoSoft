@@ -25,5 +25,10 @@ namespace MotoSoft.Data.Repository.eBay
             }
             return list;
         }
+
+        public Task<IList<LotAnalyticSheet>> GetSheetAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

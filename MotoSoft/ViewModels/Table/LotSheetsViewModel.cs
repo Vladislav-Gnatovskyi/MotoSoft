@@ -21,7 +21,6 @@ namespace MotoSoft.ViewModels.Table
             get
             {
                 return new RelayCommand(x => {
-                    MessageBox.Show("Test");
                 Router.Instance.GoToProduct(new Data.Models.Product()); });
             }
         }

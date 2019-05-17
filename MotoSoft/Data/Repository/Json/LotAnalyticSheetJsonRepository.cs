@@ -3,6 +3,7 @@ using MotoSoft.Data.Repository.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace MotoSoft.Data.Repository.Json
 {
@@ -18,6 +19,11 @@ namespace MotoSoft.Data.Repository.Json
                 return obj;
             }
             return new List<LotAnalyticSheet>();
+        }
+
+        public Task<IList<LotAnalyticSheet>> GetSheetAsync()
+        {
+            throw new System.NotImplementedException();
         }
 
         public void Save(IList<LotAnalyticSheet> sheet)

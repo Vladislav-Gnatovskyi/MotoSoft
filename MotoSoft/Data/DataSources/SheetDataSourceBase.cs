@@ -19,19 +19,32 @@ namespace MotoSoft.Data.DataSources
             Columns = new List<Column>();
         }
 
+        protected async void GetLotSheetsAsync()
+        {
+            lotSheets = await sheetRepository.GetSheetAsync();
+        }
+
         public IList GetItems(int page = 0, int pageCountItems = 15)
         {
-            pageCount = pageCountItems;
-            return lotSheets.Skip(page * pageCount).Take(pageCount).ToList();
+            if (lotSheets != null)
+            {
+                pageCount = pageCountItems;
+                return lotSheets.Skip(page * pageCount).Take(pageCount).ToList();
+            }
+            else return new List<T>();
         }
         public int GetPageCount()
         {
-            int totalPages = lotSheets.Count / pageCount;
-            if (lotSheets.Count % pageCount > 0)
+            if (lotSheets != null)
             {
-                totalPages += 1;
+                int totalPages = lotSheets.Count / pageCount;
+                if (lotSheets.Count % pageCount > 0)
+                {
+                    totalPages += 1;
+                }
+                return totalPages;
             }
-            return totalPages;
+            return 1;
         }
     }
 }

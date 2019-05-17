@@ -28,7 +28,7 @@ namespace MotoSoft.ViewModels
             {
                 return new RelayCommand(x => 
                 {
-                    MessageBox.Show(ServiceProvider.Instance.eBayService.AddItem(ItemProduct.Name, ItemProduct.Description, ItemProduct.CategoryID, ItemProduct.Price, "1234567898abcbcaabca0987654321aa"));
+                    MessageBox.Show(ServiceProvider.Instance.eBayService.AddItem(ItemProduct.Name, ItemProduct.Description, "1432", ItemProduct.Price, "1234567898abcbcaabca0987654321aa"));
                 });
             }
         }

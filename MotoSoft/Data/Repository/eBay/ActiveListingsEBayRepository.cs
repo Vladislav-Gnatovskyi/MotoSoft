@@ -2,7 +2,7 @@
 using MotoSoft.Data.Models;
 using MotoSoft.Data.Repository.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace MotoSoft.Data.Repository.eBay
 {
@@ -12,6 +12,27 @@ namespace MotoSoft.Data.Repository.eBay
         {
             IList<ActiveListings> list = new List<ActiveListings>();
             ItemTypeCollection items = ServiceProvider.Instance.eBayService.GetSellerList();
+            foreach (ItemType x in items)
+            {
+                list.Add(new ActiveListings
+                {
+                    ITEM_ID = x.ItemID,
+                    LISTING_TYPE = x.ListingType.ToString(),
+                    PRICE = x.StartPrice.Value,
+                    START_TIME = x.ScheduleTime.ToString(),
+                    TITLE = x.Title,
+                    URL = x.VINLink,
+                    CUSTOM_LABEL = x.SubTitle,
+                    QTY = 0
+                });
+            }
+            return list;
+        }
+
+        public async Task<IList<ActiveListings>> GetSheetAsync()
+        {
+            IList<ActiveListings> list = new List<ActiveListings>();
+            ItemTypeCollection items = await ServiceProvider.Instance.eBayService.GetSellerListAsync();
             foreach (ItemType x in items)
             {
                 list.Add(new ActiveListings

@@ -3,6 +3,7 @@ using eBay.Service.Core.Soap;
 using MotoSoft.Data.Interfaces;
 using MotoSoft.Data.Repository.Json;
 using System;
+using System.Threading.Tasks;
 
 namespace MotoSoft.Data.eBay
 {
@@ -22,9 +23,19 @@ namespace MotoSoft.Data.eBay
             throw new NotImplementedException();
         }
 
+        public Task<OrderTypeCollection> GetOrdersCallAsync(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
+        {
+            throw new NotImplementedException();
+        }
+
         public ItemTypeCollection GetSellerList()
         {
             return new FakeEBaySellerListJsonRepository().Load();
+        }
+
+        public Task<ItemTypeCollection> GetSellerListAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }
