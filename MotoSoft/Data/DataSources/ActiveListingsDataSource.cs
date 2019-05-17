@@ -2,7 +2,7 @@
 
 namespace MotoSoft.Data.DataSources
 {
-    class ActiveListingsDataSource:SheetDataSourceBase<ActiveListings>
+    public class ActiveListingsDataSource:SheetDataSourceBase<ActiveListings>
     {
         public ActiveListingsDataSource()
         {
