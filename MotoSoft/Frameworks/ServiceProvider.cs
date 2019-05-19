@@ -36,7 +36,7 @@ namespace MotoSoft.Frameworks
         {
             get
             {
-                return new ActiveListingsEBayRepository();
+                return new ActiveListingsEbayRepository();
             }
         }
 

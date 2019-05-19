@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalContentAlignment="Stretch" CanUserAddRows="False" VerticalContentAlignment="Stretch" ColumnWidth="*" AutoGenerateColumns="True" FontSize="20" FontFamily="Times New Roman" Margin="0,50,0,0">
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalContentAlignment="Stretch" CanUserAddRows="False" VerticalContentAlignment="Stretch" ColumnWidth="*" FontSize="14" FontFamily="Calibri" Margin="0,50,0,0" AutoGenerateColumns="False">
 
         </DataGrid>
         <Grid MaxHeight="50" VerticalAlignment="Top" Height="50">

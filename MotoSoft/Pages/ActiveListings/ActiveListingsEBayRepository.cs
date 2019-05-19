@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MotoSoft.Pages.ActiveListings
 {
-    class ActiveListingsEBayRepository : ISheetRepository<ActiveListingsModel>
+    class ActiveListingsEbayRepository : ISheetRepository<ActiveListingsModel>
     {
         public async Task<IList<ActiveListingsModel>> GetSheetAsync()
         {
@@ -16,14 +16,14 @@ namespace MotoSoft.Pages.ActiveListings
             {
                 list.Add(new ActiveListingsModel
                 {
-                    ITEM_ID = x.ItemID,
-                    LISTING_TYPE = x.ListingType.ToString(),
-                    PRICE = x.StartPrice.Value,
-                    START_TIME = x.ScheduleTime.ToString(),
-                    TITLE = x.Title,
-                    URL = x.VINLink,
-                    CUSTOM_LABEL = x.SubTitle,
-                    QTY = 0
+                    ItemId = x.ItemID,
+                    ListingType = x.ListingType.ToString(),
+                    Price = x.StartPrice.Value,
+                    StartTime = x.ScheduleTime.ToString(),
+                    Title = x.Title,
+                    Url = x.VINLink,
+                    CustomLabel = x.SubTitle,
+                    Quantity = x.Quantity
                 });
             }
             return list;

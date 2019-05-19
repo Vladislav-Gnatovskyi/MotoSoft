@@ -117,7 +117,7 @@
     <Compile Include="Frameworks\Ebay\FakeEbayService.cs" />
     <Compile Include="Frameworks\Authorize\EbayAuthorizeState.cs" />
     <Compile Include="Frameworks\Ebay\IEbayApiService.cs" />
-    <Compile Include="Pages\ActiveListings\ActiveListingsEBayRepository.cs" />
+    <Compile Include="Pages\ActiveListings\ActiveListingsEbayRepository.cs" />
     <Compile Include="Pages\Analytics\AnalyticsRepository.cs" />
     <Compile Include="Pages\SoldListings\SoldListingsEBayRepository.cs" />
     <Compile Include="Pages\ActiveListings\ActiveListingsJsonRepository.cs" />

@@ -2,6 +2,7 @@
 using MotoSoft.Frameworks.Command;
 using MotoSoft.ViewModels;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -14,6 +15,7 @@ namespace MotoSoft.Frameworks.Components.Table
         private int _pagesCount = 0;
         public IDataSource Source { get; set; }
         public IList Items { get; set; }
+        public IList<Column> Columns => Source.Columns;
 
         public TableViewModel(IDataSource source)
         {
