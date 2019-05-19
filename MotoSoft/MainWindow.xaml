@@ -17,7 +17,7 @@
                 </Image.Source>
             </Image>
             <Label x:Name="Label" Content="RECYCLE | REBUILD" Canvas.Left="50" Canvas.Top="106" Foreground="#FF3399CC" FontSize="15" FontWeight="DemiBold"/>
-            <Button x:Name="Home" Command="{Binding BMenuHome_Click}" Content="Home" Width="240" Canvas.Top="160" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <!--<Button x:Name="Home" Command="{Binding BMenuHome_Click}" Content="Home" Width="240" Canvas.Top="160" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>-->
            <Button x:Name="Analytics" Command="{Binding BMenuAnalytics_Click}" Content="Analytics" Width="240" Canvas.Top="200" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
             <Button x:Name="Settings" Command="{Binding BMenuSettings_Click}" Content="Settings" Width="240" Canvas.Top="360" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
             <Button x:Name="LotSheet" Command="{Binding BMenuLotSheets_Click}" Content="Lot Sheets" Width="240" Canvas.Top="240" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>

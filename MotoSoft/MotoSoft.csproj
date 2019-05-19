@@ -100,102 +100,65 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Assets\Command\ReplayCommand.cs" />
-    <Compile Include="Assets\Extentions\DataGridExtentions.cs" />
-    <Compile Include="Assets\Extentions\WebBrowserExtentions.cs" />
-    <Compile Include="Assets\Sample\SampleAdd.cs" />
-    <Compile Include="Components\Table\Column.cs" />
-    <Compile Include="Components\Table\EColumnType.cs" />
-    <Compile Include="Components\Table\IDataSource.cs" />
-    <Compile Include="Components\Table\IPageItem.cs" />
-    <Compile Include="Components\Table\Table.xaml.cs">
+    <Compile Include="Frameworks\Command\ReplayCommand.cs" />
+    <Compile Include="Frameworks\Extentions\DataGridExtentions.cs" />
+    <Compile Include="Frameworks\Extentions\WebBrowserExtentions.cs" />
+    <Compile Include="Frameworks\Components\Table\Column.cs" />
+    <Compile Include="Frameworks\Components\Table\EColumnType.cs" />
+    <Compile Include="Frameworks\Components\Table\IDataSource.cs" />
+    <Compile Include="Frameworks\Components\Table\Table.xaml.cs">
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Table\TableViewModel.cs" />
-    <Compile Include="Data\DataSources\SheetDataSourceBase.cs" />
-    <Compile Include="Data\DataSources\LotAnalyticSheetDataSource.cs" />
-    <Compile Include="Data\eBay\EbayApiService.cs" />
-    <Compile Include="Data\eBay\EBayAuthorize.cs" />
-    <Compile Include="Data\eBay\FakeEBayService.cs" />
-    <Compile Include="Data\Enums\EbayAuthorizeState.cs" />
-    <Compile Include="Data\Interfaces\IEBayApiService.cs" />
-    <Compile Include="Data\Repository\eBay\ActiveListingsEBayRepository.cs" />
-    <Compile Include="Data\Repository\eBay\LotAnalyticsSheetEBayRepository.cs" />
-    <Compile Include="Data\Repository\eBay\SoldListingsEBayRepository.cs" />
-    <Compile Include="Data\Repository\Json\ActiveListingsJsonRepository.cs" />
-    <Compile Include="Data\DataSources\ActiveListingsDataSource.cs" />
-    <Compile Include="Data\DataSources\LotSheetDataSource.cs" />
-    <Compile Include="Data\DataSources\SoldListingsDataSource.cs" />
-    <Compile Include="Data\Repository\Interfaces\ISheetRepository.cs" />
-    <Compile Include="Data\Repository\Json\FakeEBaySellerListJsonRepository.cs" />
-    <Compile Include="Data\Repository\Json\LotAnalyticSheetJsonRepository.cs" />
-    <Compile Include="Data\Repository\eBay\LotSheetEBayRepository.cs" />
-    <Compile Include="Data\Repository\Json\LotSheetJsonRepository.cs" />
-    <Compile Include="Data\Models\ActiveListings.cs" />
-    <Compile Include="Data\Models\LotAnalyticSheet.cs" />
-    <Compile Include="Data\Models\LotSheet.cs" />
-    <Compile Include="Data\Models\SoldListings.cs" />
-    <Compile Include="Data\Repository\Json\SoldListingsRepository.cs" />
-    <Compile Include="Pages\Authorize.xaml.cs">
+    <Compile Include="Frameworks\Components\Table\TableViewModel.cs" />
+    <Compile Include="Frameworks\Pages\SheetDataSourceBase.cs" />
+    <Compile Include="Pages\Analytics\AnalyticsDataSource.cs" />
+    <Compile Include="Frameworks\Ebay\EbayApiService.cs" />
+    <Compile Include="Frameworks\Authorize\EBayAuthorize.cs" />
+    <Compile Include="Frameworks\Ebay\FakeEbayService.cs" />
+    <Compile Include="Frameworks\Authorize\EbayAuthorizeState.cs" />
+    <Compile Include="Frameworks\Ebay\IEbayApiService.cs" />
+    <Compile Include="Pages\ActiveListings\ActiveListingsEBayRepository.cs" />
+    <Compile Include="Pages\Analytics\AnalyticsRepository.cs" />
+    <Compile Include="Pages\SoldListings\SoldListingsEBayRepository.cs" />
+    <Compile Include="Pages\ActiveListings\ActiveListingsJsonRepository.cs" />
+    <Compile Include="Pages\ActiveListings\ActiveListingsDataSource.cs" />
+    <Compile Include="Pages\LotSheets\LotSheetDataSource.cs" />
+    <Compile Include="Pages\SoldListings\SoldListingsDataSource.cs" />
+    <Compile Include="Frameworks\Pages\ISheetRepository.cs" />
+    <Compile Include="Pages\LotSheets\LotSheetEBayRepository.cs" />
+    <Compile Include="Pages\LotSheets\LotSheetJsonRepository.cs" />
+    <Compile Include="Pages\ActiveListings\ActiveListingsModel.cs" />
+    <Compile Include="Pages\Analytics\AnalyticsModel.cs" />
+    <Compile Include="Pages\LotSheets\LotSheetModel.cs" />
+    <Compile Include="Pages\SoldListings\SoldListingsModel.cs" />
+    <Compile Include="Pages\SoldListings\SoldListingsRepository.cs" />
+    <Compile Include="Pages\Authorize\Authorize.xaml.cs">
       <DependentUpon>Authorize.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Tables\ActiveListings.xaml.cs">
-      <DependentUpon>ActiveListings.xaml</DependentUpon>
+    <Compile Include="Pages\ActiveListings\ActiveListingsView.xaml.cs">
+      <DependentUpon>ActiveListingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Tables\LotSheets.xaml.cs">
-      <DependentUpon>LotSheets.xaml</DependentUpon>
+    <Compile Include="Pages\LotSheets\LotSheetsView.xaml.cs">
+      <DependentUpon>LotSheetsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Tables\SoldListings.xaml.cs">
-      <DependentUpon>SoldListings.xaml</DependentUpon>
+    <Compile Include="Pages\SoldListings\SoldListingsView.xaml.cs">
+      <DependentUpon>SoldListingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AuthorizeViewModel.cs" />
-    <Compile Include="ViewModels\PageItemsViewModel.cs" />
-    <Compile Include="Data\DataSources\ProductDataSource.cs" />
-    <Compile Include="Data\Enums\EInventoryNumber.cs" />
-    <Compile Include="Data\Enums\ETitleStyle.cs" />
-    <Compile Include="Data\Enums\ETypePage.cs" />
-    <Compile Include="Data\Repository\Interfaces\IProductsRepository.cs" />
-    <Compile Include="Data\Repository\Interfaces\ISettingsRepository.cs" />
-    <Compile Include="Data\Models\Product.cs" />
-    <Compile Include="Data\Repository\Json\ProductsJsonRepository.cs" />
-    <Compile Include="Data\ServiceProvider.cs" />
-    <Compile Include="Data\Repository\Json\SettingJsonRepository.cs" />
-    <Compile Include="Pages\Analytics.xaml.cs">
+    <Compile Include="Pages\Authorize\AuthorizeViewModel.cs" />
+    <Compile Include="Pages\Settings\ISettingsRepository.cs" />
+    <Compile Include="Frameworks\ServiceProvider.cs" />
+    <Compile Include="Pages\Settings\SettingJsonRepository.cs" />
+    <Compile Include="Pages\Analytics\Analytics.xaml.cs">
       <DependentUpon>Analytics.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Garage.xaml.cs">
-      <DependentUpon>Garage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Image.xaml.cs">
-      <DependentUpon>Image.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Inventory.xaml.cs">
-      <DependentUpon>Inventory.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ListParts.xaml.cs">
-      <DependentUpon>ListParts.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Orders.xaml.cs">
-      <DependentUpon>Orders.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Product.xaml.cs">
-      <DependentUpon>Product.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Context.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\GarageViewModel.cs" />
-    <Compile Include="ViewModels\ImageViewModel.cs" />
-    <Compile Include="ViewModels\InventoryViewModel.cs" />
-    <Compile Include="ViewModels\ListPartsViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\OrdersViewModel.cs" />
-    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="Frameworks\Context.cs" />
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="Router.cs" />
-    <Compile Include="ViewModels\SettingViewModel.cs" />
-    <Compile Include="ViewModels\Table\ActiveListingsViewModel.cs" />
-    <Compile Include="ViewModels\Table\LotSheetsViewModel.cs" />
-    <Compile Include="ViewModels\Table\SoldListingsViewModel.cs" />
-    <Page Include="Components\Table\Table.xaml">
+    <Compile Include="Pages\Settings\SettingViewModel.cs" />
+    <Compile Include="Pages\ActiveListings\ActiveListingsViewModel.cs" />
+    <Compile Include="Pages\LotSheets\LotSheetsViewModel.cs" />
+    <Compile Include="Pages\SoldListings\SoldListingsViewModel.cs" />
+    <Page Include="Frameworks\Components\Table\Table.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,66 +174,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Analytics.xaml">
+    <Page Include="Pages\Analytics\Analytics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Authorize.xaml">
+    <Page Include="Pages\Authorize\Authorize.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Garage.xaml">
+    <Page Include="Pages\Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Home.xaml">
+    <Page Include="Pages\ActiveListings\ActiveListingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Image.xaml">
+    <Page Include="Pages\LotSheets\LotSheetsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Inventory.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\ListParts.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Orders.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Product.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Settings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Tables\ActiveListings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Tables\LotSheets.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Tables\SoldListings.xaml">
+    <Page Include="Pages\SoldListings\SoldListingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Models\SettingModel.cs" />
-    <Compile Include="Pages\Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
+    <Compile Include="Pages\Settings\SettingModel.cs" />
+    <Compile Include="Pages\Settings\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -405,5 +337,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

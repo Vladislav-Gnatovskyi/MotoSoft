@@ -1,7 +1,12 @@
-﻿using MotoSoft.Data.eBay;
-using MotoSoft.Data.Enums;
-using MotoSoft.ViewModels;
+﻿using MotoSoft.ViewModels;
 using System.Windows.Controls;
+using MotoSoft.Pages.ActiveListings;
+using MotoSoft.Pages.SoldListings;
+using MotoSoft.Pages.LotSheets;
+using MotoSoft.Pages.Analytics;
+using MotoSoft.Pages.Settings;
+using MotoSoft.Frameworks.Authorize;
+using MotoSoft.Pages.Authorize;
 
 namespace MotoSoft
 {
@@ -12,111 +17,123 @@ namespace MotoSoft
 
         private MainViewModel mainViewModel;
 
-        private readonly Page Home;
-        private readonly Page Inventory;
-        private readonly Page ListParts;
-        private readonly Page Orders;
-        private readonly Page Analytics;
-        private readonly Page Garage;
-        private readonly Page Settings;
+        private LotSheetsView _lotSheets;
+        private AnalyticsView _analytics;
+        private ActiveListingsView _activeListings;
+        private SoldListingsView _soldListings;
+        private SettingsView _settings;
+
+        private LotSheetsView LotSheets
+        {
+            get
+            {
+                if (_lotSheets == null)
+                {
+                    _lotSheets = new LotSheetsView();
+                }
+                return _lotSheets;
+            }
+        }
+
+        private AnalyticsView Analytics
+        {
+            get
+            {
+                if (_analytics == null)
+                {
+                    _analytics = new AnalyticsView();
+                }
+                return _analytics;
+            }
+        }
+        private ActiveListingsView ActiveListings
+        {
+            get
+            {
+                if(_activeListings == null)
+                {
+                    _activeListings = new ActiveListingsView();
+                }
+                return _activeListings;
+            }
+        }
+        private SoldListingsView SoldListings
+        {
+            get
+            {
+                if(_soldListings == null)
+                {
+                    _soldListings = new SoldListingsView();
+                }
+                return _soldListings;
+            }
+        }
+        private SettingsView Settings
+        {
+            get
+            {
+                if(_settings == null)
+                {
+                    _settings = new SettingsView();
+                }
+                return _settings;
+            }
+        }
+        public void GotToDefault()
+        {
+            GoToLotSheets();
+        }
 
         private Router()
         {
-            Home = new Pages.Home();
-            Inventory = new Pages.Inventory();
-            ListParts = new Pages.ListParts();
-            Orders = new Pages.Orders();
-            Analytics = new Pages.Analytics();
-            Garage = new Pages.Garage();
-            Settings = new Pages.Settings();
         }
 
         public void InitRouter(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = Home;
-            else GoToAuthorize();
+            GotToDefault();
         }
-
-        public void GoToHome()
-        {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = Home;
-            else GoToAuthorize();
-        }
-
-        public void GoToInventory()
-        {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = Inventory;
-            else GoToAuthorize();
-        }
-
-        public void GoToListParts()
-        {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = ListParts;
-            else GoToAuthorize();
-        }
-
-        public void GoToOrders()
-        {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = Orders;
-            else GoToAuthorize();
-        }
-
+       
         public void GoToAnalytics()
         {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = Analytics;
-            else GoToAuthorize();
+            SetPage(Analytics);
         }
 
-        public void GoToGarage()
-        {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = Garage;
-            else GoToAuthorize();
-        }
+      
 
         public void GoToSettings()
         {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = Settings;
-            else GoToAuthorize();
+            SetPage(Settings);
         }
 
         public void GoToLotSheets()
         {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = new Pages.Tables.LotSheets();
-            else GoToAuthorize();
+            SetPage(LotSheets);
         }
         public void GoToActiveListings()
         {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = new Pages.Tables.ActiveListings();
-            else GoToAuthorize();
+            SetPage(ActiveListings);
         }
         public void GoToSoldListings()
         {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = new Pages.Tables.SoldListings();
-            else GoToAuthorize();
-        }
-
-        public void GoToProduct(Data.Models.Product product = null)
-        {
-            if (EBayAuthorize.IsAuthorize.Equals(EbayAuthorizeState.Authorized))
-                mainViewModel.CurrentPage = new Pages.Product(product);
-            else GoToAuthorize();
+            SetPage(SoldListings);
         }
 
         public void GoToAuthorize()
         {
-            mainViewModel.CurrentPage = new Pages.Authorize();
+            mainViewModel.CurrentPage = new Authorize();
+        }
+
+        private void SetPage(Page page)
+        {
+            if (EBayAuthorize.Instance.IsAuthorized)
+            {
+                mainViewModel.CurrentPage = page;
+            }
+            else
+            {
+                GoToAuthorize();
+            }
         }
     }
 }
