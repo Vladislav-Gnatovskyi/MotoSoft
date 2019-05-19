@@ -125,7 +125,6 @@
     <Compile Include="Pages\LotSheets\LotSheetDataSource.cs" />
     <Compile Include="Pages\SoldListings\SoldListingsDataSource.cs" />
     <Compile Include="Frameworks\Pages\ISheetRepository.cs" />
-    <Compile Include="Pages\LotSheets\LotSheetEBayRepository.cs" />
     <Compile Include="Pages\LotSheets\LotSheetJsonRepository.cs" />
     <Compile Include="Pages\ActiveListings\ActiveListingsModel.cs" />
     <Compile Include="Pages\Analytics\AnalyticsModel.cs" />

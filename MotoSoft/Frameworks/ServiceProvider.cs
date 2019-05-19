@@ -28,7 +28,7 @@ namespace MotoSoft.Frameworks
         {
             get
             {
-                return new LotSheetEBayRepository();
+                return new LotSheetJsonRepository();
             }
         }
 
