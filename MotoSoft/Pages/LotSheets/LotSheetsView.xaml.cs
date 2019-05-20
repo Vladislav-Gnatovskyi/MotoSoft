@@ -21,7 +21,7 @@ namespace MotoSoft.Pages.LotSheets
 
         private async void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            //await lotSheetsViewModel.Load();
+            await lotSheetsViewModel.Load();
         }
     }
 }

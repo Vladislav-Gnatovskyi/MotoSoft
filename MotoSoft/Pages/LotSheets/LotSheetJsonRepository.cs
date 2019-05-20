@@ -20,9 +20,9 @@ namespace MotoSoft.Pages.LotSheets
             return new List<LotSheetsModel>();
         }
 
-        public Task<IList<LotSheetsModel>> GetSheetAsync()
+        public async Task<IList<LotSheetsModel>> GetSheetAsync()
         {
-            throw new System.NotImplementedException();
+            return await Task.Run(GetSheet);
         }
 
         public void Save(IList<LotSheetsModel> sheet)

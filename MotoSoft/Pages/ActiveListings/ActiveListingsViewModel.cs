@@ -1,6 +1,5 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Frameworks.Components.Table;
-using MotoSoft.ViewModels;
 using System.Threading.Tasks;
 
 namespace MotoSoft.Pages.ActiveListings

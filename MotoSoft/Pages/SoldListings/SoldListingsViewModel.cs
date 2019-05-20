@@ -1,6 +1,5 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Frameworks.Components.Table;
-using MotoSoft.ViewModels;
 using System.Threading.Tasks;
 
 namespace MotoSoft.Pages.SoldListings
@@ -12,7 +11,6 @@ namespace MotoSoft.Pages.SoldListings
         {
             TableViewModel = new TableViewModel(new SoldListingsDataSource());
         }
-
         public async Task Load()
         {
             await TableViewModel.Load();

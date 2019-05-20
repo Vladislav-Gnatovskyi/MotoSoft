@@ -1,6 +1,5 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Frameworks.Command;
-using MotoSoft.ViewModels;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;

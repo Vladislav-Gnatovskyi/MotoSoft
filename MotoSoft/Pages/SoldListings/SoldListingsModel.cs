@@ -8,24 +8,24 @@ namespace MotoSoft.Pages.SoldListings
 {
     public class SoldListingsModel
     {
-        public string ITEM_ID { get; set; }
-        public DateTime DATE { get; set; }
-        public int SALES_RECORD_NUMBER { get; set; }
-        public string ITEM_TITLE { get; set; }
-        public string CUSTOM_LABEL { get; set; }
-        public string PRODUCT_NAME { get; set; }
+        public string ItemID { get; set; }
+        public DateTime Date { get; set; }
+        public int SalesRecordNumber { get; set; }
+        public string Title { get; set; }
+        public string CustomLabel { get; set; }
+        public string ProductName { get; set; }
         public int QTY { get; set; }
-        public double SALE_PRICE { get; set; }
-        public int SHIPPING_CHARGED { get; set; }
-        public double GROSS_SALES { get; set; }
-        public double COST_OF_ITEM { get; set; }
-        public double SHIPPING_COST { get; set; }
-        public double eBAY_FEES { get; set; }
-        public double PAYPAL_FEES { get; set; }
+        public double SalePrice { get; set; }
+        public int ShippingChanged { get; set; }
+        public double GrossSales { get; set; }
+        public double CostOfItem { get; set; }
+        public double ShippingCost { get; set; }
+        public double eBayFees { get; set; }
+        public double PAYPALFees { get; set; }
         public double COST { get; set; }
         public double GAIN { get; set; }
-        public double SALES_TAX { get; set; }
-        public double ITEM_eBAY_FEES { get; set; }
+        public double SalesTax { get; set; }
+        public double ItemeBayFees { get; set; }
 
     }
 }

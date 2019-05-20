@@ -7,9 +7,8 @@
       xmlns:components="clr-namespace:MotoSoft.Frameworks.Components.Table"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SoldListings" Loaded="Page_Loaded">
-
+      Title="Sold Listings" Loaded="Page_Loaded">
     <Grid>
-        <components:Table x:Name="ListingsTable"/>
+        <components:Table x:Name="ListingTable"/>
     </Grid>
 </Page>

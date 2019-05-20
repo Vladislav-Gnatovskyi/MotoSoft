@@ -11,16 +11,19 @@ namespace MotoSoft.Pages.SoldListings
         public async Task<IList<SoldListingsModel>> GetSheetAsync()
         {
             IList<SoldListingsModel> list = new List<SoldListingsModel>();
-            IEnumerable<ItemType> items = await ServiceProvider.Instance.EbayService.GetSellerListAsync(ListingStatusCodeType.Completed);
+            IEnumerable<ItemType> items = await ServiceProvider.Instance.EbayService.GetSellerListAsync(ListingStatusCodeType.Active);
             foreach (ItemType item in items)
             {
                 list.Add(new SoldListingsModel
                 {
-                    ITEM_ID = item.ItemID,
-                    COST = item.ItemCompatibilityCount,
-                    CUSTOM_LABEL = item.SubTitle,
-                    ITEM_TITLE = item.Title,
-                    DATE = item.ScheduleTime,
+                    ItemID = item.ItemID,
+                    QTY = item.Quantity,
+                    SalePrice = item.StartPrice.Value,
+                    CustomLabel = item.SubTitle,
+                    Title = item.Title,
+                    Date = item.ScheduleTime,
+                    CostOfItem = item.StartPrice.Value,
+                    //ProductName = item.ProductListingDetails
                 });
             }
             return list;

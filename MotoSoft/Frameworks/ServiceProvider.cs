@@ -40,7 +40,7 @@ namespace MotoSoft.Frameworks
             }
         }
 
-        public ISheetRepository<SoldListingsModel> SoldListingsEBayRepository
+        public ISheetRepository<SoldListingsModel> SoldListingsRepository
         {
             get
             {

@@ -140,9 +140,6 @@
     <Compile Include="Pages\LotSheets\LotSheetsView.xaml.cs">
       <DependentUpon>LotSheetsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SoldListings\SoldListingsView.xaml.cs">
-      <DependentUpon>SoldListingsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Authorize\AuthorizeViewModel.cs" />
     <Compile Include="Pages\Settings\ISettingsRepository.cs" />
     <Compile Include="Frameworks\ServiceProvider.cs" />
@@ -152,6 +149,9 @@
     </Compile>
     <Compile Include="Frameworks\Context.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="Pages\SoldListings\SoldListingsView.xaml.cs">
+      <DependentUpon>SoldListingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Router.cs" />
     <Compile Include="Pages\Settings\SettingViewModel.cs" />
     <Compile Include="Pages\ActiveListings\ActiveListingsViewModel.cs" />
