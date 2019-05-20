@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DevExpress.Mvvm;
 using MotoSoft.Frameworks.Components.Table;
-using MotoSoft.ViewModels;
 
 namespace MotoSoft.Pages.LotSheets
 {

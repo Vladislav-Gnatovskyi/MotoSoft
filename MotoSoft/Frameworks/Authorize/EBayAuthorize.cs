@@ -34,22 +34,21 @@ namespace MotoSoft.Frameworks.Authorize
         private string _url;
 
         public ISettingsRepository SettingsRepository { get; }
-        private string AccessToken { get; set; }
+        private OAuthResponse Token { get; set; }
 
         public bool IsAuthorized
         {
             get
             {
-                return AccessToken != null;
+                return  Token != null;
             }
         }
 
         private EBayAuthorize()
         {
-            CredentialUtil.Load(pathConfig);
-            SettingsRepository = ServiceProvider.Instance.SettingsRepository;
-            AccessToken = ServiceProvider.Instance.CurrentContext.Settings.Token;
-            // TODO: extend, need to check that token is still valid, made call for it to api and probably save timeout info
+                CredentialUtil.Load(pathConfig);
+                SettingsRepository = ServiceProvider.Instance.SettingsRepository;
+                Token = ServiceProvider.Instance.CurrentContext.Settings.Token;
         }
 
         public string AuthorizationUrl
@@ -65,27 +64,46 @@ namespace MotoSoft.Frameworks.Authorize
             set
             {
                 _url = value;
-                UpdateAccessToken();
+                GenerateToken();
             }
         }
         public void SingOut()
         {
             var setting = ServiceProvider.Instance.CurrentContext.Settings;
-            AccessToken = null;
+            Token = null;
             setting.Token = null;
             SettingsRepository.Save(setting);
         }
 
-        private void UpdateAccessToken()
+        private void GenerateToken()
         {
             var code = GetAuthorizationCode(AuthorizationUrl);
             if (code != null)
             {
                 var response = oAuth2Api.ExchangeCodeForAccessToken(Environment, code);
-                AccessToken = response.AccessToken.Token;
+                Token = response;
                 var setting = ServiceProvider.Instance.CurrentContext.Settings;
-                setting.Token = AccessToken;
+                setting.Token = Token;
                 SettingsRepository.Save(setting);
+            }
+        }
+
+        public bool GetAccesToken()
+        {
+            try
+            { 
+                Token = oAuth2Api.GetAccessToken(Environment, Token.RefreshToken.Token, userScopes);
+                var setting = ServiceProvider.Instance.CurrentContext.Settings;
+                setting.Token = Token;
+                SettingsRepository.Save(setting);
+                return true;
+            }
+            catch
+            {
+                var setting = ServiceProvider.Instance.CurrentContext.Settings;
+                setting.Token = Token = null;
+                SettingsRepository.Save(setting);
+                return false;
             }
         }
 

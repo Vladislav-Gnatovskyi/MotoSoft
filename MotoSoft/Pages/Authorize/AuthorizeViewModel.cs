@@ -5,6 +5,6 @@ namespace MotoSoft.ViewModels
 {
     class AuthorizeViewModel : ViewModelBase
     {
-        public string URL => EBayAuthorize.Instance.AuthorizationUrl;
+        public string URL { get => EBayAuthorize.Instance.AuthorizationUrl; set => EBayAuthorize.Instance.AuthorizationUrl = value; }
     }
 }

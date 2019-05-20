@@ -10,7 +10,7 @@ using MotoSoft.Frameworks.Authorize;
 
 namespace MotoSoft.Frameworks.Ebay
 {
-    public class EbayApiService: IEbayApiService
+    public class EbayApiService : IEbayApiService
     {
         private string[] Scopes = { "https://api.ebay.com/wsapi", "https://api.sandbox.ebay.com/wsapi" };
         private const string version = "571";
@@ -33,18 +33,35 @@ namespace MotoSoft.Frameworks.Ebay
                     context.ApiCredential.ApiAccount.Certificate = Properties.Settings.Default.CER_ID;
                     context.SoapApiServerUrl = Scopes[0];
                 }
-                context.ApiCredential.eBayToken = context.ApiCredential.oAuthToken = ServiceProvider.Instance.CurrentContext.Settings.Token;
+                context.ApiCredential.eBayToken = context.ApiCredential.oAuthToken = ServiceProvider.Instance.CurrentContext.Settings.Token.AccessToken.Token;
                 context.Version = version;
                 context.Site = SiteCodeType.US;
                 context.Timeout = 30000;
                 return context;
             }
         }
+
+        private bool GetTokenStatusCall
+        {
+            get
+            {
+                try
+                {
+                    new GetTokenStatusCall(GetApiContext);
+                    return true;
+                }
+                catch
+                {
+                    return EBayAuthorize.Instance.GetAccesToken();
+                }
+            }
+        }
+
         public UserType GetUser
         {
             get
             {
-                if (EBayAuthorize.Instance.IsAuthorized)
+                if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
                 {
                     GetUserCall call = new GetUserCall(GetApiContext);
                     return call.GetUser();
@@ -52,9 +69,10 @@ namespace MotoSoft.Frameworks.Ebay
                 return new UserType();
             }
         }
+
         public IEnumerable<ItemType> GetSellerList(ListingStatusCodeType status)
         {
-            if (EBayAuthorize.Instance.IsAuthorized)
+            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
             {
                 GetSellerListCall oGetSellerListCall = new GetSellerListCall(GetApiContext);
                 oGetSellerListCall.Version = GetApiContext.Version;
@@ -81,13 +99,14 @@ namespace MotoSoft.Frameworks.Ebay
 
         public async Task<OrderTypeCollection> GetOrdersCallAsync(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
         {
-            OrderTypeCollection x = await Task.Factory.StartNew(() => GetOrdersCall(timeFilter, tradingRole, orderStatus));
+            OrderTypeCollection x = await Task.Run(() => GetOrdersCall(timeFilter, tradingRole, orderStatus));
             return x;
         }
 
         public OrderTypeCollection GetOrdersCall(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
         {
-            if (EBayAuthorize.Instance.IsAuthorized)
+
+            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
             {
                 GetOrdersCall call = new GetOrdersCall(GetApiContext);
                 call.EnableCompression = true;
@@ -98,65 +117,10 @@ namespace MotoSoft.Frameworks.Ebay
             return new OrderTypeCollection();
         }
 
-        
-        public string AddItem(string title, string description, string catecoryID, double price, string UUID, string location = "US", int DispathTimeMax = 10)
-        {
-            if (EBayAuthorize.Instance.IsAuthorized)
-            {
-                AddItemCall call = new AddItemCall(GetApiContext);
-                ItemType item = new ItemType();
-                item.Currency = CurrencyCodeType.USD;
-                item.Country = CountryCodeType.US;
-                item.PaymentMethods = new BuyerPaymentMethodCodeTypeCollection();
-                item.PaymentMethods.AddRange(new BuyerPaymentMethodCodeType[] { BuyerPaymentMethodCodeType.PayPal });
-                item.PayPalEmailAddress = "test@test.com";
-                item.Title = title;
-                item.Quantity = 1;
-                item.PostalCode = ServiceProvider.Instance.CurrentContext.Settings.PostalCode;
-                item.Description = description;
-                item.ListingDuration = "Days_7";
-                item.PrimaryCategory = new CategoryType();
-                item.PrimaryCategory.CategoryID = catecoryID;
-                item.StartPrice = new AmountType();
-                item.StartPrice.currencyID = CurrencyCodeType.USD;
-                item.DispatchTimeMax = 7;
-                item.StartPrice.Value = price;
-                item.UUID = UUID;
-
-                item.ShippingDetails = new ShippingDetailsType();
-                item.ShippingDetails.ShippingServiceOptions = new ShippingServiceOptionsTypeCollection();
-                ShippingServiceOptionsType[] opt = new ShippingServiceOptionsType[2];
-                opt[0] = new ShippingServiceOptionsType();
-                opt[0].ShippingServiceCost = new AmountType();
-                opt[0].ShippingServiceCost.currencyID = CurrencyCodeType.USD;
-                opt[0].ShippingServiceCost.Value = 5;
-                // ShippingService is now a string
-                //Make a call to GeteBayDetails to find out the valid Shipping Service values
-                opt[0].ShippingService = "USPSPriority";
-                opt[0].ShippingServicePriority = 1;
-                item.ShippingDetails.ShippingServiceOptions.Add(opt[0]);
-               
-                opt[1] = new ShippingServiceOptionsType();
-                opt[1].ShippingServiceCost = new AmountType();
-                opt[1].ShippingServiceCost.currencyID = CurrencyCodeType.USD;
-                opt[1].ShippingServiceCost.Value = 10;
-                opt[1].ShippingService = "USPSExpressMail";
-                opt[1].ShippingServicePriority = 2;
-                item.ShippingDetails.ShippingServiceOptions.Add(opt[1]);
-                item.ShipToLocations = new StringCollection();
-                item.ShipToLocations.Add("US");
-                item.Location = location;
-
-                FeeTypeCollection fees = call.AddItem(item);
-                return item.ItemID;
-            }
-            return null;
-        }        
-
         public ItemType GetItem(string ItemID)
         {
-            if (EBayAuthorize.Instance.IsAuthorized)
-            {                
+            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
+            {
                 GetItemCall call = new GetItemCall(GetApiContext);
                 return call.GetItem(ItemID);
             }

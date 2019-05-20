@@ -84,10 +84,6 @@ namespace MotoSoft
             GoToLotSheets();
         }
 
-        private Router()
-        {
-        }
-
         public void InitRouter(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
@@ -97,9 +93,7 @@ namespace MotoSoft
         public void GoToAnalytics()
         {
             SetPage(Analytics);
-        }
-
-      
+        }      
 
         public void GoToSettings()
         {

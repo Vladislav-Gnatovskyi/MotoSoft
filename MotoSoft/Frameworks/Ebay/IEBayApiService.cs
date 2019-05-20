@@ -13,6 +13,5 @@ namespace MotoSoft.Frameworks.Ebay
         Task<IEnumerable<ItemType>> GetSellerListAsync(ListingStatusCodeType status);
         Task<OrderTypeCollection> GetOrdersCallAsync(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus);
         OrderTypeCollection GetOrdersCall(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus);
-        string AddItem(string title, string description, string catecoryID, double price, string UUID, string location = "US", int DispathTimeMax = 7);
     }
 }

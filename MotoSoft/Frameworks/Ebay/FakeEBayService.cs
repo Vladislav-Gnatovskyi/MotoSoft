@@ -12,6 +12,8 @@ namespace MotoSoft.Frameworks.Ebay
 
         public ApiContext GetApiContext => throw new NotImplementedException();
 
+        public bool CheckToken => throw new NotImplementedException();
+
         public string AddItem(string title, string description, string catecoryID, double price, string UUID, string location = "US", int DispathTimeMax = 7)
         {
             throw new NotImplementedException();

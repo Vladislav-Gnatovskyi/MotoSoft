@@ -1,4 +1,6 @@
-﻿namespace MotoSoft.Pages.Settings
+﻿using eBay.ApiClient.Auth.OAuth2.Model;
+
+namespace MotoSoft.Pages.Settings
 {
     public class SettingsModel
     {
@@ -10,7 +12,7 @@
         public string PostalCode { get; set; }
         public string TemplateBuilder { get; set; }
         public string Html { get; set; }
-        public string Token { get; set; }
+        public OAuthResponse Token { get; set; }
         public bool PaymentRequired { get; set; }
         public bool CreditCards { get; set; }
         public bool BestOffer { get; set; }
