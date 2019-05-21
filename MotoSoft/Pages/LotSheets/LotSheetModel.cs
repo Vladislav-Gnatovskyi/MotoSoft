@@ -4,7 +4,16 @@ namespace MotoSoft.Pages.LotSheets
 {
     public class LotSheetsModel
     {
-        public string Lot { get; set; }
+        private int _lot = 10000;
+        public int Lot
+        {
+            get => _lot;
+            set
+            {
+                if (value < 10000) _lot += value;
+                else _lot = value;
+            }
+        }
         public string Type { get; set; }
         public DateTime Date { get; set; }
         public string Make { get; set; }

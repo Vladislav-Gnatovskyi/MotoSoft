@@ -7,11 +7,54 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="MotoSoft.Frameworks.Components.Table.Table"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#FF021D2A" />
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1f3650"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontFamily" Value="Colibri"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#537095"/>
+            <Setter Property="SeparatorBrush" Value="Red"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="#537095"/>
+        </Style>
+
+        <Style TargetType="DataGridRowHeader">
+            <Setter Property="BorderBrush" Value="#FF021D2A"/>
+        </Style>
+
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="#FF021D2A"/>
+
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderBrush" Value="#537095"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontFamily" Value="Colibri"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Background" Value="#1c324a"/>
+            <Setter Property="Foreground" Value="#537095"/>
+        </Style>
+                
+    </UserControl.Resources>
+    
+    
     <Grid Background="#FF021D2A">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalContentAlignment="Stretch" CanUserAddRows="False" VerticalContentAlignment="Stretch" ColumnWidth="*" FontSize="14" FontFamily="Calibri" Margin="0,50,0,0" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" GridLinesVisibility="None" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Calibri" Margin="0,50,0,0" AutoGenerateColumns="False">
 
         </DataGrid>
         <Grid MaxHeight="50" VerticalAlignment="Top" Height="50">
