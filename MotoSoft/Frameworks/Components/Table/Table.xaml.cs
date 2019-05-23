@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Data;
+using MahApps.Metro.Controls;
 
 namespace MotoSoft.Frameworks.Components.Table
 {

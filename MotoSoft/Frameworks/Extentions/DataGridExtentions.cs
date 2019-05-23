@@ -16,7 +16,7 @@ namespace MotoSoft.Assets.Extentions
                 dataGrid.Columns.Add(new DataGridTextColumn
                 {
                     Header = column.Title,
-                    Binding = new Binding(string.Format("[{0}]", index++))
+                    Binding = new Binding(string.Format("[{0}]", index++)),
                 });
             }
         }

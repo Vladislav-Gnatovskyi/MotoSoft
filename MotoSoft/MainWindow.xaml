@@ -10,7 +10,11 @@
 
 
     <Grid Background="#FFE8EAEB" MinWidth="500">
-        <Canvas x:Name="NavPanel" Background="#FF021D2A" Margin="0,0,552,0" MinWidth="{DynamicResource {x:Static SystemParameters.MinimizedWindowWidthKey}}" HorizontalAlignment="Left" MinHeight="450" Width="240">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="NavPanel" Background="#FF021D2A" MinWidth="{DynamicResource {x:Static SystemParameters.MinimizedWindowWidthKey}}" HorizontalAlignment="Left" MinHeight="450" Width="240">
             <Image x:Name="Logo" Height="100" Canvas.Left="70" Canvas.Top="14" Width="100">
                 <Image.Source>
                     <ImageSource>Assets/images/logo.png</ImageSource>
@@ -18,14 +22,21 @@
             </Image>
             <Label x:Name="Label" Content="RECYCLE | REBUILD" Canvas.Left="50" Canvas.Top="106" Foreground="#FF3399CC" FontSize="15" FontWeight="DemiBold"/>
             <!--<Button x:Name="Home" Command="{Binding BMenuHome_Click}" Content="Home" Width="240" Canvas.Top="160" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>-->
-           <Button x:Name="Analytics" Command="{Binding BMenuAnalytics_Click}" Content="Analytics" Width="240" Canvas.Top="200" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Button x:Name="Analytics" Command="{Binding BMenuAnalytics_Click}" Content="Analytics" Width="240" Canvas.Top="200" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
             <Button x:Name="Settings" Command="{Binding BMenuSettings_Click}" Content="Settings" Width="240" Canvas.Top="360" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
             <Button x:Name="LotSheet" Command="{Binding BMenuLotSheets_Click}" Content="Lot Sheets" Width="240" Canvas.Top="240" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Label Content="{Binding User, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="132" Width="240" Height="25" Foreground="#FF3399CC" HorizontalContentAlignment="Center"/>
             <Button x:Name="ActiveLotSheets" Command="{Binding BMenuActiveListings_Click}" Content="Active Listings" Width="240" Canvas.Top="280" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
             <Button x:Name="SoldLotSheets" Command="{Binding BMenuSoldListings_Click}" Content="Sold Listings" Width="240" Canvas.Top="320" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
             <Button x:Name="Exit" Command="{Binding BExit_Click}" Content="Exit" Width="240" Canvas.Top="400" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <Label Content="{Binding User, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Canvas.Top="132" Width="240" Height="25" Foreground="#FF3399CC" HorizontalContentAlignment="Center"/>
         </Canvas>
+        <Grid Canvas.Left="0" Width="240" HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="96*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Label Content="{Binding API, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Canvas.Top="132" Foreground="#FF3399CC" HorizontalContentAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Bottom"/>
+        </Grid>
         <Frame Margin="240,50,0,0" Panel.ZIndex="-3"
                NavigationUIVisibility="Hidden"
                Opacity="1"

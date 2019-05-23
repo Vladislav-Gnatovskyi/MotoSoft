@@ -55,7 +55,7 @@ namespace MotoSoft.Frameworks.Components.Table
         {
             get
             {
-                return $"Page {_pageNumber + 1}/{_pagesCount}";
+                return $"Page {_pageNumber + 1}/{_pagesCount+1}";
             }
         }
 
