@@ -76,13 +76,7 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Html" Background="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FF3399CC" Margin="-3,0,0,0">
-                        <Grid Background="#FFE5E5E5">
-                            <TextBox x:Name="THtml" Text="{Binding SettingModel.Html, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0" TextWrapping="Wrap" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" AutomationProperties.IsRequiredForForm="True" Background="White" Foreground="#FF021D2A">
-                                <TextBox.ContextMenu>
-                                    <ContextMenu HorizontalContentAlignment="Center" HorizontalAlignment="Center" IsTabStop="True"/>
-                                </TextBox.ContextMenu>
-                            </TextBox>
-                        </Grid>
+                        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
                     </TabItem>
                     <TabItem Header="Template" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF021D2A" OpacityMask="#FF021D2A" BorderBrush="#FF021D2A" Foreground="#FF3399CC" Margin="-2,0,0,0" Height="22">
                         <Grid Background="#FFE5E5E5">

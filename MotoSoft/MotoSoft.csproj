@@ -119,6 +119,10 @@
     <Compile Include="Frameworks\Ebay\IEbayApiService.cs" />
     <Compile Include="Pages\ActiveListings\ActiveListingsEbayRepository.cs" />
     <Compile Include="Pages\Analytics\AnalyticsRepository.cs" />
+    <Compile Include="Pages\Lot\LotView.xaml.cs">
+      <DependentUpon>LotView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Lot\LotViewModel.cs" />
     <Compile Include="Pages\SoldListings\SoldListingsEBayRepository.cs" />
     <Compile Include="Pages\ActiveListings\ActiveListingsJsonRepository.cs" />
     <Compile Include="Pages\ActiveListings\ActiveListingsDataSource.cs" />
@@ -178,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Authorize\Authorize.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Lot\LotView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

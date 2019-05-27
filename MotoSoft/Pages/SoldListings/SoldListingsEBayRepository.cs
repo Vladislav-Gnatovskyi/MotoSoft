@@ -8,6 +8,11 @@ namespace MotoSoft.Pages.SoldListings
 {
     class SoldListingsEBayRepository : ISheetRepository<SoldListingsModel>
     {
+        public bool AddNewItem(SoldListingsModel item)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<IList<SoldListingsModel>> GetSheetAsync()
         {
             IList<SoldListingsModel> list = new List<SoldListingsModel>();

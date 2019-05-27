@@ -9,6 +9,11 @@ namespace MotoSoft.Pages.Analytics
 {
     class AnalyticsRepository : ISheetRepository<AnalyticsModel>
     {
+        public bool AddNewItem(AnalyticsModel item)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<AnalyticsModel> GetSheet()
         {
             IList<AnalyticsModel> list = new List<AnalyticsModel>()

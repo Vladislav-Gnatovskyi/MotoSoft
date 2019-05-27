@@ -7,6 +7,7 @@ using MotoSoft.Pages.Analytics;
 using MotoSoft.Pages.Settings;
 using MotoSoft.Frameworks.Authorize;
 using MotoSoft.Pages.Authorize;
+using MotoSoft.Pages.Lot;
 
 namespace MotoSoft
 {
@@ -21,6 +22,7 @@ namespace MotoSoft
         private AnalyticsView _analytics;
         private ActiveListingsView _activeListings;
         private SoldListingsView _soldListings;
+        private LotView _lotCreate;
         private SettingsView _settings;
 
         private LotSheetsView LotSheets
@@ -46,6 +48,19 @@ namespace MotoSoft
                 return _analytics;
             }
         }
+
+        private LotView LotCreate
+        {
+            get
+            {
+                if(_lotCreate == null)
+                {
+                    _lotCreate = new LotView();
+                }
+                return _lotCreate;
+            }
+        }
+
         private ActiveListingsView ActiveListings
         {
             get
@@ -111,6 +126,11 @@ namespace MotoSoft
         public void GoToSoldListings()
         {
             SetPage(SoldListings);
+        }
+
+        public void GoToLotCreate()
+        {
+            SetPage(LotCreate);
         }
 
         public void GoToAuthorize()

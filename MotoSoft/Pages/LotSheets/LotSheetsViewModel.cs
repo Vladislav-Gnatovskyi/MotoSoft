@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using DevExpress.Mvvm;
+using MotoSoft.Frameworks.Command;
 using MotoSoft.Frameworks.Components.Table;
 
 namespace MotoSoft.Pages.LotSheets
@@ -15,6 +17,11 @@ namespace MotoSoft.Pages.LotSheets
         public async Task Load()
         {
             await TableViewModel.Load();
+        }
+
+        public ICommand AddClick
+        {
+            get => new RelayCommand(x => { Router.Instance.GoToLotCreate(); });
         }
     }
 }

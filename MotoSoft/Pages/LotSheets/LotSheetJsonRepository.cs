@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MotoSoft.Pages.LotSheets
@@ -23,6 +24,15 @@ namespace MotoSoft.Pages.LotSheets
         public async Task<IList<LotSheetsModel>> GetSheetAsync()
         {
             return await Task.Run(GetSheet);
+        }
+
+        public bool AddNewItem(LotSheetsModel item)
+        {
+            IList<LotSheetsModel> lotSheets = GetSheet();
+            if (lotSheets.Where(x => x.Lot.Equals(item.Lot)).FirstOrDefault() != null) return false;
+            lotSheets.Add(item);
+            Save(lotSheets);
+            return true;
         }
 
         public void Save(IList<LotSheetsModel> sheet)

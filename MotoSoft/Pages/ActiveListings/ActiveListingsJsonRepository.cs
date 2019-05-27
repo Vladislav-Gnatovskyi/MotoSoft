@@ -9,6 +9,12 @@ namespace MotoSoft.Pages.ActiveListings
     public class ActiveListingsJsonRepository: ISheetRepository<ActiveListingsModel>
     {
         private const string sheetFilename = "ActiveLotSheet.json";
+
+        public bool AddNewItem(ActiveListingsModel item)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IList<ActiveListingsModel> GetSheet()
         {
             if (File.Exists(sheetFilename))

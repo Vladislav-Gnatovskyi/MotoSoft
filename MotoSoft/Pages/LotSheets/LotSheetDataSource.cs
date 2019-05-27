@@ -104,12 +104,6 @@ namespace MotoSoft.Pages.LotSheets
                 },
                 new Column
                 {
-                    Title = "Parts Sold",
-                    Field = "PartsSold",
-                    Type = EColumnType.Number,
-                },
-                new Column
-                {
                     Title = "eBay Fees",
                     Field = "eBayFees",
                     Type = EColumnType.Number,

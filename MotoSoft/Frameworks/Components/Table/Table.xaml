@@ -102,7 +102,7 @@
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Right.png"/>
                 </Button.Background>
             </Button>
-            <Grid HorizontalAlignment="Center" Margin="232,0,232,-10" Width="336" MinWidth="55" MinHeight="55">
+            <Grid HorizontalAlignment="Center" Margin="0" Width="336" MinWidth="55" MinHeight="60">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -115,7 +115,7 @@
                 <TextBox TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#FF3399CC" BorderBrush="#FF3399CC" FontFamily="Times New Roman" FontSize="14" Grid.Row="1" Text="{Binding PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="0" MinHeight="27"/>
                 <Label Content="{Binding PageIDFromLabel}" Foreground="#FF3399CC" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Center" Grid.Column="1" FontSize="14"/>
                 <Label Content="Enter number page:" Grid.Row="1" Margin="0" Foreground="#FF3399CC" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Calibri" FontSize="14" MinHeight="27"/>
-                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Background="#FF1F3650" BorderBrush="#FF2199CC" Foreground="#FF2199CC" FontFamily="Calibri" FontSize="14" Width="80" MinHeight="21" Height="19"/>
+                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Background="#FF1F3650" BorderBrush="#FF2199CC" Foreground="#FF2199CC" FontFamily="Calibri" FontSize="14" Width="80" MinHeight="21"/>
             </Grid>
         </Grid>
     </Grid>
