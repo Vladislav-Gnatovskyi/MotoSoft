@@ -38,6 +38,12 @@ namespace MotoSoft.Pages.ActiveListings
                 },
                 new Column()
                 {
+                    Title = "Price",
+                    Field = "Price",
+                    Type = EColumnType.Number
+                },
+                new Column()
+                {
                     Title = "Start time",
                     Field = "StartTime",
                     Type = EColumnType.Text
