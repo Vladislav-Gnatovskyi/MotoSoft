@@ -85,9 +85,17 @@ namespace MotoSoft.Frameworks.Ebay
                 oPagination.PageNumber = 1;
                 oPagination.PageNumberSpecified = true;
                 oGetSellerListCall.Pagination = oPagination;
-                oGetSellerListCall.EndTimeFilter = new TimeFilter(DateTime.Now, DateTime.Now.AddMonths(3));
+                oGetSellerListCall.EndTimeFilter = new TimeFilter(DateTime.Now.AddMonths(-1), DateTime.Now.AddMonths(2));
                 oGetSellerListCall.Sort = 2;
-                return oGetSellerListCall.GetSellerList().ToArray().ToList().Where(x => x.SellingStatus.ListingStatus.Equals(status));
+                switch (status)
+                {
+                    case ListingStatusCodeType.Active:
+                        return oGetSellerListCall.GetSellerList().ToArray().ToList().Where(x => x.SellingStatus.ListingStatus.Equals(status));
+                    case ListingStatusCodeType.Completed:
+                    case ListingStatusCodeType.Ended:
+                        return oGetSellerListCall.GetSellerList().ToArray().ToList().Where(x => x.SellingStatus.QuantitySold != 0);
+                }
+                
             }
             return new ItemTypeCollection().ToArray();
         }

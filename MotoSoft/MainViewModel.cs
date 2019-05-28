@@ -1,6 +1,5 @@
 ﻿using DevExpress.Mvvm;
 using MotoSoft.Frameworks;
-using MotoSoft.Frameworks.Authorize;
 using MotoSoft.Frameworks.Command;
 using System.Windows.Controls;
 using System.Windows.Input;

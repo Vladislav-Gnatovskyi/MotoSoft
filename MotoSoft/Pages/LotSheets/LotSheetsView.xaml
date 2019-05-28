@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
       xmlns:local="clr-namespace:MotoSoft.Pages.LotSheets"
       xmlns:components="clr-namespace:MotoSoft.Frameworks.Components.Table"
       mc:Ignorable="d" 
@@ -11,7 +12,12 @@
       Title="LOT SHEETS" Initialized="Page_Initialized" Loaded="Page_Loaded">
 
     <Grid>
-        <components:Table x:Name="LotSheetsTable"/>
-        <Button Content="Add" Margin="0,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding AddClick}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF3893C0"/>
+        <components:Table x:Name="LotSheetsTable" Margin="0,0,50,0"/>
+        <HamburgerMenu:HamburgerMenu Background="#1c324a" MenuIconColor="#4b688c" SelectionIndicatorColor="#4b688c" MenuItemForeground="#4b688c" HorizontalAlignment="Right" Width="20">
+            <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/addNewItem.png" Text="Add New Item" SelectionCommand="{Binding AddClick}"/>
+            <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/edit.png" Text="Add New Item" SelectionCommand="{Binding EditClick}"/>
+            <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/removeitem.png" Text="Remove Item" SelectionCommand="{Binding RemoveClick}"/>
+        </HamburgerMenu:HamburgerMenu>
+        <Frame x:Name="Frame" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Page>

@@ -17,18 +17,18 @@ namespace MotoSoft.Pages.ActiveListings
         {
             IList<ActiveListingsModel> list = new List<ActiveListingsModel>();
             IEnumerable<ItemType> items = await ServiceProvider.Instance.EbayService.GetSellerListAsync(ListingStatusCodeType.Active);
-            foreach (ItemType x in items)
+            foreach (ItemType item in items)
             {
                 list.Add(new ActiveListingsModel
                 {
-                    ItemId = x.ItemID,
-                    ListingType = x.ListingType.ToString(),
-                    Price = x.StartPrice.Value,
-                    StartTime = x.ScheduleTime.ToString(),
-                    Title = x.Title,
-                    Url = x.VINLink,
-                    CustomLabel = x.SubTitle,
-                    Quantity = x.Quantity
+                    ItemId = item.ItemID,
+                    ListingType = item.ListingType.ToString(),
+                    Price = item.StartPrice.Value,
+                    StartTime = item.ScheduleTime.ToString(),
+                    Title = item.Title,
+                    Url = item.VINLink,
+                    CustomLabel = item.SubTitle,
+                    Quantity = item.Quantity - item.SellingStatus.QuantitySold
                 });
             }
             return list;

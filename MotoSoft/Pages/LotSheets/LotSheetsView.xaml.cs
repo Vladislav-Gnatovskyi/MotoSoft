@@ -11,7 +11,7 @@ namespace MotoSoft.Pages.LotSheets
         public LotSheetsView()
         {
             InitializeComponent();
-            DataContext = lotSheetsViewModel = new LotSheetsViewModel();
+            DataContext = lotSheetsViewModel = new LotSheetsViewModel(this.Frame);
             LotSheetsTable.DataContext = lotSheetsViewModel.TableViewModel;
         }
 

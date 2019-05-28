@@ -119,6 +119,7 @@
     <Compile Include="Frameworks\Ebay\IEbayApiService.cs" />
     <Compile Include="Pages\ActiveListings\ActiveListingsEbayRepository.cs" />
     <Compile Include="Pages\Analytics\AnalyticsRepository.cs" />
+    <Compile Include="Pages\LotSheets\LotSheetsRouter.cs" />
     <Compile Include="Pages\Lot\LotView.xaml.cs">
       <DependentUpon>LotView.xaml</DependentUpon>
     </Compile>
@@ -282,6 +283,9 @@
     <PackageReference Include="eBay.OAuth.Client">
       <Version>1.0.0</Version>
     </PackageReference>
+    <PackageReference Include="HamburgerMenu">
+      <Version>0.1.0</Version>
+    </PackageReference>
     <PackageReference Include="MahApps.Metro">
       <Version>1.6.5</Version>
     </PackageReference>
@@ -344,6 +348,14 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\images\addNewItem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\removeitem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\images\edit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
