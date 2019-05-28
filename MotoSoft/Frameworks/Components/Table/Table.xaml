@@ -6,16 +6,17 @@
              xmlns:local="clr-namespace:MotoSoft.Frameworks.Components.Table"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="MotoSoft.Frameworks.Components.Table.Table"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#1c324a">
     <UserControl.Resources>
 
         <Style TargetType="DataGrid">
-            <Setter Property="Background" Value="#FF021D2A" />
-            <Setter Property="BorderBrush" Value="#537095"/>
+            <Setter Property="Background" Value="#1c324a" />
+            <Setter Property="BorderBrush" Value="#273e5b"/>
             <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="ColumnWidth" Value="SizeToHeader"/>
 
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderThickness" Value="0.1"/>
             <Setter Property="RowStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridRow">
@@ -28,15 +29,14 @@
                 <Setter.Value>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="#1f3650"/>
-                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontSize" Value="14"/>
                         <Setter Property="Height" Value="50"/>
-                        <Setter Property="FontFamily" Value="Colibri"/>
-                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="FontFamily" Value="Roboto Mono"/>
                         <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Foreground" Value="#537095"/>
+                        <Setter Property="Foreground" Value="#4b688c"/>
                         <Setter Property="SeparatorBrush" Value="Red"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="BorderBrush" Value="#FF3399CC"/>
+                        <Setter Property="BorderBrush" Value="#273e5b"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderThickness" Value="3"/>
@@ -49,7 +49,7 @@
             <Setter Property="RowHeaderStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridRowHeader">
-                        <Setter Property="BorderBrush" Value="#FF021D2A"/>
+                        <Setter Property="BorderBrush" Value="#273e5b"/>
                     </Style>
                 </Setter.Value>
             </Setter>
@@ -57,24 +57,25 @@
             <Setter Property="CellStyle">
                 <Setter.Value>
                     <Style  TargetType="DataGridCell">
-                        <Setter Property="BorderBrush" Value="#537095"/>
-                        <Setter Property="FontSize" Value="20"/>
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                        <Setter Property="Padding" Value="3"/>
+                        <Setter Property="BorderBrush" Value="#273e5b"/>
+                        <Setter Property="FontSize" Value="14"/>
                         <Setter Property="Height" Value="30"/>
                         <Setter Property="MinWidth" Value="100"/>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="FontFamily" Value="Colibri"/>
-                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="FontFamily" Value="Roboto Mono"/>
                         <Setter Property="Background" Value="#1c324a"/>
-                        <Setter Property="Foreground" Value="#537095"/>
+                        <Setter Property="Foreground" Value="#4b688c"/>
                         <Style.Triggers>
                             <!-- Highlight selected rows -->
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="BorderBrush" Value="#FF3399CC" />
+                                <Setter Property="Background" Value="#28415f" />
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderThickness" Value="3"/>
+                                <Setter Property="Background" Value="#273e5b"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -86,11 +87,12 @@
     </UserControl.Resources>
 
 
-    <Grid Background="#FF021D2A">
+    <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Calibri" Margin="0,60,0,0" AutoGenerateColumns="False"/>
+        <DataGrid HorizontalScrollBarVisibility="Hidden" x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Roboto Mono" Margin="0,60,0,0" AutoGenerateColumns="False">
+        </DataGrid>
         <Grid MaxHeight="50" VerticalAlignment="Top" Height="60">
             <Button Content="" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="40" VerticalAlignment="Top" Command="{Binding BackPage}" BorderBrush="{x:Null}">
                 <Button.Background>
@@ -112,10 +114,10 @@
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="22*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#FF3399CC" BorderBrush="#FF3399CC" FontFamily="Times New Roman" FontSize="14" Grid.Row="1" Text="{Binding PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="0" MinHeight="27"/>
-                <Label Content="{Binding PageIDFromLabel}" Foreground="#FF3399CC" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Times New Roman" VerticalAlignment="Center" Grid.Column="1" FontSize="14"/>
-                <Label Content="Enter number page:" Grid.Row="1" Margin="0" Foreground="#FF3399CC" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Calibri" FontSize="14" MinHeight="27"/>
-                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Background="#FF1F3650" BorderBrush="#FF2199CC" Foreground="#FF2199CC" FontFamily="Calibri" FontSize="14" Width="80" MinHeight="21"/>
+                <TextBox TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#FF3399CC" BorderBrush="#FF3399CC" FontFamily="Roboto Mono" FontSize="14" Grid.Row="1" Text="{Binding PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="0" MinHeight="27"/>
+                <Label Content="{Binding PageIDFromLabel}" Foreground="#FF3399CC" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Roboto Mono" VerticalAlignment="Center" Grid.Column="1" FontSize="14"/>
+                <Label Content="Enter number page:" Grid.Row="1" Margin="0" Foreground="#FF3399CC" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Roboto Mono" FontSize="14" MinHeight="27"/>
+                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Background="#FF1F3650" BorderBrush="#FF2199CC" Foreground="#FF2199CC" FontFamily="Roboto Mono" FontSize="14" Width="80" MinHeight="21"/>
             </Grid>
         </Grid>
     </Grid>

@@ -7,27 +7,45 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="MotoSoft.MainWindow"
         mc:Ignorable="d"
         Title="MotoSoft" MinHeight="546" MinWidth="1000" d:DesignHeight="531" Visibility="Visible" Icon="/MotoSoft;component/Assets/images/logo.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" Width="1000" Height="550">
-
+    <Window.Resources>
+        <Style x:Key="menuButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="#4b688c"/>
+            <Style.Triggers>
+                <!-- Highlight selected rows -->
+                <Trigger Property="IsFocused"  Value="True">
+                    <Setter Property="Background" Value="#1f3650" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 
     <Grid Background="#FFE8EAEB" MinWidth="500">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Canvas x:Name="NavPanel" Background="#FF021D2A" MinWidth="{DynamicResource {x:Static SystemParameters.MinimizedWindowWidthKey}}" HorizontalAlignment="Left" MinHeight="450" Width="240">
+        <Canvas x:Name="NavPanel" Background="#28415f" MinWidth="{DynamicResource {x:Static SystemParameters.MinimizedWindowWidthKey}}" HorizontalAlignment="Left" MinHeight="450" Width="240">
             <Image x:Name="Logo" Height="100" Canvas.Left="70" Canvas.Top="14" Width="100">
                 <Image.Source>
                     <ImageSource>Assets/images/logo.png</ImageSource>
                 </Image.Source>
             </Image>
             <Label x:Name="Label" Content="RECYCLE | REBUILD" Canvas.Left="50" Canvas.Top="106" Foreground="#FF3399CC" FontSize="15" FontWeight="DemiBold"/>
-            <!--<Button x:Name="Home" Command="{Binding BMenuHome_Click}" Content="Home" Width="240" Canvas.Top="160" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>-->
-            <Button x:Name="Analytics" Command="{Binding BMenuAnalytics_Click}" Content="Analytics" Width="240" Canvas.Top="200" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Settings" Command="{Binding BMenuSettings_Click}" Content="Settings" Width="240" Canvas.Top="360" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="LotSheet" Command="{Binding BMenuLotSheets_Click}" Content="Lot Sheets" Width="240" Canvas.Top="240" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="ActiveLotSheets" Command="{Binding BMenuActiveListings_Click}" Content="Active Listings" Width="240" Canvas.Top="280" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="SoldLotSheets" Command="{Binding BMenuSoldListings_Click}" Content="Sold Listings" Width="240" Canvas.Top="320" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
-            <Button x:Name="Exit" Command="{Binding BExit_Click}" Content="Exit" Width="240" Canvas.Top="400" Height="30" FontFamily="Times New Roman" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>
+            <!--<Button x:Name="Home" Command="{Binding BMenuHome_Click}" Content="Home" Width="240" Canvas.Top="160" Height="30" FontFamily="Calibri" FontSize="20" Background="#FF021D2A" Foreground="#FFE8EAEB" BorderBrush="{x:Null}" OpacityMask="#FF9E2929"/>-->
+            <Button Style="{StaticResource menuButtonStyle}" x:Name="Analytics" Command="{Binding BMenuAnalytics_Click}" Content="ANALYTICS" Width="240" Canvas.Top="200"/>
+            <Button Style="{StaticResource menuButtonStyle}" x:Name="Settings" Command="{Binding BMenuSettings_Click}" Content="SETTINGS" Width="240" Canvas.Top="360"/>
+            <Button Style="{StaticResource menuButtonStyle}" x:Name="LotSheet" Command="{Binding BMenuLotSheets_Click}" Content="LOT SHEETS" Width="240" Canvas.Top="240" />
+            <Button Style="{StaticResource menuButtonStyle}" x:Name="ActiveLotSheets" Command="{Binding BMenuActiveListings_Click}" Content="ACTIVE LISTINGS" Width="240" Canvas.Top="280"/>
+            <Button Style="{StaticResource menuButtonStyle}" x:Name="SoldLotSheets" Command="{Binding BMenuSoldListings_Click}" Content="SOLD LISTINGS" Width="240" Canvas.Top="320"/>
+            <Button Style="{StaticResource menuButtonStyle}" x:Name="Exit" Command="{Binding BExit_Click}" Content="EXIT" Width="240" Canvas.Top="400"/>
             <Label Content="{Binding User, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Canvas.Top="132" Width="240" Height="25" Foreground="#FF3399CC" HorizontalContentAlignment="Center"/>
         </Canvas>
         <Grid Canvas.Left="0" Width="240" HorizontalAlignment="Left">
@@ -41,8 +59,8 @@
                NavigationUIVisibility="Hidden"
                Opacity="1"
                Content="{Binding CurrentPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Grid Height="50" VerticalAlignment="Top" Background="#FF021D2A" Margin="240,0,0,0">
-            <Label Content="{Binding CurrentPage.Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Times New Roman"/>
+        <Grid Height="50" VerticalAlignment="Top" Background="#28415f" Margin="240,0,0,0">
+            <Label Content="{Binding CurrentPage.Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#4b688c" FontSize="20" FontFamily="Calibri"/>
         </Grid>
     </Grid>
 </Window>

@@ -13,5 +13,7 @@ namespace MotoSoft
     /// </summary>
     public partial class App : Application
     {
+        // testuser_gnatovskyi
+        // YfcnzDkfl34426!
     }
 }

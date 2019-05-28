@@ -1,5 +1,7 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
+using System.Windows.Input;
 using MahApps.Metro.Controls;
 
 namespace MotoSoft.Frameworks.Components.Table
@@ -35,6 +37,15 @@ namespace MotoSoft.Frameworks.Components.Table
                         Header = column.Title
                     });
                 }
+            }
+        }
+        
+        private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGridCell cell = sender as DataGridCell;
+            if(cell != null)
+            {
+                cell.Column.Width = (cell.Content as TextBlock).ActualWidth;
             }
         }
     }

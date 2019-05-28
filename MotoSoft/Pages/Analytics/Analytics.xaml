@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:MotoSoft.Pages.Analytics"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Analytics">
+      Foreground="#4b688c"
+      Title="ANALYTICS">
 
     <Grid Margin="0,0,0,0"/>
 </Page>

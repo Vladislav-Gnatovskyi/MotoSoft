@@ -22,7 +22,7 @@ namespace MotoSoft.Frameworks.Authorize
                 return _instance; 
             }
         }
-        public OAuthEnvironment Environment { get => OAuthEnvironment.PRODUCTION; }
+        public OAuthEnvironment Environment { get => OAuthEnvironment.SANDBOX; }
 
         private readonly string pathConfig = "ebay-config.yaml";
         private readonly string state = "State";
