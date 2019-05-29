@@ -8,10 +8,10 @@ namespace MotoSoft.Pages.Authorize
     /// </summary>
     public partial class Authorize : Page
     {
-        public Authorize()
+        public Authorize(string url = null)
         {
             InitializeComponent();
-            DataContext = new AuthorizeViewModel();
+            DataContext = new AuthorizeViewModel(url);
         }
     }
 }

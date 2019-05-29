@@ -27,6 +27,14 @@ namespace MotoSoft.ViewModels
                 return new RelayCommand(x => Router.Instance.GoToAnalytics());
             }
         }
+
+        public ICommand BMenuHome_Click
+        {
+            get
+            {
+                return new RelayCommand(x => Router.Instance.GoToBrouser());
+            }
+        }
         public ICommand BMenuSettings_Click
         {
             get

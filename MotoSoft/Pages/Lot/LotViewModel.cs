@@ -3,7 +3,7 @@ using MotoSoft.Pages.LotSheets;
 using MotoSoft.Frameworks.Command;
 using System.Windows.Input;
 using MotoSoft.Frameworks;
-
+using System.Windows;
 
 namespace MotoSoft.Pages.Lot
 {
@@ -16,7 +16,12 @@ namespace MotoSoft.Pages.Lot
         {
             get => new RelayCommand(x =>
             {
-                ServiceProvider.Instance.LotSheetRepository.AddNewItem(Product);
+                if (!ServiceProvider.Instance.LotSheetRepository.AddNewItem(Product))
+                {
+                    MessageBox.Show("Product already exists or your not corrected fill fields!");
+                    return;
+                }
+                MessageBox.Show("Product successfully created!");
                 LotSheetsRouter.Instance.CloseMenu();
             });
         }

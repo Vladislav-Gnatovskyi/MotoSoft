@@ -11,7 +11,7 @@ namespace MotoSoft.Pages.LotSheets
             get => _lot;
             set
             {
-                _lot = value > 10000 ? value : 10000 + value;
+                _lot = value >= 10000 ? value : 10000 + value;
             }
         }
         public string Type { get; set; }
@@ -29,7 +29,7 @@ namespace MotoSoft.Pages.LotSheets
         public double eBayFees { get; set; }
         public double PayPalFees { get; set; }
         public double ShippingFees { get; set; }
-        public double TotalCost { get; set; }
+        public double TotalCost { get => Cost + eBayFees + PayPalFees + ShippingFees;  }
         public double TotalSales { get; set; }
         public double NetProfit { get => TotalSales - TotalCost; }
         public double ActiveUnSold { get; set; }

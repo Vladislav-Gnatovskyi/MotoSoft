@@ -28,6 +28,7 @@ namespace MotoSoft.Pages.LotSheets
 
         public bool AddNewItem(LotSheetsModel item)
         {
+            if (item.Lot.Equals(20000) || item.Type == null || item.Make == null || item.Model == null || item.Notes == null || item.Title == null || item.Bos == null || item.Cost.Equals(0) || item.Year.Equals(0)) return false;
             IList<LotSheetsModel> lotSheets = GetSheet();
             if (lotSheets.Where(x => x.Lot.Equals(item.Lot)).FirstOrDefault() != null) return false;
             lotSheets.Add(item);

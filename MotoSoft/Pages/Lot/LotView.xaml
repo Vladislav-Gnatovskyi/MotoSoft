@@ -5,8 +5,45 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MotoSoft.Pages.Lot"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="300"
-      Title="Add New Lot" Background="#1c324a">
+      d:DesignHeight="400"
+      Title="Add New Lot" Background="#1c324a" MaxWidth="200" Width="200" HorizontalAlignment="Left">
+
+    <Page.Resources>
+
+        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource" 
+                                 Background="Transparent" 
+                                 Foreground="#FF3399CC"
+                                 BorderBrush="#FF3399CC"
+                                 FontFamily="Roboto Mono"
+                                 Panel.ZIndex="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Text="{TemplateBinding Tag}" HorizontalContentAlignment="Center" FontFamily="Roboto Mono" VerticalContentAlignment="Center" Background="Transparent">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="#FF4B688C"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
 
     <Grid>
 
@@ -24,20 +61,32 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Label Content="Product Menu" Margin="0" FontSize="14" FontFamily="Roboto Mono" Grid.ColumnSpan="1" Foreground="#FF4B688C" HorizontalContentAlignment="Center" Height="42" VerticalContentAlignment="Center" Background="#FF28415F"/>
-            <Grid Margin="0" Grid.Row="8">
+            <Grid Margin="0" Grid.Row="11">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Save" Command="{Binding SaveProduct}" VerticalAlignment="Center" BorderBrush="#FF3399CC" Foreground="#FF3399CC" Background="Transparent" HorizontalAlignment="Center" Width="100" FontFamily="Calibri" FontSize="14"/>
-                <Button Content="Cancel" Command="{Binding Cancel}" Margin="0" VerticalAlignment="Center" BorderBrush="#FF3399CC" Foreground="#FF3399CC" Background="Transparent" HorizontalAlignment="Center" Width="100" FontFamily="Calibri" FontSize="14" Grid.Column="1"/>
+                <Button Content="Save" Command="{Binding SaveProduct}" VerticalAlignment="Center" BorderBrush="#FF3399CC" Foreground="#FF3399CC" Background="Transparent" HorizontalAlignment="Center" Width="100" FontFamily="Roboto Mono" FontSize="14"/>
+                <Button Content="Cancel" Command="{Binding Cancel}" Margin="0" VerticalAlignment="Center" BorderBrush="#FF3399CC" Foreground="#FF3399CC" Background="Transparent" HorizontalAlignment="Center" Width="100" FontFamily="Roboto Mono" FontSize="14" Grid.Column="1"/>
             </Grid>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Lot Number ID" HorizontalAlignment="Center" Text="{Binding Product.Lot}" Height="23" Margin="0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Make" HorizontalAlignment="Center"  Text="{Binding Product.Make}" Height="24" Margin="0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Type" HorizontalAlignment="Center" Text="{Binding Product.Type}" Height="24" Margin="0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Model" HorizontalAlignment="Center" Text="{Binding Product.Model}" Height="24" Margin="0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Notes" HorizontalAlignment="Center" Text="{Binding Product.Notes}" Height="24" Margin="0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="150"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Title" HorizontalAlignment="Center" Text="{Binding Product.Title}" Height="24" Margin="0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Bill Of Sale" HorizontalAlignment="Center" Text="{Binding Product.Bos}" Height="24" Margin="0" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Cost" HorizontalAlignment="Center" Text="{Binding Product.Cost}" Height="24" Margin="0" Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Year" HorizontalAlignment="Center" Text="{Binding Product.Year}" Height="24" Margin="0" Grid.Row="9" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Mileage" HorizontalAlignment="Center" Text="{Binding Product.Mileage}" Height="24" Margin="0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
         </Grid>
-
     </Grid>
 </Page>

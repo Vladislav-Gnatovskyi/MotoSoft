@@ -24,6 +24,17 @@ namespace MotoSoft
         private SoldListingsView _soldListings;
         private LotView _lotCreate;
         private SettingsView _settings;
+        private Authorize _brouser;
+
+        private Authorize Brouser
+        {
+            get
+            {
+                if (_brouser == null)
+                    _brouser = new Authorize("https://www.ebay.com/");
+                return _brouser;
+            }
+        }
 
         private LotSheetsView LotSheets
         {
@@ -105,6 +116,11 @@ namespace MotoSoft
             GotToDefault();
         }
        
+        public void GoToBrouser()
+        {
+            SetPage(Brouser);
+        }
+
         public void GoToAnalytics()
         {
             SetPage(Analytics);
