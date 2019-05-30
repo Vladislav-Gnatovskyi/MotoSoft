@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MotoSoft.Pages.SoldListings
 {
@@ -26,6 +22,5 @@ namespace MotoSoft.Pages.SoldListings
         public double GAIN { get; set; }
         public double SalesTax { get; set; }
         public double ItemeBayFees { get; set; }
-
     }
 }

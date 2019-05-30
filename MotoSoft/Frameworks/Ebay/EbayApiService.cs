@@ -85,7 +85,7 @@ namespace MotoSoft.Frameworks.Ebay
                 oPagination.PageNumber = 1;
                 oPagination.PageNumberSpecified = true;
                 oGetSellerListCall.Pagination = oPagination;
-                oGetSellerListCall.EndTimeFilter = new TimeFilter(DateTime.Now.AddMonths(-1), DateTime.Now.AddMonths(2));
+                oGetSellerListCall.EndTimeFilter = new TimeFilter(DateTime.Now.AddMonths(-2), DateTime.Now.AddMonths(1));
                 oGetSellerListCall.Sort = 2;
                 switch (status)
                 {
@@ -105,13 +105,13 @@ namespace MotoSoft.Frameworks.Ebay
             return await Task.Run(() => GetSellerList(status));
         }
 
-        public async Task<OrderTypeCollection> GetOrdersCallAsync(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
+        public async Task<OrderTypeCollection> GetOrdersCallAsync()
         {
-            OrderTypeCollection x = await Task.Run(() => GetOrdersCall(timeFilter, tradingRole, orderStatus));
+            OrderTypeCollection x = await Task.Run(() => GetOrdersCall());
             return x;
         }
 
-        public OrderTypeCollection GetOrdersCall(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
+        public OrderTypeCollection GetOrdersCall()
         {
 
             if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
@@ -120,7 +120,7 @@ namespace MotoSoft.Frameworks.Ebay
                 call.EnableCompression = true;
                 call.DetailLevelList = new DetailLevelCodeTypeCollection();
                 call.DetailLevelList.Add(DetailLevelCodeType.ReturnAll);
-                return call.GetOrders(timeFilter, tradingRole, orderStatus);
+                return call.GetOrders(new TimeFilter(DateTime.Now.AddMonths(-1), DateTime.Now.AddMonths(2)), TradingRoleCodeType.Seller, OrderStatusCodeType.All);
             }
             return new OrderTypeCollection();
         }

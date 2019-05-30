@@ -18,13 +18,12 @@ namespace MotoSoft.Frameworks.Ebay
         {
             throw new NotImplementedException();
         }
-
-        public OrderTypeCollection GetOrdersCall(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
+        public OrderTypeCollection GetOrdersCall()
         {
             throw new NotImplementedException();
         }
 
-        public Task<OrderTypeCollection> GetOrdersCallAsync(TimeFilter timeFilter, TradingRoleCodeType tradingRole, OrderStatusCodeType orderStatus)
+        public Task<OrderTypeCollection> GetOrdersCallAsync()
         {
             throw new NotImplementedException();
         }

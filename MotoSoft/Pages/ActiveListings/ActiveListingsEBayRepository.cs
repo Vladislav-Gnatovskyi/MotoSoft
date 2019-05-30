@@ -26,7 +26,7 @@ namespace MotoSoft.Pages.ActiveListings
                     Price = item.StartPrice.Value,
                     StartTime = item.ScheduleTime.ToString(),
                     Title = item.Title,
-                    Url = item.VINLink,
+                    Url = item.Storefront?.StoreURL,
                     CustomLabel = item.SubTitle,
                     Quantity = item.Quantity - item.SellingStatus.QuantitySold
                 });

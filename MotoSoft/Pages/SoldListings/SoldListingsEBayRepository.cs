@@ -26,10 +26,16 @@ namespace MotoSoft.Pages.SoldListings
                     SalePrice = item.SellingStatus.CurrentPrice.Value,
                     CustomLabel = item.SubTitle,
                     Title = item.Title,
-                    Date = item.ScheduleTime,
+                    Date = item.ScheduleTime.Date,
                     CostOfItem = item.StartPrice.Value,
-                    ProductName = item.ProductListingDetails?.ProductDetailsURL
-                });
+                    COST = item.SellingStatus.QuantitySold * item.StartPrice.Value,
+                    eBayFees = item.SellingStatus.FinalValueFee != null ? item.SellingStatus.FinalValueFee.Value : 0.0,
+                    PAYPALFees = item.ShippingDetails != null 
+                    ? item.ShippingDetails.SalesTax != null 
+                    ? item.ShippingDetails.SalesTax.SalesTaxAmount != null 
+                    ? item.ShippingDetails.SalesTax.SalesTaxAmount.Value : 0.0 : 0.0 : 0.0,
+                    ProductName = item.ProductListingDetails?.DetailsURL
+                }); ;
             }
             return list;
         }
