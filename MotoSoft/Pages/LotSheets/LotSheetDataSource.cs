@@ -60,18 +60,18 @@ namespace MotoSoft.Pages.LotSheets
                     Field = "Notes",
                     Type = EColumnType.Text,
                 },
-                new Column
-                {
-                    Title = "Title",
-                    Field = "Title",
-                    Type = EColumnType.Text,
-                },
-                new Column
-                {
-                    Title = "Bos",
-                    Field = "Bos",
-                    Type = EColumnType.Text,
-                },
+                //new Column
+                //{
+                //    Title = "Title",
+                //    Field = "Title",
+                //    Type = EColumnType.Text,
+                //},
+                //new Column
+                //{
+                //    Title = "Bos",
+                //    Field = "Bos",
+                //    Type = EColumnType.Text,
+                //},
                 new Column
                 {
                     Title = "Cost",

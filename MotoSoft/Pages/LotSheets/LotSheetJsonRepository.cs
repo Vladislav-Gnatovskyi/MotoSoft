@@ -1,5 +1,6 @@
 ﻿using MotoSoft.Frameworks.Pages;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,12 +29,28 @@ namespace MotoSoft.Pages.LotSheets
 
         public bool AddNewItem(LotSheetsModel item)
         {
-            if (item.Lot.Equals(20000) || item.Type == null || item.Make == null || item.Model == null || item.Notes == null || item.Title == null || item.Bos == null || item.Cost.Equals(0) || item.Year.Equals(0)) return false;
+            if (item.Type == null || item.Make == null || item.Model == null || item.Notes == null || item.Cost.Equals(0) || item.Year.Equals(0)) return false;
             IList<LotSheetsModel> lotSheets = GetSheet();
             if (lotSheets.Where(x => x.Lot.Equals(item.Lot)).FirstOrDefault() != null) return false;
+            SaveImages(ref item);
             lotSheets.Add(item);
             Save(lotSheets);
             return true;
+        }
+
+        public bool SaveImages(ref LotSheetsModel item)
+        {
+            if (!Directory.Exists(item.Lot.ToString()))
+            {
+                string Path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/MotoSoft/{item.Lot}/";
+                Directory.CreateDirectory($"{Path}");
+                File.Copy(item.Title, $"{Path}/Title.png");
+                item.Title = $"{Path}/Title.png";
+                File.Copy(item.Bos, $"{Path}/BillOfSale.png");
+                item.Bos = $"{Path}/BillOfSale.png";
+                return true;
+            }
+            return false;
         }
 
         public void Save(IList<LotSheetsModel> sheet)
