@@ -12,6 +12,8 @@
 
         <Style TargetType="DataGrid">
             <Setter Property="Background" Value="#1c324a" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="BorderBrush" Value="#273e5b"/>
             <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="ColumnWidth" Value="SizeToHeader"/>
@@ -93,7 +95,7 @@
         </Grid.RowDefinitions>
         <DataGrid HorizontalScrollBarVisibility="Hidden" x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Roboto Mono" Margin="0,60,0,0" AutoGenerateColumns="False">
         </DataGrid>
-        <Grid MaxHeight="50" VerticalAlignment="Top" Height="60">
+        <Grid MaxHeight="60" VerticalAlignment="Top" Height="60" Background="#1f3650">
             <Button Content="" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="40" VerticalAlignment="Center" Command="{Binding BackPage}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Left.png"/>
@@ -104,21 +106,21 @@
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Right.png"/>
                 </Button.Background>
             </Button>
-            <Grid HorizontalAlignment="Center" Margin="80,0,100,-10" Width="560" MinWidth="55" MinHeight="60">
+            <Grid HorizontalAlignment="Center" Margin="0" Width="560" MinWidth="55" MinHeight="60">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0*"/>
                     <RowDefinition/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="69*"/>
                     <ColumnDefinition Width="40*"/>
                     <ColumnDefinition Width="59*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#FF3399CC" BorderBrush="#FF3399CC" BorderThickness="1" FontFamily="Roboto Mono" FontSize="14" Grid.Row="2" Text="{Binding PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" MinHeight="25" Margin="0,5" Height="25"/>
-                <Label Content="{Binding PageIDFromLabel}" Foreground="#FF3399CC" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Roboto Mono" Grid.Column="1" FontSize="14" Grid.RowSpan="2" MinHeight="25"/>
-                <Label Content="Enter number page:" Grid.Row="2" Margin="0,0,0,5" Foreground="#FF3399CC" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Roboto Mono" FontSize="14" MinHeight="27" Padding="0,5"/>
-                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="0,5" Grid.Row="2" VerticalAlignment="Center" Background="#FF1F3650" BorderBrush="#FF2199CC" Foreground="#FF2199CC" FontFamily="Roboto Mono" FontSize="14" Width="80" MinHeight="21" Height="25"/>
+                <TextBox TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#4b688c" BorderBrush="#4b688c" BorderThickness="1" FontFamily="Roboto Mono" FontSize="14" Grid.Row="2" Text="{Binding PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" MinHeight="25" Margin="0"/>
+                <Label Content="{Binding PageIDFromLabel}" Foreground="#4b688c" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Roboto Mono" Grid.Column="1" FontSize="14" Grid.RowSpan="2"/>
+                <Label Content="Enter number page:" Grid.Row="2" Margin="0,0,0,3" Foreground="#4b688c" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Roboto Mono" FontSize="14" MinHeight="27" Padding="0,5"/>
+                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="59,2,58,2" Grid.Row="2" VerticalAlignment="Center" Background="#FF1F3650" BorderBrush="#4b688c" Foreground="#4b688c" FontFamily="Roboto Mono" FontSize="14" Width="80" MinHeight="21" Height="26"/>
             </Grid>
         </Grid>
     </Grid>
