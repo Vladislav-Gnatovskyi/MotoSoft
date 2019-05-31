@@ -37,5 +37,10 @@ namespace MotoSoft.Frameworks.Ebay
         {
             throw new NotImplementedException();
         }
+
+        public bool GetTokenStatusCall()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

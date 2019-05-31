@@ -13,5 +13,6 @@ namespace MotoSoft.Frameworks.Ebay
         Task<IEnumerable<ItemType>> GetSellerListAsync(ListingStatusCodeType status);
         Task<OrderTypeCollection> GetOrdersCallAsync();
         OrderTypeCollection GetOrdersCall();
+        bool GetTokenStatusCall();
     }
 }

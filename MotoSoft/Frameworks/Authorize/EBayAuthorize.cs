@@ -46,12 +46,11 @@ namespace MotoSoft.Frameworks.Authorize
 
         private EBayAuthorize()
         {
-                CredentialUtil.Load(pathConfig);
-                SettingsRepository = ServiceProvider.Instance.SettingsRepository;
-                Token = ServiceProvider.Instance.CurrentContext.Settings.Token;
-                GetAccesToken();
+            CredentialUtil.Load(pathConfig);
+            SettingsRepository = ServiceProvider.Instance.SettingsRepository;
+            Token = ServiceProvider.Instance.CurrentContext.Settings.Token;
         }
-
+        
         public string AuthorizationUrl
         {
             get

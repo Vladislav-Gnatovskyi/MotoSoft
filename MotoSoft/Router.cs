@@ -8,6 +8,7 @@ using MotoSoft.Pages.Settings;
 using MotoSoft.Frameworks.Authorize;
 using MotoSoft.Pages.Authorize;
 using MotoSoft.Pages.Lot;
+using MotoSoft.Frameworks;
 
 namespace MotoSoft
 {
@@ -113,6 +114,7 @@ namespace MotoSoft
         public void InitRouter(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
+            ServiceProvider.Instance.EbayService.GetTokenStatusCall();
             GotToDefault();
         }
        
@@ -158,7 +160,7 @@ namespace MotoSoft
         {
             if (EBayAuthorize.Instance.IsAuthorized)
             {
-                mainViewModel.CurrentPage = page;
+                mainViewModel.CurrentPage = page;                
             }
             else
             {

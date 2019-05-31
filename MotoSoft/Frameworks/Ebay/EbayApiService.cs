@@ -7,6 +7,7 @@ using eBay.ApiClient.Auth.OAuth2.Model;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MotoSoft.Frameworks.Authorize;
+using System.Windows;
 
 namespace MotoSoft.Frameworks.Ebay
 {
@@ -41,19 +42,16 @@ namespace MotoSoft.Frameworks.Ebay
             }
         }
 
-        private bool GetTokenStatusCall
+        public bool GetTokenStatusCall()
         {
-            get
+            try
             {
-                try
-                {
-                    new GetTokenStatusCall(GetApiContext);
-                    return true;
-                }
-                catch
-                {
-                    return EBayAuthorize.Instance.GetAccesToken();
-                }
+                new GetUserCall(GetApiContext).GetUser();
+                return true;
+            }
+            catch
+            {
+                return EBayAuthorize.Instance.GetAccesToken();
             }
         }
 
@@ -61,7 +59,7 @@ namespace MotoSoft.Frameworks.Ebay
         {
             get
             {
-                if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
+                if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall())
                 {
                     GetUserCall call = new GetUserCall(GetApiContext);
                     return call.GetUser();
@@ -72,7 +70,7 @@ namespace MotoSoft.Frameworks.Ebay
 
         public IEnumerable<ItemType> GetSellerList(ListingStatusCodeType status)
         {
-            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
+            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall())
             {
                 GetSellerListCall oGetSellerListCall = new GetSellerListCall(GetApiContext);
                 oGetSellerListCall.Version = GetApiContext.Version;
@@ -114,7 +112,7 @@ namespace MotoSoft.Frameworks.Ebay
         public OrderTypeCollection GetOrdersCall()
         {
 
-            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
+            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall())
             {
                 GetOrdersCall call = new GetOrdersCall(GetApiContext);
                 call.EnableCompression = true;
@@ -127,7 +125,7 @@ namespace MotoSoft.Frameworks.Ebay
 
         public ItemType GetItem(string ItemID)
         {
-            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall)
+            if (EBayAuthorize.Instance.IsAuthorized && GetTokenStatusCall())
             {
                 GetItemCall call = new GetItemCall(GetApiContext);
                 return call.GetItem(ItemID);
