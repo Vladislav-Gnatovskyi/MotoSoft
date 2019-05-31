@@ -44,8 +44,8 @@
             <!--<Button Style="{StaticResource menuButtonStyle}" x:Name="LotSheet" Command="{Binding BMenuLotSheets_Click}" Content="LOT SHEETS" Width="240" Canvas.Top="240" />-->
             <Button Style="{StaticResource menuButtonStyle}" x:Name="ActiveLotSheets" Command="{Binding BMenuActiveListings_Click}" Content="ACTIVE LISTINGS" Width="240" Canvas.Top="200"/>
             <Button Style="{StaticResource menuButtonStyle}" x:Name="SoldLotSheets" Command="{Binding BMenuSoldListings_Click}" Content="SOLD LISTINGS" Width="240" Canvas.Top="240"/>
-            <Button Style="{StaticResource menuButtonStyle}" x:Name="Settings" Command="{Binding BMenuSettings_Click}" Content="SETTINGS" Width="240" Canvas.Top="280"/>
-            <Button Style="{StaticResource menuButtonStyle}" x:Name="Exit" Command="{Binding BExit_Click}" Content="EXIT" Width="240" Canvas.Top="320"/>
+            <!--<Button Style="{StaticResource menuButtonStyle}" x:Name="Settings" Command="{Binding BMenuSettings_Click}" Content="SETTINGS" Width="240" Canvas.Top="280"/>-->
+            <Button Style="{StaticResource menuButtonStyle}" x:Name="Exit" Command="{Binding BExit_Click}" Content="EXIT" Width="240" Canvas.Top="280"/>
             <Label Content="{Binding User, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Canvas.Top="132" Width="240" Height="25" Foreground="#FF3399CC" HorizontalContentAlignment="Center"/>
         </Canvas>
         <Grid Canvas.Left="0" Width="240" HorizontalAlignment="Left">
