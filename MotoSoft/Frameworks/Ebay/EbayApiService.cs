@@ -7,7 +7,6 @@ using eBay.ApiClient.Auth.OAuth2.Model;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MotoSoft.Frameworks.Authorize;
-using System.Windows;
 
 namespace MotoSoft.Frameworks.Ebay
 {

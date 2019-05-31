@@ -33,7 +33,7 @@ namespace MotoSoft.Pages.ActiveListings
                     Price = item.StartPrice.Value,
                     StartTime = item.ScheduleTime.ToString(),
                     Title = item.Title,
-                    Url = item.Storefront?.StoreURL,
+                    Url = item.ListingDetails.ViewItemURL,
                     CustomLabel = item.SubTitle,
                     Quantity = item.Quantity - item.SellingStatus.QuantitySold
                 });

@@ -108,7 +108,7 @@ namespace MotoSoft
         }
         public void GotToDefault()
         {
-            GoToLotSheets();
+            GoToActiveListings();
         }
 
         public void InitRouter(MainViewModel mainViewModel)
