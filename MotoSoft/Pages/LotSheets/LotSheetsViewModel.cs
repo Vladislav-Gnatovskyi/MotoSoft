@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using DevExpress.Mvvm;
+using MotoSoft.Frameworks;
 using MotoSoft.Frameworks.Command;
 using MotoSoft.Frameworks.Components.Table;
-using MotoSoft.Pages.Lot;
 
 namespace MotoSoft.Pages.LotSheets
 {
@@ -16,7 +17,6 @@ namespace MotoSoft.Pages.LotSheets
         {
             LotSheetsRouter.Instance.InitRouter(this);
             MenuEdit = frame;
-            MenuEdit.Content = new LotView();
             TableViewModel = new TableViewModel(new LotSheetDataSource());
         }
 
@@ -27,17 +27,30 @@ namespace MotoSoft.Pages.LotSheets
 
         public ICommand AddClick
         {
-            get => new RelayCommand(x => { LotSheetsRouter.Instance.OpenMenu(); });
+            get => new RelayCommand(x => { LotSheetsRouter.Instance.OpenMenuAdd(); });
         }
-
         public ICommand EditClick
         {
-            get => new RelayCommand(x => { LotSheetsRouter.Instance.OpenMenu(); });
+            get => new RelayCommand(x => 
+            {
+                LotSheetsRouter.Instance.OpenMenuEdit();
+            });
         }
 
         public ICommand RemoveClick
         {
-            get => new RelayCommand(x => {  });
+            get => new RelayCommand(x => 
+            {
+                LotSheetsModel item = (LotSheetsModel)TableViewModel.SelectedItem;
+                if (ServiceProvider.Instance.LotSheetRepository.Remove(item))
+                {
+                    MessageBox.Show("Your succesfulle delete product, you need press button 'Refresh'");
+                }
+                else
+                {
+                    MessageBox.Show("Error product isn't exists!");
+                }
+            });
         }
     }
 }

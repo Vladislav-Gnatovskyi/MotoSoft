@@ -1,4 +1,6 @@
-﻿namespace MotoSoft.Pages.LotSheets
+﻿using MotoSoft.Pages.Lot;
+
+namespace MotoSoft.Pages.LotSheets
 {
     class LotSheetsRouter
     {
@@ -9,12 +11,21 @@
         {
             this.lotSheetsViewModel = lotSheetsViewModel;
         }
-        
-        public void OpenMenu()
+
+        public void OpenMenuEdit()
         {
+            LotSheetsModel item = (LotSheetsModel)lotSheetsViewModel.TableViewModel.SelectedItem;
+            lotSheetsViewModel.MenuEdit.Content = new LotView(item);
             lotSheetsViewModel.MenuEdit.Width = 300;
         }
-         public void CloseMenu()
+
+        public void OpenMenuAdd()
+        {            
+            lotSheetsViewModel.MenuEdit.Content = new LotView(null);
+            lotSheetsViewModel.MenuEdit.Width = 300;
+        }
+
+        public void CloseMenu()
         {
             lotSheetsViewModel.MenuEdit.Width = 0;
         }

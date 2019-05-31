@@ -93,7 +93,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid HorizontalScrollBarVisibility="Hidden" x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Roboto Mono" Margin="0,60,0,0" AutoGenerateColumns="False">
+        <DataGrid HorizontalScrollBarVisibility="Hidden" x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding SelectedItem}" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Roboto Mono" Margin="0,60,0,0" AutoGenerateColumns="False">
         </DataGrid>
         <Grid MaxHeight="60" VerticalAlignment="Top" Height="60" Background="#1f3650">
             <Button Content="" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="40" VerticalAlignment="Center" Command="{Binding BackPage}" BorderBrush="{x:Null}">

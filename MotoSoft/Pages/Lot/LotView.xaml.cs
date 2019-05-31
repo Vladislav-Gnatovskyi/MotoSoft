@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using MotoSoft.Pages.LotSheets;
+using System.Windows.Controls;
 
 
 namespace MotoSoft.Pages.Lot
@@ -8,10 +9,10 @@ namespace MotoSoft.Pages.Lot
     /// </summary>
     public partial class LotView : Page
     {
-        public LotView()
+        public LotView(LotSheetsModel item)
         {
             InitializeComponent();
-            DataContext = new LotViewModel();
+            DataContext = new LotViewModel(item, item?.Lot.ToString());
         }
     }
 }

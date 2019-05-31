@@ -67,7 +67,7 @@ namespace MotoSoft
             {
                 if(_lotCreate == null)
                 {
-                    _lotCreate = new LotView();
+                    _lotCreate = new LotView(null);
                 }
                 return _lotCreate;
             }

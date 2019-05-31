@@ -15,7 +15,7 @@
         <components:Table x:Name="LotSheetsTable" Margin="0,0,50,0"/>
         <HamburgerMenu:HamburgerMenu Background="#1c324a" MenuIconColor="#4b688c" SelectionIndicatorColor="#4b688c" MenuItemForeground="#4b688c" HorizontalAlignment="Right" Width="20">
             <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/addNewItem.png" Text="Add New Item" SelectionCommand="{Binding AddClick}"/>
-            <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/edit.png" Text="Add New Item" SelectionCommand="{Binding EditClick}"/>
+            <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/edit.png" Text="Edit Item" SelectionCommand="{Binding EditClick}"/>
             <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/removeitem.png" Text="Remove Item" SelectionCommand="{Binding RemoveClick}"/>
         </HamburgerMenu:HamburgerMenu>
         <Frame x:Name="Frame" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>

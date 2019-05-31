@@ -15,6 +15,7 @@ namespace MotoSoft.Frameworks.Components.Table
         private IDataSource source { get; set; }
         public IList Items { get; set; }
         public IList<Column> Columns => source.Columns;
+        public object SelectedItem { get; set; }
 
         public TableViewModel(IDataSource source)
         {

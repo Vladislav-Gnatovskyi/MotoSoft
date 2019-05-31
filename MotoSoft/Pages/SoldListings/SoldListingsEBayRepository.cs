@@ -2,6 +2,7 @@
 using MotoSoft.Frameworks;
 using MotoSoft.Frameworks.Pages;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,7 +14,12 @@ namespace MotoSoft.Pages.SoldListings
 
         public bool AddNewItem(SoldListingsModel item)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public bool EditItem(SoldListingsModel NewItem, string OldItem)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IList<SoldListingsModel>> GetSheetAsync()
@@ -41,6 +47,16 @@ namespace MotoSoft.Pages.SoldListings
                 }); ;
             }
             return list;
+        }
+
+        public bool Remove(SoldListingsModel item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save(IList sheet)
+        {
+            throw new NotImplementedException();
         }
     }
 }

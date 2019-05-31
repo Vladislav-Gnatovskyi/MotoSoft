@@ -10,7 +10,8 @@ namespace MotoSoft.Pages.Lot
     class LotViewModel:ViewModelBase
     {
         public LotSheetsModel Product { get; set; }
-        public LotViewModel() { Product = new LotSheetsModel(); }
+        private string _OldProduct;
+        public LotViewModel(LotSheetsModel item = null, string oldProduct = null) { Product = item ?? new LotSheetsModel(); _OldProduct = oldProduct; }
 
         public ICommand GetTitle
         {
@@ -34,14 +35,23 @@ namespace MotoSoft.Pages.Lot
         {
             get => new RelayCommand(x =>
             {
-                if (!ServiceProvider.Instance.LotSheetRepository.AddNewItem(Product))
+                if (_OldProduct == null && ServiceProvider.Instance.LotSheetRepository.AddNewItem(Product))
                 {
-                    MessageBox.Show("Product already exists or your not corrected fill fields!");
+                    MessageBox.Show("Your successfully add new Product");
+                }
+                else if(_OldProduct != null && ServiceProvider.Instance.LotSheetRepository.EditItem(Product, _OldProduct))
+                {
+                    MessageBox.Show("Your successfully edit product");
+                }
+                else
+                {
+                    MessageBox.Show("Error save product");
                     return;
                 }
                 LotSheetsRouter.Instance.CloseMenu();
             });
         }
+
         public ICommand Cancel
         {
             get => new RelayCommand(x =>
