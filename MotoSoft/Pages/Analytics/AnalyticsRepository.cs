@@ -9,6 +9,8 @@ namespace MotoSoft.Pages.Analytics
 {
     class AnalyticsRepository : ISheetRepository<AnalyticsModel>
     {
+        public event EventHandler DataChanged;
+
         public bool AddNewItem(AnalyticsModel item)
         {
             throw new NotImplementedException();

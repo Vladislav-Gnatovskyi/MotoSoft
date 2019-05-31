@@ -7,7 +7,7 @@ namespace MotoSoft.Pages.Analytics
     {
         public AnalyticsDataSource()
         {
-            sheetRepository = ServiceProvider.Instance.AnalyticsRepository;
+            SheetRepository = ServiceProvider.Instance.AnalyticsRepository;
         }
     }
 }

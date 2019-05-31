@@ -39,7 +39,6 @@ namespace MotoSoft.Pages.Lot
                     MessageBox.Show("Product already exists or your not corrected fill fields!");
                     return;
                 }
-                MessageBox.Show("Product successfully created!");
                 LotSheetsRouter.Instance.CloseMenu();
             });
         }

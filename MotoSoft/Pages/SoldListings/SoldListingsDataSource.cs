@@ -9,7 +9,7 @@ namespace MotoSoft.Pages.SoldListings
     {
         public SoldListingsDataSource()
         {
-            sheetRepository = ServiceProvider.Instance.SoldListingsRepository;
+            SheetRepository = ServiceProvider.Instance.SoldListingsRepository;
             Columns = new List<Column>()
             {
                 new Column()

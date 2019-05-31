@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +11,34 @@ namespace MotoSoft.Frameworks.Pages
     {
         private int pageCount = 15;
 
-        protected ISheetRepository<T> sheetRepository;
+        private ISheetRepository<T> sheetRepository;
+
+        protected ISheetRepository<T> SheetRepository
+        {
+            get
+            {
+                return sheetRepository;
+            }
+            set
+            {
+                if(sheetRepository != null)
+                {
+                    sheetRepository.DataChanged -= SheetRepository_DataChanged;
+                }
+                sheetRepository = value;
+                sheetRepository.DataChanged += SheetRepository_DataChanged;
+            }
+        }
+
+        private void SheetRepository_DataChanged(object sender, EventArgs e)
+        {
+            SourceChanged?.Invoke(sender, e);
+            //clean cache
+            _allItems = null;
+        }
+
+        public event EventHandler SourceChanged;
+
         private IList<T> _allItems { get; set; }
         public IList<Column> Columns { get; set; }
 

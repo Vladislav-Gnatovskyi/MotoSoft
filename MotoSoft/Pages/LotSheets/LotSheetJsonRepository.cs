@@ -11,6 +11,9 @@ namespace MotoSoft.Pages.LotSheets
     class LotSheetJsonRepository : ISheetRepository<LotSheetsModel>
     {
         private const string sheetFilename = "LotSheet.json";
+
+        public event EventHandler DataChanged;
+
         public IList<LotSheetsModel> GetSheet()
         {
             if (File.Exists(sheetFilename))
@@ -35,6 +38,7 @@ namespace MotoSoft.Pages.LotSheets
             SaveImages(ref item);
             lotSheets.Add(item);
             Save(lotSheets);
+            DataChanged?.Invoke(this, EventArgs.Empty);
             return true;
         }
 

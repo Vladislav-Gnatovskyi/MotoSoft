@@ -1,6 +1,7 @@
 ﻿using eBay.Service.Core.Soap;
 using MotoSoft.Frameworks;
 using MotoSoft.Frameworks.Pages;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,6 +9,12 @@ namespace MotoSoft.Pages.ActiveListings
 {
     class ActiveListingsEbayRepository : ISheetRepository<ActiveListingsModel>
     {
+        public ActiveListingsEbayRepository()
+        {
+        }
+
+        public event EventHandler DataChanged;
+
         public bool AddNewItem(ActiveListingsModel item)
         {
             throw new System.NotImplementedException();

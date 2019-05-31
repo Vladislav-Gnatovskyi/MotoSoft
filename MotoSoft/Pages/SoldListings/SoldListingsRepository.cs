@@ -1,5 +1,6 @@
 ﻿using MotoSoft.Frameworks.Pages;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace MotoSoft.Pages.SoldListings
     public class SoldListingsRepository: ISheetRepository<SoldListingsModel>
     {
         private const string sheetFilename = "ActiveLotSheet.json";
+
+        public event EventHandler DataChanged;
 
         public bool AddNewItem(SoldListingsModel item)
         {

@@ -12,23 +12,29 @@ namespace MotoSoft.Frameworks.Components.Table
         private int _pageNumber = 0;
         private int _pageSize = 15;
         private int _pagesCount = 0;
-        public IDataSource Source { get; set; }
+        private IDataSource source { get; set; }
         public IList Items { get; set; }
-        public IList<Column> Columns => Source.Columns;
+        public IList<Column> Columns => source.Columns;
 
         public TableViewModel(IDataSource source)
         {
-            Source = source;
+            this.source = source;
+            this.source.SourceChanged += Source_SourceChanged;
+        }
+
+        private void Source_SourceChanged(object sender, System.EventArgs e)
+        {
+            Task.Run(Load);
         }
 
         public async Task LoadItems()
         {
-            Items = await Source.GetItemsForPage(_pageNumber, _pageSize);
+            Items = await source.GetItemsForPage(_pageNumber, _pageSize);
         }
 
         public async Task Load()
         {
-            _pagesCount = await Source.GetPagesCount(_pageSize);
+            _pagesCount = await source.GetPagesCount(_pageSize);
             await LoadItems();
         }
 

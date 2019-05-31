@@ -9,7 +9,7 @@ namespace MotoSoft.Pages.LotSheets
     {       
         public LotSheetDataSource()
         {
-            sheetRepository = ServiceProvider.Instance.LotSheetRepository;
+            SheetRepository = ServiceProvider.Instance.LotSheetRepository;
             Columns = new List<Column>()
             {
                 new Column

@@ -11,6 +11,8 @@ namespace MotoSoft.Frameworks
 {
     public class ServiceProvider
     {
+        private LotSheetJsonRepository _lotSheetJsonRepository;
+
         private static ServiceProvider instance;
 
         public static ServiceProvider Instance => instance ?? (instance = new ServiceProvider());
@@ -28,7 +30,8 @@ namespace MotoSoft.Frameworks
         {
             get
             {
-                return new LotSheetJsonRepository();
+
+                return _lotSheetJsonRepository ?? (_lotSheetJsonRepository = new LotSheetJsonRepository());
             }
         }
 

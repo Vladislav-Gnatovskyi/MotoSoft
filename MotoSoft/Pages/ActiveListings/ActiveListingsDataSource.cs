@@ -9,7 +9,7 @@ namespace MotoSoft.Pages.ActiveListings
     {
         public ActiveListingsDataSource()
         {
-            sheetRepository = ServiceProvider.Instance.ActiveListingsRepository;
+            SheetRepository = ServiceProvider.Instance.ActiveListingsRepository;
             Columns = new List<Column>()
             {
                 new Column()

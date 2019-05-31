@@ -1,6 +1,7 @@
 ﻿using eBay.Service.Core.Soap;
 using MotoSoft.Frameworks;
 using MotoSoft.Frameworks.Pages;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace MotoSoft.Pages.SoldListings
 {
     class SoldListingsEBayRepository : ISheetRepository<SoldListingsModel>
     {
+        public event EventHandler DataChanged;
+
         public bool AddNewItem(SoldListingsModel item)
         {
             throw new System.NotImplementedException();
