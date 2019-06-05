@@ -101,7 +101,7 @@ namespace MotoSoft.Frameworks.Ebay
         public async Task<IEnumerable<ItemType>> GetSellerListAsync(ListingStatusCodeType status)
         {
             return await Task.Run(() => GetSellerList(status));
-        }
+        }               
 
         public async Task<OrderTypeCollection> GetOrdersCallAsync()
         {

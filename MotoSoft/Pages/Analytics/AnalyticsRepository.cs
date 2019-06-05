@@ -10,16 +10,6 @@ namespace MotoSoft.Pages.Analytics
     {
         public event EventHandler DataChanged;
 
-        public bool AddNewItem(AnalyticsModel item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool EditItem(AnalyticsModel NewItem, string OldItem)
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<AnalyticsModel> GetSheet()
         {
             IList<AnalyticsModel> list = new List<AnalyticsModel>()
@@ -32,16 +22,6 @@ namespace MotoSoft.Pages.Analytics
         public Task<IList<AnalyticsModel>> GetSheetAsync()
         {
             return Task.Run(GetSheet);
-        }
-
-        public bool Remove(AnalyticsModel item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(IList sheet)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -8,21 +8,12 @@ using System.Threading.Tasks;
 
 namespace MotoSoft.Pages.SoldListings
 {
-    public class SoldListingsRepository: ISheetRepository<SoldListingsModel>
+    public class SoldListingsJsonRepository: ISheetRepository<SoldListingsModel>
     {
-        private const string sheetFilename = "ActiveLotSheet.json";
+        private const string sheetFilename = "SoldListing.json";
 
         public event EventHandler DataChanged;
 
-        public bool AddNewItem(SoldListingsModel item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool EditItem(SoldListingsModel NewItem, string OldItem)
-        {
-            throw new NotImplementedException();
-        }
 
         public IList<SoldListingsModel> GetSheet()
         {
@@ -37,23 +28,13 @@ namespace MotoSoft.Pages.SoldListings
 
         public Task<IList<SoldListingsModel>> GetSheetAsync()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Remove(SoldListingsModel item)
-        {
             throw new NotImplementedException();
-        }
-
-        public void Save(IList<SoldListingsModel> sheet)
-        {
-            string json = JsonConvert.SerializeObject(sheet);
-            File.WriteAllText(sheetFilename, json);
         }
 
         public void Save(IList sheet)
         {
-            throw new NotImplementedException();
+            string json = JsonConvert.SerializeObject(sheet);
+            File.WriteAllText(sheetFilename, json);
         }
     }
 }

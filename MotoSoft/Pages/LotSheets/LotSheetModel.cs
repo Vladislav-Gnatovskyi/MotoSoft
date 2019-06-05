@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MotoSoft.Pages.LotSheets.Vehicle;
+using System;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace MotoSoft.Pages.LotSheets
 {
@@ -14,9 +17,15 @@ namespace MotoSoft.Pages.LotSheets
                 _lot = value >= 10000 ? value : 10000 + value;
             }
         }
-        public string Type { get; set; }
-        public DateTime Date { get; set; }
-        public string Make { get; set; }
+        public LotSheetsModel()
+        {
+            DatePublic = DateTime.Now;
+        }
+
+        public ETypeVehicle Type { get; set; }
+        public DateTime DatePublic { get; set; }
+        public string Date { get => $"{DatePublic.Day}-{DatePublic.Month}-{DatePublic.Year}"; }
+        public string Make { get; set; } = "";
         public string Model { get; set; }
         public int Year { get; set; }
         public int Mileage { get; set; }
@@ -24,6 +33,43 @@ namespace MotoSoft.Pages.LotSheets
         public string Title { get; set; }
         public string Bos { get; set; }
         public double Cost { get; set; }
+
+        public BitmapImage TitleImage
+        {
+            get
+            {
+                BitmapImage image = new BitmapImage();
+                if (Title != null && File.Exists(Title))
+                {
+                    using (var stream = new FileStream(Title, FileMode.Open))
+                    {
+                        image.BeginInit();
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.StreamSource = stream;
+                        image.EndInit();
+                    }
+                }
+                return image;
+            }
+        }
+        public BitmapImage BillOfSaleImage
+        {
+            get
+            {
+                BitmapImage image = new BitmapImage();
+                if (Title != null && File.Exists(Bos))
+                {
+                    using (var stream = new FileStream(Bos, FileMode.Open))
+                    {
+                        image.BeginInit();
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.StreamSource = stream;
+                        image.EndInit();
+                    }
+                }
+                return image;
+            }
+        }
         #endregion UserAddingField
 
         public double eBayFees { get; set; }

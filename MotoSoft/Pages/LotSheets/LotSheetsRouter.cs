@@ -1,4 +1,6 @@
-﻿using MotoSoft.Pages.Lot;
+﻿using MotoSoft.Frameworks;
+using MotoSoft.Pages.Lot;
+using System.Linq;
 
 namespace MotoSoft.Pages.LotSheets
 {
@@ -15,13 +17,20 @@ namespace MotoSoft.Pages.LotSheets
         public void OpenMenuEdit()
         {
             LotSheetsModel item = (LotSheetsModel)lotSheetsViewModel.TableViewModel.SelectedItem;
-            lotSheetsViewModel.MenuEdit.Content = new LotView(item);
-            lotSheetsViewModel.MenuEdit.Width = 300;
+            if (item != null)
+            {
+                LotSheetsModel oldItem = ServiceProvider.Instance.LotSheetRepository.GetSheet().Where(itemExist => itemExist.Lot.Equals(item.Lot)).FirstOrDefault();
+                if (oldItem != null)
+                {
+                    lotSheetsViewModel.MenuEdit.Content = new LotView(item, oldItem);
+                    lotSheetsViewModel.MenuEdit.Width = 300;
+                }
+            }
         }
 
         public void OpenMenuAdd()
         {            
-            lotSheetsViewModel.MenuEdit.Content = new LotView(null);
+            lotSheetsViewModel.MenuEdit.Content = new LotView();
             lotSheetsViewModel.MenuEdit.Width = 300;
         }
 

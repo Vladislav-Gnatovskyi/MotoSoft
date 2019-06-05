@@ -4,6 +4,8 @@ using MotoSoft.Frameworks.Pages;
 using MotoSoft.Pages.ActiveListings;
 using MotoSoft.Pages.Analytics;
 using MotoSoft.Pages.LotSheets;
+using MotoSoft.Pages.LotSheets.Vehicle;
+using MotoSoft.Pages.LotSheets.Vehicle.Interfaces;
 using MotoSoft.Pages.Settings;
 using MotoSoft.Pages.SoldListings;
 
@@ -26,7 +28,7 @@ namespace MotoSoft.Frameworks
             }
         }
 
-        public ISheetRepository<LotSheetsModel> LotSheetRepository
+        public LotSheetJsonRepository LotSheetRepository
         {
             get
             {
@@ -48,6 +50,14 @@ namespace MotoSoft.Frameworks
             get
             {
                 return new SoldListingsEBayRepository();
+            }
+        }
+
+        public IMakesRepository MakeRepository
+        {
+            get
+            {
+                return new MakeJsonRepository();
             }
         }
 

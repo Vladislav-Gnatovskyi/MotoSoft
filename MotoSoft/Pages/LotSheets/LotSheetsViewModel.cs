@@ -42,7 +42,7 @@ namespace MotoSoft.Pages.LotSheets
             get => new RelayCommand(x => 
             {
                 LotSheetsModel item = (LotSheetsModel)TableViewModel.SelectedItem;
-                if (ServiceProvider.Instance.LotSheetRepository.Remove(item))
+                if (ServiceProvider.Instance.LotSheetRepository.Remove(item) != null)
                 {
                     MessageBox.Show("Your succesfulle delete product, you need press button 'Refresh'");
                 }

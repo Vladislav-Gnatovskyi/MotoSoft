@@ -12,16 +12,6 @@ namespace MotoSoft.Pages.SoldListings
     {
         public event EventHandler DataChanged;
 
-        public bool AddNewItem(SoldListingsModel item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool EditItem(SoldListingsModel NewItem, string OldItem)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IList<SoldListingsModel>> GetSheetAsync()
         {
             IList<SoldListingsModel> list = new List<SoldListingsModel>();
@@ -39,24 +29,14 @@ namespace MotoSoft.Pages.SoldListings
                     CostOfItem = item.StartPrice.Value,
                     COST = item.SellingStatus.QuantitySold * item.StartPrice.Value,
                     eBayFees = item.SellingStatus.FinalValueFee != null ? item.SellingStatus.FinalValueFee.Value : 0.0,
-                    PAYPALFees = item.ShippingDetails != null 
-                    ? item.ShippingDetails.SalesTax != null 
-                    ? item.ShippingDetails.SalesTax.SalesTaxAmount != null 
+                    SalesTax = item.ShippingDetails != null
+                    ? item.ShippingDetails.SalesTax != null
+                    ? item.ShippingDetails.SalesTax.SalesTaxAmount != null
                     ? item.ShippingDetails.SalesTax.SalesTaxAmount.Value : 0.0 : 0.0 : 0.0,
                     ProductName = item.ProductListingDetails?.DetailsURL
                 }); ;
             }
             return list;
-        }
-
-        public bool Remove(SoldListingsModel item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(IList sheet)
-        {
-            throw new NotImplementedException();
         }
     }
 }

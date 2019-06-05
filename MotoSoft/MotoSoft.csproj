@@ -111,6 +111,7 @@
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frameworks\Components\Table\TableViewModel.cs" />
+    <Compile Include="Frameworks\Pages\ISheetUpdate.cs" />
     <Compile Include="Frameworks\Pages\SheetDataSourceBase.cs" />
     <Compile Include="Pages\Analytics\AnalyticsDataSource.cs" />
     <Compile Include="Frameworks\Ebay\EbayApiService.cs" />
@@ -120,7 +121,12 @@
     <Compile Include="Frameworks\Ebay\IEbayApiService.cs" />
     <Compile Include="Pages\ActiveListings\ActiveListingsEbayRepository.cs" />
     <Compile Include="Pages\Analytics\AnalyticsRepository.cs" />
+    <Compile Include="Pages\LotSheets\Vehicle\ETypeVehicle.cs" />
     <Compile Include="Pages\LotSheets\LotSheetsRouter.cs" />
+    <Compile Include="Pages\LotSheets\Vehicle\Interfaces\IMakesRepository.cs" />
+    <Compile Include="Pages\LotSheets\Vehicle\MakeJsonRepository.cs" />
+    <Compile Include="Pages\LotSheets\Vehicle\Models\Make.cs" />
+    <Compile Include="Pages\LotSheets\Vehicle\Models\Model.cs" />
     <Compile Include="Pages\Lot\LotView.xaml.cs">
       <DependentUpon>LotView.xaml</DependentUpon>
     </Compile>
@@ -136,7 +142,7 @@
     <Compile Include="Pages\Analytics\AnalyticsModel.cs" />
     <Compile Include="Pages\LotSheets\LotSheetModel.cs" />
     <Compile Include="Pages\SoldListings\SoldListingsModel.cs" />
-    <Compile Include="Pages\SoldListings\SoldListingsRepository.cs" />
+    <Compile Include="Pages\SoldListings\SoldListingsJsonRepository.cs" />
     <Compile Include="Pages\Authorize\Authorize.xaml.cs">
       <DependentUpon>Authorize.xaml</DependentUpon>
     </Compile>

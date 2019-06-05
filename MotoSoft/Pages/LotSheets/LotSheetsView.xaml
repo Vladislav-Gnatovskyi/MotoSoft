@@ -18,6 +18,6 @@
             <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/edit.png" Text="Edit Item" SelectionCommand="{Binding EditClick}"/>
             <HamburgerMenu:HamburgerMenuItem Icon="/Assets/images/removeitem.png" Text="Remove Item" SelectionCommand="{Binding RemoveClick}"/>
         </HamburgerMenu:HamburgerMenu>
-        <Frame x:Name="Frame" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Frame x:Name="Frame" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
     </Grid>
 </Page>

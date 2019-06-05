@@ -1,7 +1,8 @@
-﻿using MotoSoft.Frameworks.Pages;
+﻿using MotoSoft.Frameworks;
+using MotoSoft.Frameworks.Pages;
+using MotoSoft.Pages.LotSheets.Vehicle;
 using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,17 +10,53 @@ using System.Threading.Tasks;
 
 namespace MotoSoft.Pages.LotSheets
 {
-    class LotSheetJsonRepository : ISheetRepository<LotSheetsModel>
+    public class LotSheetJsonRepository : ISheetRepository<LotSheetsModel>, ISheetUpdate<LotSheetsModel>
     {
-        private const string sheetFilename = "LotSheet.json";
+
+        private string userFolder { get => $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/MotoSoft/{ServiceProvider.Instance.SettingsRepository.Load()?.PayPal??"Default"}"; }
+        private string sheetFilename { get => $"{userFolder}/LotSheet.json"; }
 
         public event EventHandler DataChanged;
+
+        public bool AddItem(LotSheetsModel item)
+        {
+            if (item != null && item.Lot >= 10000 && !item.Type.Equals(ETypeVehicle.Nope) && item.Date != null)
+            {
+                IList<LotSheetsModel> sheets = GetSheet();
+                if (sheets.Where(itemExist => itemExist.Equals(item) || itemExist.Lot.Equals(item.Lot)).FirstOrDefault() != null) return false;
+                SaveImages(ref item);
+                sheets.Add(item);                
+                Save(sheets);
+                return true;
+            }
+            return false;            
+        }
+
+        public bool EditItem(LotSheetsModel newItem, LotSheetsModel oldItem)
+        {
+            if (newItem != null && oldItem != null)
+            {
+                oldItem = Remove(oldItem, false);
+                IList<LotSheetsModel> sheets = GetSheet();
+                SaveImages(ref newItem);
+                if (!oldItem.Lot.Equals(newItem.Lot))
+                    RemoveImages(oldItem);
+                sheets.Add(newItem);
+                Save(sheets);
+                return true;
+            }
+            return false;
+        }
 
         public IList<LotSheetsModel> GetSheet()
         {
             if (File.Exists(sheetFilename))
             {
-                string json = File.ReadAllText(sheetFilename);
+                string json;
+                using (StreamReader reader = new StreamReader(sheetFilename))
+                {
+                    json = reader.ReadToEnd();
+                }
                 List<LotSheetsModel> obj = JsonConvert.DeserializeObject<List<LotSheetsModel>>(json);
                 return obj;
             }
@@ -31,56 +68,43 @@ namespace MotoSoft.Pages.LotSheets
             return await Task.Run(GetSheet);
         }
 
-        public bool AddNewItem(LotSheetsModel item)
+        public LotSheetsModel Remove(LotSheetsModel item, bool isDelete = true)
         {
-            if (item.Type == null || item.Make == null || item.Model == null || item.Notes == null || item.Cost.Equals(0) || item.Year.Equals(0)) return false;
-            IList<LotSheetsModel> lotSheets = GetSheet();
-            if (lotSheets.Where(x => x.Lot.Equals(item.Lot)).FirstOrDefault() != null) return false;
-            SaveImages(ref item);
-            lotSheets.Add(item);
-            Save(lotSheets.ToList());
-            return true;
+            if(item != null)
+            {
+                IList<LotSheetsModel> sheets = GetSheet();
+                LotSheetsModel itemRemoved = sheets.Where(itemExist => itemExist.Lot.Equals(item.Lot)).FirstOrDefault();
+                if (itemRemoved != null)
+                {
+                    sheets.Remove(itemRemoved);
+                    RemoveImages(itemRemoved, isDelete);
+                    Save(sheets);
+                    return itemRemoved;
+                }
+            }
+            return null;
         }
 
-        public bool EditItem(LotSheetsModel NewItem, string OldItemLot)
+        private bool RemoveImages(LotSheetsModel item, bool isDelete = true)
         {
-            IList<LotSheetsModel> lotSheets = GetSheet();
-            var OldItem = lotSheets.Where(x => x.Lot.ToString().Equals((OldItemLot))).FirstOrDefault();
-            if (OldItem != null && (lotSheets.Where(item => item.Lot.Equals(NewItem.Lot)).FirstOrDefault() == null || NewItem.Lot.ToString().Equals(OldItemLot)))
+            string folderPath = userFolder + "/" + item.Lot.ToString();
+            string folderArchive = userFolder + "/Archive/" + item.Lot.ToString();
+            if (Directory.Exists(folderPath))
             {
-                lotSheets.Remove(OldItem);
-                SaveImages(ref NewItem);
-                Remove(OldItem);
-                lotSheets.Add(NewItem);
-                Save(lotSheets.ToList());
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool Remove(LotSheetsModel item)
-        {
-            string Path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/MotoSoft/{item.Lot}";
-            IList<LotSheetsModel> items = GetSheet();
-            var itemRemove = items.Where(x => x.Lot.Equals(item.Lot)).FirstOrDefault();
-            if (itemRemove != null)
-            {
-                if(Directory.Exists(Path)) Directory.Delete(Path,true);
-                items.Remove(itemRemove);
-                Save(items.ToList());
+                if (isDelete)
+                {
+                    Directory.Delete(folderPath, true);
+                }
                 return true;
             }
             return false;
         }
 
-        public bool SaveImages(ref LotSheetsModel item)
+        private bool SaveImages(ref LotSheetsModel item)
         {
             if (!Directory.Exists(item.Lot.ToString()))
             {
-                string Path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/MotoSoft/{item.Lot}/";
+                string Path = GetPath(item);
                 Directory.CreateDirectory($"{Path}");
                 if (File.Exists(item.Title) && item.Title != $"{Path}/Title.png")
                 {
@@ -97,7 +121,12 @@ namespace MotoSoft.Pages.LotSheets
             return false;
         }
 
-        public void Save(IList sheet)
+        private string GetPath(LotSheetsModel item)
+        {
+            return $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/MotoSoft/{ServiceProvider.Instance.EbayService.GetUser.Email}/{item.Lot}";
+        }
+
+        public void Save(IList<LotSheetsModel> sheet)
         {
             string json = JsonConvert.SerializeObject(sheet);
             File.WriteAllText(sheetFilename, json);

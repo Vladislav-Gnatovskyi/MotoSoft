@@ -10,10 +10,6 @@ namespace MotoSoft.Pages.ActiveListings
 {
     class ActiveListingsEbayRepository : ISheetRepository<ActiveListingsModel>
     {
-        public ActiveListingsEbayRepository()
-        {
-        }
-
         public event EventHandler DataChanged;
 
         public async Task<IList<ActiveListingsModel>> GetSheetAsync()
@@ -29,32 +25,12 @@ namespace MotoSoft.Pages.ActiveListings
                     Price = item.StartPrice.Value,
                     StartTime = item.ScheduleTime.ToString(),
                     Title = item.Title,
-                    Url = item.Storefront?.StoreURL,
+                    Url = item.ListingDetails?.ViewItemURL,
                     CustomLabel = item.SubTitle,
                     Quantity = item.Quantity - item.SellingStatus.QuantitySold
                 });
             }
             return list;
-        }
-
-        public bool Remove(ActiveListingsModel item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(IList sheet)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool AddNewItem(ActiveListingsModel item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool EditItem(ActiveListingsModel NewItem, string OldItem)
-        {
-            throw new NotImplementedException();
         }
     }
 }

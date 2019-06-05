@@ -9,10 +9,10 @@ namespace MotoSoft.Pages.Lot
     /// </summary>
     public partial class LotView : Page
     {
-        public LotView(LotSheetsModel item)
+        public LotView(LotSheetsModel item = null, LotSheetsModel oldItem = null)
         {
             InitializeComponent();
-            DataContext = new LotViewModel(item, item?.Lot.ToString());
+            DataContext = new LotViewModel(item, oldItem);
         }
     }
 }

@@ -17,7 +17,9 @@ namespace MotoSoft.Pages.Settings
         {
             settingsRepository = ServiceProvider.Instance.SettingsRepository;
             SettingModel = settingsRepository.Load();
-        }
+            SettingModel.PayPal = ServiceProvider.Instance.EbayService.GetUser.Email;
+            ServiceProvider.Instance.SettingsRepository.Save(SettingModel);
+    }
         #region OnClick
 
         public ICommand BSingOut_Click

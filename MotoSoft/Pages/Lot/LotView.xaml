@@ -4,11 +4,33 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MotoSoft.Pages.Lot"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      xmlns:Etype="clr-namespace:MotoSoft.Pages.LotSheets.Vehicle"
       mc:Ignorable="d" 
       d:DesignHeight="400"
-      Title="Add New Lot" Background="#1c324a" MaxWidth="200" Width="200" HorizontalAlignment="Left">
+      Title="Add New Lot" Background="#1c324a" MinWidth="300" Width="300" HorizontalAlignment="Left" Height="465">
 
     <Page.Resources>
+
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Etype:ETypeVehicle"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <TextBox x:Name="PART_TextBox"  
+                                    Text="{Binding Path=SelectedDate, StringFormat={}{0:dd-MM-yyyy}, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" Background="{x:Null}" Foreground="#FF4B688C" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0" VerticalAlignment="Stretch" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
@@ -24,8 +46,8 @@
                                  Foreground="#FF4B688C"
                                  BorderBrush="#FF4B688C"
                                  FontFamily="Roboto Mono"
-                                 Panel.ZIndex="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Text="{TemplateBinding Tag}" HorizontalContentAlignment="Center" FontFamily="Roboto Mono" VerticalContentAlignment="Center" Background="Transparent">
+                                 Panel.ZIndex="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" />
+                            <TextBox Text="{TemplateBinding Tag}" HorizontalContentAlignment="Center" FontFamily="Roboto Mono" VerticalContentAlignment="Center" Background="Transparent" FontSize="14">
                                 <TextBox.Style>
                                     <Style TargetType="{x:Type TextBox}">
                                         <Setter Property="Foreground" Value="Transparent"/>
@@ -43,6 +65,97 @@
             </Setter>
         </Style>
 
+        <Style x:Name="ComboBoxEditStyle" x:Key="ComboBoxEditStyle" TargetType="{x:Type ComboBox}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FF48688C"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid MinWidth="15" MinHeight="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="123*"/>
+                                <ColumnDefinition Width="22*"/>
+                            </Grid.ColumnDefinitions>
+                            <ToggleButton HorizontalAlignment="Stretch" Content="V" Foreground="#FF4B688C"
+                                          Width="Auto" Height="Auto" Grid.Column="1" Margin="0"
+                                          ClickMode="Press" Background="Transparent" BorderBrush="#FF4B688C"
+                                          IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                            <TextBox Name="PART_EditableTextBox" Foreground="#FF4B688C" Background="Transparent" Margin="0" BorderBrush="#FF4B688C"
+                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Focusable="True" FontSize="14" MaxLines="1" MaxLength="25">
+                            </TextBox>
+                            <Popup x:Name="Popup" Placement="Bottom" Focusable="False" AllowsTransparency="True"
+                                   IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}" PopupAnimation="Slide">
+                                <Grid Name="DropDown" SnapsToDevicePixels="True"
+                    MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                    MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
+                                    <Border Name="DropDownBorder" Background="#1c324a" Margin="0, 1, 0, 0"
+                        CornerRadius="0" BorderThickness="1,1,1,1" 
+                        BorderBrush="#FF4B688C"/>
+                                    <ScrollViewer Margin="4" SnapsToDevicePixels="True">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ComboBoxFlatStyle"  TargetType="{x:Type ComboBox}">
+            <Setter Property="UIElement.SnapsToDevicePixels" Value="True"/>
+            <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="TextElement.Foreground" Value="#FF4B688C"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Name="ToggleButton" Grid.Column="2"
+                ClickMode="Press" Focusable="False" Background="Transparent" BorderBrush="#FF4B688C"
+                IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+
+                            <ContentPresenter Name="ContentSite" Margin="0" IsHitTestVisible="False"
+                              HorizontalAlignment="Center" VerticalAlignment="Center"                              
+                              Content="{TemplateBinding ComboBox.SelectionBoxItem}" 
+                              ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
+                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                            <TextBox Name="PART_EditableTextBox" Margin="0" FontFamily="Roboto Mono" FontSize="14"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}"
+                                     Visibility="Hidden" Background="Transparent"
+                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                     Focusable="True" >
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="TextBox" >
+                                        <Border Name="PART_ContentHost" Focusable="False" HorizontalAlignment="Center"/>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                            <!-- Popup showing items -->
+                            <Popup Name="Popup" Placement="Bottom"
+                   Focusable="False" AllowsTransparency="True"
+                   IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
+                   PopupAnimation="Slide">
+                                <Grid Name="DropDown" SnapsToDevicePixels="True"
+                    MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                    MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
+                                    <Border Name="DropDownBorder" Background="#1c324a" Margin="0, 1, 0, 0"
+                        CornerRadius="0" BorderThickness="1,1,1,1" 
+                        BorderBrush="#FF4B688C"/>
+                                    <ScrollViewer Margin="4" SnapsToDevicePixels="True">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
     </Page.Resources>
 
     <Grid>
@@ -52,41 +165,62 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Content="Product Menu" Margin="0" FontSize="14" FontFamily="Roboto Mono" Grid.ColumnSpan="1" Foreground="#FF4B688C" HorizontalContentAlignment="Center" Height="42" VerticalContentAlignment="Center" Background="#FF28415F"/>
-            <Grid Margin="0" Grid.Row="11">
+            <Label Content="Product Menu" Margin="0" FontSize="20" FontFamily="Roboto Mono" Grid.ColumnSpan="2" Foreground="#FF4B688C" Background="#FF28415F" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Grid Grid.Row="17" Grid.Column="1" Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Save" Command="{Binding SaveProduct}" VerticalAlignment="Center" BorderBrush="#FF4B688C" Foreground="#FF4B688C" Background="Transparent" HorizontalAlignment="Center" Width="100" FontFamily="Roboto Mono" FontSize="14"/>
-                <Button Content="Cancel" Command="{Binding Cancel}" Margin="0" VerticalAlignment="Center" BorderBrush="#FF4B688C" Foreground="#FF4B688C" Background="Transparent" HorizontalAlignment="Center" Width="100" FontFamily="Roboto Mono" FontSize="14" Grid.Column="1"/>
+                <Button Content="Save" Command="{Binding SaveProduct}" VerticalAlignment="Center" BorderBrush="#FF4B688C" Foreground="#FF4B688C" Background="Transparent" FontFamily="Roboto Mono" FontSize="14" Margin="5,1"/>
+                <Button Content="Cancel" Command="{Binding Cancel}" Margin="5,1" VerticalAlignment="Center" BorderBrush="#FF4B688C" Foreground="#FF4B688C" Background="Transparent" FontFamily="Roboto Mono" FontSize="14" Grid.Column="1"/>
             </Grid>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Lot Number ID" HorizontalAlignment="Center" Text="{Binding Product.Lot}" Height="23" Margin="0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Make" HorizontalAlignment="Center"  Text="{Binding Product.Make}" Height="24" Margin="0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Type" HorizontalAlignment="Center" Text="{Binding Product.Type}" Height="24" Margin="0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Model" HorizontalAlignment="Center" Text="{Binding Product.Model}" Height="24" Margin="0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Notes" HorizontalAlignment="Center" Text="{Binding Product.Notes}" Height="24" Margin="0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="150"/>
-            <Button Content="Enter Title" BorderBrush="#FF4B688C" Background="Transparent" Foreground="#FF4B688C" HorizontalAlignment="Center" Command="{Binding GetTitle}" Height="24" Margin="0" Grid.Row="6" VerticalAlignment="Center" Width="120" />
-            <Button Content="Enter Bill Of Sale" BorderBrush="#FF4B688C" Background="Transparent" Foreground="#FF4B688C" HorizontalAlignment="Center" Command="{Binding GetBillOfSale}" Height="24" Margin="0" Grid.Row="7" VerticalAlignment="Center" Width="120"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Cost" HorizontalAlignment="Center" Text="{Binding Product.Cost}" Height="24" Margin="0" Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Year" HorizontalAlignment="Center" Text="{Binding Product.Year}" Height="24" Margin="0" Grid.Row="9" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Mileage" HorizontalAlignment="Center" Text="{Binding Product.Mileage}" Height="24" Margin="0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"  MaxLines="1" MaxLength="50"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="10000" Text="{Binding Product.Lot}" Margin="0,0,5,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom"  MaxLines="1" MaxLength="50" Grid.Column="1"/>
+            <ComboBox Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding Type, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0" Grid.Row="2" VerticalAlignment="Bottom" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF4B688C" FontSize="14" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" AutomationProperties.IsRequiredForForm="True" FontFamily="Roboto Mono"/>
+            <DatePicker DisplayDate="{Binding Product.DatePublic, Mode=TwoWay}"  SelectedDate="{Binding Product.DatePublic, Mode=TwoWay}" Grid.Row="3" Margin="0,0,5,0" BorderBrush="#FF4B688C" Foreground="{x:Null}" Background="{x:Null}" Grid.Column="1" VerticalContentAlignment="Bottom" Padding="0" SelectedDateFormat="Long" VerticalAlignment="Bottom" FontSize="14" FontFamily="Roboto Mono"/>
+            <ComboBox  Style="{StaticResource ComboBoxEditStyle}" ItemsSource="{Binding Makes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Text="{Binding Make}"  Margin="0,0,5,0" Grid.Row="5" VerticalAlignment="Bottom" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" AutomationProperties.IsRequiredForForm="True" IsEditable="True" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF4B688C" FontFamily="Roboto Mono" FontSize="14"/>
+            <ComboBox Style="{StaticResource ComboBoxEditStyle}" ItemsSource="{Binding Models, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Text="{Binding Product.Model}" Margin="0,0,5,0" Grid.Row="6" VerticalAlignment="Bottom" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" AutomationProperties.IsRequiredForForm="True" IsEditable="True" Background="{x:Null}" Foreground="#FF4B688C" BorderBrush="{x:Null}" FontFamily="Roboto Mono" FontSize="14"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Year" Text="{Binding Product.Year}" Margin="0,0,5,0" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Bottom"  MaxLines="1" MaxLength="50" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Mileage" Text="{Binding Product.Mileage}" Margin="0,0,5,0" Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Bottom"  MaxLines="1" MaxLength="50" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Enter Cost" Text="{Binding Product.Cost}" Margin="0,0,5,0" Grid.Row="9" TextWrapping="Wrap" VerticalAlignment="Bottom"  MaxLines="1" MaxLength="50" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button Content="Selected" BorderBrush="#FF4B688C" Background="Transparent" Foreground="#FF4B688C" Command="{Binding GetTitle}" Margin="0,0,5,0" Grid.Row="10" VerticalAlignment="Bottom" HorizontalAlignment="Right" VerticalContentAlignment="Center" Padding="0" Height="15" Width="39" MinWidth="60" MinHeight="20" FontFamily="Roboto Mono" />
+            <Button Content="Selected" BorderBrush="#FF4B688C" Background="Transparent" Foreground="#FF4B688C" Command="{Binding GetBillOfSale}" Grid.Row="10" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,5,0" Height="17" Width="41" Padding="0" MinWidth="60" MinHeight="20" VerticalContentAlignment="Center" FontFamily="Roboto Mono"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="" Text="{Binding Product.Notes}" Grid.Row="15" TextWrapping="Wrap"  MaxLines="1" MaxLength="150" Margin="5,0,5,0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Label Content="Bill Of Sale:" Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="10" FontFamily="Roboto Mono" FontSize="14" Foreground="#FF4B688C" Height="20" VerticalAlignment="Bottom" Padding="5,0,0,0" VerticalContentAlignment="Bottom"/>
+            <Label Content="Title:" Margin="0" Grid.Row="10" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" VerticalAlignment="Bottom" Height="20" HorizontalAlignment="Left" Padding="5,0,0,0"/>
+            <Label Content="Notes:" Margin="0" Grid.Row="14" FontFamily="Roboto Mono" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" HorizontalAlignment="Left" Padding="5,0,0,0"/>
+            <Image Source="{Binding Product.BillOfSaleImage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Column="1" Margin="5,0,5,0" Grid.Row="11" Grid.RowSpan="3" Stretch="Fill"/>
+            <Image Source="{Binding Product.TitleImage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Margin="5,0,5,0" Grid.Row="11" Grid.RowSpan="3" Stretch="Fill"  />
+            <Label Content="Cost:" Grid.Row="9" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0,3" Padding="5,0,0,0"/>
+            <Label Content="Mileage:" Grid.Row="8" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0,3" Padding="5,0,0,0"/>
+            <Label Content="Year:" Grid.Row="7" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0,3" Padding="5,0,0,0"/>
+            <Label Content="Model:" Grid.Row="6" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0,5,0,1" Padding="5,0,0,0"/>
+            <Label Content="Make:" Grid.Row="5" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0" Padding="5,0,0,0"/>
+            <Label Content="Date of Public:" Grid.Row="3" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0" Padding="5,0,0,0"/>
+            <Label Content="Type:" Grid.Row="2" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0" Padding="5,0,0,0"/>
+            <Label Content="Lot number:" Grid.Row="1" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0" Padding="5,0,0,0"/>
         </Grid>
     </Grid>
 </Page>
