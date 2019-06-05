@@ -34,7 +34,7 @@ namespace MotoSoft.Pages.LotSheets.Vehicle
             Make itemMake = makes.Where(makeExists => makeExists.Name.ToUpper().Equals(make.Name.ToUpper()) && makeExists.Type.Equals(make.Type)).FirstOrDefault();
             if(itemMake != null)
             {
-                if (itemMake.Add(model))
+                if (itemMake.Add(model.Name.ToUpper()))
                 {
                     makes.Remove(makes.Where(makeExists => makeExists.Name.ToUpper().Equals(make.Name.ToUpper()) && makeExists.Type.Equals(make.Type)).First());
                     makes.Add(itemMake);
@@ -52,7 +52,7 @@ namespace MotoSoft.Pages.LotSheets.Vehicle
             Make itemMake = makes.Where(makeExists => makeExists.Name.ToUpper().Equals(make.Name.ToUpper()) && makeExists.Type.Equals(make.Type)).FirstOrDefault();
             if (itemMake != null)
             {
-                if (itemMake.Add(modelName))
+                if (itemMake.Add(modelName.ToUpper()))
                 {
                     makes.Remove(makes.Where(makeExists => makeExists.Name.ToUpper().Equals(make.Name.ToUpper()) && makeExists.Type.Equals(make.Type)).First());
                     makes.Add(itemMake);
