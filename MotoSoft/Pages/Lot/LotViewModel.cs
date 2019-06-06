@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using MotoSoft.Pages.LotSheets.Vehicle.Models;
 using System.Linq;
 using MotoSoft.Pages.LotSheets.Vehicle;
+using System.Windows.Media.Imaging;
 
 namespace MotoSoft.Pages.Lot
 {
@@ -17,6 +18,11 @@ namespace MotoSoft.Pages.Lot
         private LotSheetsModel OldProduct { get; set; }
         public ETypeVehicle Type { get => Product.Type; set => Product.Type = value; }
         public string Make { get => Product.Make; set => Product.Make = value; }
+        public string Title { get => Product.Title; set => Product.Title = value; }
+        public string Bos { get => Product.Bos; set => Product.Bos= value; }
+
+        public BitmapImage GetTitleImage { get => Product.GetImage(Title); }
+        public BitmapImage GetBillOfSaleImage { get => Product.GetImage(Bos); }
 
         public ICollection<Make> Makes { get => ServiceProvider.Instance.MakeRepository.GetMakes().Where(make => make.Type.Equals(Type)).ToList(); }
         public ICollection<Model> Models { get => ServiceProvider.Instance.MakeRepository.GetModels(Make, Type); }
@@ -26,7 +32,7 @@ namespace MotoSoft.Pages.Lot
         {
             get => new RelayCommand(x => 
             {
-                Product.Title = new OpenFileDialogImage().ShowDialog();
+                Title = new OpenFileDialogImage().ShowDialog();
             });
         }
 
@@ -34,7 +40,7 @@ namespace MotoSoft.Pages.Lot
         {
             get => new RelayCommand(x =>
             {
-                Product.Bos = new OpenFileDialogImage().ShowDialog();
+                Bos = new OpenFileDialogImage().ShowDialog();
             });
         }
 

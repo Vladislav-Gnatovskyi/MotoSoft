@@ -34,41 +34,20 @@ namespace MotoSoft.Pages.LotSheets
         public string Bos { get; set; }
         public double Cost { get; set; }
 
-        public BitmapImage TitleImage
+        public BitmapImage GetImage(string path)
         {
-            get
+            BitmapImage image = new BitmapImage();
+            if (Title != null && File.Exists(path))
             {
-                BitmapImage image = new BitmapImage();
-                if (Title != null && File.Exists(Title))
+                using (var stream = new FileStream(path, FileMode.Open))
                 {
-                    using (var stream = new FileStream(Title, FileMode.Open))
-                    {
-                        image.BeginInit();
-                        image.CacheOption = BitmapCacheOption.OnLoad;
-                        image.StreamSource = stream;
-                        image.EndInit();
-                    }
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = stream;
+                    image.EndInit();
                 }
-                return image;
             }
-        }
-        public BitmapImage BillOfSaleImage
-        {
-            get
-            {
-                BitmapImage image = new BitmapImage();
-                if (Title != null && File.Exists(Bos))
-                {
-                    using (var stream = new FileStream(Bos, FileMode.Open))
-                    {
-                        image.BeginInit();
-                        image.CacheOption = BitmapCacheOption.OnLoad;
-                        image.StreamSource = stream;
-                        image.EndInit();
-                    }
-                }
-                return image;
-            }
+            return image;
         }
         #endregion UserAddingField
 

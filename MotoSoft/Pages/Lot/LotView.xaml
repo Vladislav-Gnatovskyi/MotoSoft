@@ -211,8 +211,8 @@
             <Label Content="Bill Of Sale:" Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="10" FontFamily="Roboto Mono" FontSize="14" Foreground="#FF4B688C" Height="20" VerticalAlignment="Bottom" Padding="5,0,0,0" VerticalContentAlignment="Bottom"/>
             <Label Content="Title:" Margin="0" Grid.Row="10" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" VerticalAlignment="Bottom" Height="20" HorizontalAlignment="Left" Padding="5,0,0,0"/>
             <Label Content="Notes:" Margin="0" Grid.Row="14" FontFamily="Roboto Mono" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" HorizontalAlignment="Left" Padding="5,0,0,0"/>
-            <Image Source="{Binding Product.BillOfSaleImage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Column="1" Margin="5,0,5,0" Grid.Row="11" Grid.RowSpan="3" Stretch="Fill"/>
-            <Image Source="{Binding Product.TitleImage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Margin="5,0,5,0" Grid.Row="11" Grid.RowSpan="3" Stretch="Fill"  />
+            <Image Source="{Binding GetBillOfSaleImage, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="5,0,5,0" Grid.Row="11" Grid.RowSpan="3" Stretch="Fill"/>
+            <Image Source="{Binding GetTitleImage, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0" Grid.Row="11" Grid.RowSpan="3" Stretch="Fill"  />
             <Label Content="Cost:" Grid.Row="9" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0,3" Padding="5,0,0,0"/>
             <Label Content="Mileage:" Grid.Row="8" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0,3" Padding="5,0,0,0"/>
             <Label Content="Year:" Grid.Row="7" FontFamily="Roboto Mono" FontSize="14" VerticalContentAlignment="Bottom" Foreground="#FF4B688C" Margin="0,3" Padding="5,0,0,0"/>
