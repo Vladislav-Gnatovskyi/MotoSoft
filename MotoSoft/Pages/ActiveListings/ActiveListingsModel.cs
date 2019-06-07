@@ -14,13 +14,13 @@
             Title = title;
             Url = url;
         }
-        public string ItemId { get; set; }
-        public string CustomLabel { get; set; }
+        public string ItemId { get; set; } = "";
+        public string CustomLabel { get; set; } = "";
         public double Quantity { get; set; }
         public double Price { get; set; }
-        public string StartTime { get; set; }
-        public string ListingType { get; set; }
-        public string Title { get; set; }
-        public string Url { get; set; }
+        public string StartTime { get; set; } = "";
+        public string ListingType { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Url { get; set; } = "";
     }
 }

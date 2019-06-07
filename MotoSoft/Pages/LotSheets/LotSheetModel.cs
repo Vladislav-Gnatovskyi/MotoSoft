@@ -26,10 +26,10 @@ namespace MotoSoft.Pages.LotSheets
         public DateTime DatePublic { get; set; }
         public string Date { get => $"{DatePublic.Day}-{DatePublic.Month}-{DatePublic.Year}"; }
         public string Make { get; set; } = "";
-        public string Model { get; set; }
+        public string Model { get; set; } = "";
         public int Year { get; set; }
         public int Mileage { get; set; }
-        public string Notes { get; set; }
+        public string Notes { get; set; } = "";
         public string Title { get; set; }
         public string Bos { get; set; }
         public double Cost { get; set; }
@@ -61,6 +61,6 @@ namespace MotoSoft.Pages.LotSheets
         public string Profit { get; set; }
         public int PartsActive { get; set; }
         public int PartsSold { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = "";
     }
 }

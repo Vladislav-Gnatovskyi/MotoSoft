@@ -2,6 +2,7 @@
 using MotoSoft.Frameworks.Components.Table;
 using MotoSoft.Frameworks.Pages;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MotoSoft.Pages.SoldListings
 {
@@ -122,6 +123,18 @@ namespace MotoSoft.Pages.SoldListings
                 },
 
             };
+        }
+
+        protected override IList<SoldListingsModel> Contains(IEnumerable<SoldListingsModel> listFinder, string search)
+        {
+            if (search != null || search != "")
+            {
+                return listFinder.ToList().Where(itemContains => itemContains.CustomLabel.ToUpper().Contains(search.ToUpper())
+                || itemContains.Title.ToUpper().Contains(search.ToUpper())
+                || itemContains.QTY.ToString().Contains(search)
+                || itemContains.ItemID.ToString().Contains(search)).ToList();
+            }
+            return listFinder.ToList();
         }
     }
 }

@@ -2,6 +2,7 @@
 using MotoSoft.Frameworks.Components.Table;
 using MotoSoft.Frameworks.Pages;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MotoSoft.Pages.ActiveListings
 {
@@ -61,6 +62,21 @@ namespace MotoSoft.Pages.ActiveListings
                     Type = EColumnType.Link
                 }
             };
+        }
+
+        protected override IList<ActiveListingsModel> Contains(IEnumerable<ActiveListingsModel> listFinder, string search)
+        {
+            if (search != null || search != "")
+            {
+                return listFinder.ToList().Where(itemContains => itemContains.CustomLabel.ToUpper().Contains(search.ToUpper())
+                || itemContains.Title.ToUpper().Contains(search.ToUpper())
+                || itemContains.Quantity.ToString().Contains(search)
+                || itemContains.ListingType.ToUpper().Contains(search.ToUpper())
+                || itemContains.Price.ToString().Contains(search)
+                || itemContains.Url.ToUpper().Contains(search.ToUpper())
+                || itemContains.ItemId.ToString().Contains(search)).ToList();
+            }
+            return listFinder.ToList();
         }
     }
 }

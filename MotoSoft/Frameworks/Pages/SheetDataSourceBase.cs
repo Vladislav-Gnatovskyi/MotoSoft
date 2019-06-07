@@ -13,6 +13,8 @@ namespace MotoSoft.Frameworks.Pages
 
         private ISheetRepository<T> sheetRepository;
 
+        public string Search { get; set; } = "";
+
         protected ISheetRepository<T> SheetRepository
         {
             get
@@ -62,9 +64,16 @@ namespace MotoSoft.Frameworks.Pages
             if (items != null)
             {
                 pageCount = pageSize;
-                return items.Skip(page * pageCount).Take(pageCount).ToList();
+                var itemsReturn = items.Skip(page * pageCount).Take(pageCount).ToList();
+                if (Search == "") return itemsReturn;
+                else return Contains(itemsReturn, Search).ToList();
             }
             return new List<T>();
+        }
+
+        protected virtual IList<T> Contains(IEnumerable<T> listFinder, string Search)
+        {
+            return listFinder.ToList();
         }
 
         public async Task<int> GetPagesCount(int pageSize)

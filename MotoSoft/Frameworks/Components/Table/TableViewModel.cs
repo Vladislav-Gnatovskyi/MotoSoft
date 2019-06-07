@@ -14,6 +14,12 @@ namespace MotoSoft.Frameworks.Components.Table
         private int _pagesCount = 0;
         private IDataSource source { get; set; }
         public IList Items { get; set; }
+        public string Search { get => source.Search; set
+            {
+                source.Search = value;
+                Task.Run(LoadItems);
+            }
+        }
         public IList<Column> Columns => source.Columns;
         public object SelectedItem { get; set; }
 

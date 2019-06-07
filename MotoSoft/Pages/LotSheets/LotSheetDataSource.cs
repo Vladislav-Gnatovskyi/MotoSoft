@@ -2,6 +2,8 @@
 using MotoSoft.Frameworks.Components.Table;
 using MotoSoft.Frameworks.Pages;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 
 namespace MotoSoft.Pages.LotSheets
 {
@@ -9,7 +11,7 @@ namespace MotoSoft.Pages.LotSheets
     {       
         public LotSheetDataSource()
         {
-            SheetRepository = ServiceProvider.Instance.LotSheetRepository;
+            SheetRepository = ServiceProvider.Instance.LotSheetRepository;          
             Columns = new List<Column>()
             {
                 new Column
@@ -145,6 +147,24 @@ namespace MotoSoft.Pages.LotSheets
                     Type = EColumnType.Number,
                 },
             };
+        }
+
+        protected override IList<LotSheetsModel> Contains(IEnumerable<LotSheetsModel> listFinder, string search)
+        {
+            if (search != null || search != "")
+            {
+                return listFinder.ToList().Where(itemContains => itemContains.Lot.ToString().Contains(search)
+                || itemContains.Year.ToString().Contains(search)
+                || itemContains.Type.ToString().ToUpper().Contains(search.ToUpper())
+                || itemContains.Make.ToUpper().Contains(search.ToUpper())
+                || itemContains.Model.ToUpper().Contains(search.ToUpper())
+                || itemContains.Notes.ToUpper().Contains(search.ToUpper())
+                || itemContains.Date.Contains(search)
+                || itemContains.Mileage.ToString().Contains(search)
+                || itemContains.Cost.ToString().Contains(search)
+                || itemContains.Status.ToUpper().Contains(search.ToUpper())).ToList();
+            }
+            return listFinder.ToList();
         }
     }
 }

@@ -13,12 +13,26 @@ namespace MotoSoft.Pages.LotSheets
     {
         public TableViewModel TableViewModel { get; }
         public Frame MenuEdit { get; set; }
+        
         public LotSheetsViewModel(Frame frame)
         {
             LotSheetsRouter.Instance.InitRouter(this);
             MenuEdit = frame;
             TableViewModel = new TableViewModel(new LotSheetDataSource());
         }
+
+        public string Search
+        {
+            get
+            {
+                return TableViewModel.Search;
+            }
+            set
+            {
+                TableViewModel.Search = value;
+            }
+        }
+
 
         public async Task Load()
         {
