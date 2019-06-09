@@ -39,7 +39,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <Style TargetType="DataGrid">
             <Setter Property="Background" Value="#1c324a" />
             <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
@@ -76,7 +76,7 @@
                         </Style.Triggers>
                     </Style>
                 </Setter.Value>
-            </Setter>            
+            </Setter>
 
             <Setter Property="RowHeaderStyle">
                 <Setter.Value>
@@ -125,17 +125,17 @@
         </Grid.RowDefinitions>
         <DataGrid x:Name="dataGrid" HorizontalScrollBarVisibility="Hidden" ContextMenu="{Binding ContextMenu}" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding SelectedItem}" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Roboto Mono" Margin="0,60,0,0" AutoGenerateColumns="False"/>
         <Grid MaxHeight="60" VerticalAlignment="Top" Height="60" Background="#1f3650">
-            <Button Content="" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="40" VerticalAlignment="Center" Command="{Binding BackPage}" BorderBrush="{x:Null}">
+            <Button Content="" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="30" VerticalAlignment="Bottom" Command="{Binding BackPage}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Left.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="" Margin="0" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Right" MinWidth="50" MinHeight="40" VerticalAlignment="Center" Command="{Binding NextPage}" BorderBrush="{x:Null}">
+            <Button Content="" Margin="0" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Right" MinWidth="50" MinHeight="30" VerticalAlignment="Bottom" Command="{Binding NextPage}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/MotoSoft;component/Assets/images/Right.png"/>
                 </Button.Background>
             </Button>
-            <Grid HorizontalAlignment="Center" Margin="0" Width="560" MinWidth="55" MinHeight="60">
+            <Grid Margin="55,0,55,0" MinWidth="55" MinHeight="60">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0*"/>
                     <RowDefinition/>
@@ -146,10 +146,22 @@
                     <ColumnDefinition Width="40*"/>
                     <ColumnDefinition Width="59*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" MaxLines="1" Foreground="#4b688c" BorderBrush="#4b688c" BorderThickness="1" FontFamily="Roboto Mono" FontSize="14" Grid.Row="2" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" MinHeight="25" Margin="0"/>
+                <TextBox TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" MaxLines="1" Foreground="#4b688c" BorderBrush="#4b688c" BorderThickness="1" FontFamily="Roboto Mono" FontSize="14" Grid.Row="2" Text="{Binding PageIDFromTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" MinHeight="25" Margin="0"/>
                 <Label Content="{Binding PageIDFromLabel}" Foreground="#4b688c" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Roboto Mono" Grid.Column="1" FontSize="14" Grid.RowSpan="2"/>
                 <Label Content="Enter number page:" Grid.Row="2" Margin="0,0,0,3" Foreground="#4b688c" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Roboto Mono" FontSize="14" MinHeight="27" Padding="0,5"/>
-                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="59,2,58,2" Grid.Row="2" VerticalAlignment="Center" Background="#FF1F3650" BorderBrush="#4b688c" Foreground="#4b688c" FontFamily="Roboto Mono" FontSize="14" Width="80" MinHeight="21" Height="26"/>
+                <Button Content="Refresh" Command="{Binding Refresh}" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" Background="#FF1F3650" BorderBrush="#4b688c" Foreground="#4b688c" FontFamily="Roboto Mono" FontSize="14" Width="80" MinHeight="21" Height="26"/>
+            </Grid>
+            <Grid Margin="0" HorizontalAlignment="Right" Grid.Column="2" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="71*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="ButtonSearch" Grid.Column="1" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" BorderBrush="Transparent" Foreground="{x:Null}" Click="ButtonSearch_MouseClick" MinHeight="25" MinWidth="25">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/MotoSoft;component/Assets/images/search.png"/>
+                    </Button.Background>
+                </Button>
+                <TextBox x:Name="TextBoxSearch" HorizontalAlignment="Right" Height="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" FontFamily="Roboto Mono" Foreground="#4b688c" BorderBrush="#4b688c" TextWrapping="Wrap" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="0" MinHeight="25" MaxHeight="25"/>
             </Grid>
         </Grid>
     </Grid>

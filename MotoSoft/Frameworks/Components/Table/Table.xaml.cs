@@ -1,8 +1,8 @@
-﻿using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using MahApps.Metro.Controls;
 
 namespace MotoSoft.Frameworks.Components.Table
 {
@@ -70,6 +70,12 @@ namespace MotoSoft.Frameworks.Components.Table
             {
                 cell.Column.Width = (cell.Content as TextBlock).ActualWidth;
             }
+        }
+
+        private void ButtonSearch_MouseClick(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxSearch.Width.Equals(0)) TextBoxSearch.Width = 150;
+            else TextBoxSearch.Width = 0;
         }
     }
 }
