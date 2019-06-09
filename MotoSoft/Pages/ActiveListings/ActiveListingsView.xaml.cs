@@ -8,6 +8,7 @@ namespace MotoSoft.Pages.ActiveListings
     public partial class ActiveListingsView : Page
     {
         ActiveListingsViewModel activeListingsViewModel;
+        public string Search { get => activeListingsViewModel.TableViewModel.Search; set => activeListingsViewModel.TableViewModel.Search = value; }
         public ActiveListingsView()
         {
             InitializeComponent();

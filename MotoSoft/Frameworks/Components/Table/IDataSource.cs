@@ -11,6 +11,7 @@ namespace MotoSoft.Frameworks.Components.Table
 
         Task<int> GetPagesCount(int pageSize);
         IList<Column> Columns { get; set; }
+        IList<ContextMenuField> ContextMenu { get; set; }
         string Search { get; set; }
         Task<IList> GetItemsForPage(int page, int pageSize);
     }

@@ -20,6 +20,7 @@ namespace MotoSoft.Frameworks.Components.Table
         private void Table_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
         {
             AddColumns();
+            AddContectMenu();
         }
 
         void AddColumns()
@@ -39,7 +40,29 @@ namespace MotoSoft.Frameworks.Components.Table
                 }
             }
         }
-        
+
+        void AddContectMenu()
+        {
+            var context = (DataContext as TableViewModel);
+            if (context != null)
+            {
+                if (dataGrid.ContextMenu == null) dataGrid.ContextMenu = new ContextMenu();
+                dataGrid.ContextMenu.Items.Clear();
+                var contextMenuFields = context.ContextMenu;
+                if (context.ContextMenu != null && context.ContextMenu.Count != 0)
+                {
+                    foreach (var contextField in contextMenuFields)
+                    {
+                        dataGrid.ContextMenu.Items.Add(new MenuItem
+                        {
+                            Header = contextField.Title,
+                            Command = contextField.Action
+                        });
+                    }
+                }
+            }
+        }
+
         private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             DataGridCell cell = sender as DataGridCell;

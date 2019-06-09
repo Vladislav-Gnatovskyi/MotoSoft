@@ -121,7 +121,6 @@ namespace MotoSoft.Pages.SoldListings
                     Field = "ItemeBayFees",
                     Type = EColumnType.Number
                 },
-
             };
         }
 

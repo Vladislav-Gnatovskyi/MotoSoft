@@ -9,16 +9,36 @@ using MotoSoft.Frameworks.Components.Table;
 
 namespace MotoSoft.Pages.LotSheets
 {
-    class LotSheetsViewModel: ViewModelBase
+    class LotSheetsViewModel : ViewModelBase
     {
         public TableViewModel TableViewModel { get; }
         public Frame MenuEdit { get; set; }
-        
+
         public LotSheetsViewModel(Frame frame)
         {
             LotSheetsRouter.Instance.InitRouter(this);
+            var dataSource = new LotSheetDataSource();
+            dataSource.ContextMenu.Add(new ContextMenuField { Title = "Active Listings", Action = GoToActiveListing });
+            dataSource.ContextMenu.Add(new ContextMenuField { Title = "Sold Listings", Action = GoToSoldListing });
             MenuEdit = frame;
-            TableViewModel = new TableViewModel(new LotSheetDataSource());
+            TableViewModel = new TableViewModel(dataSource);
+        }
+
+        public ICommand GoToActiveListing
+        {
+            get => new RelayCommand(x => 
+            {
+                LotSheetsModel item = (LotSheetsModel)TableViewModel.SelectedItem;
+                Router.Instance.GoToActiveListings($"{item.Lot}");
+            });
+        }
+        public ICommand GoToSoldListing
+        {
+            get => new RelayCommand(x =>
+            {
+                LotSheetsModel item = (LotSheetsModel)TableViewModel.SelectedItem;
+                Router.Instance.GoToSoldListings($"{item.Lot}");
+            });
         }
 
         public string Search

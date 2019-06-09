@@ -137,12 +137,14 @@ namespace MotoSoft
         {
             SetPage(LotSheets);
         }
-        public void GoToActiveListings()
+        public void GoToActiveListings(string search = null)
         {
+            ActiveListings.Search = search;
             SetPage(ActiveListings);
         }
-        public void GoToSoldListings()
+        public void GoToSoldListings(string search = null)
         {
+            SoldListings.Search = search;
             SetPage(SoldListings);
         }
 

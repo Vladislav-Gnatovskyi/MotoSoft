@@ -43,6 +43,7 @@ namespace MotoSoft.Frameworks.Pages
 
         private IList<T> _allItems { get; set; }
         public IList<Column> Columns { get; set; }
+        public IList<ContextMenuField> ContextMenu { get; set; } = new List<ContextMenuField>();
 
         protected SheetDataSourceBase()
         {

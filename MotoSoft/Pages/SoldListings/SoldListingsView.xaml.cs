@@ -8,6 +8,7 @@ namespace MotoSoft.Pages.SoldListings
     public partial class SoldListingsView : Page
     {
         SoldListingsViewModel soldListingsViewModel;
+        public string Search { get => soldListingsViewModel.TableViewModel.Search; set => soldListingsViewModel.TableViewModel.Search = value; }
         public SoldListingsView()
         {
             InitializeComponent();

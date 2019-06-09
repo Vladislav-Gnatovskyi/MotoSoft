@@ -21,6 +21,7 @@ namespace MotoSoft.Frameworks.Components.Table
             }
         }
         public IList<Column> Columns => source.Columns;
+        public IList<ContextMenuField> ContextMenu => source.ContextMenu;
         public object SelectedItem { get; set; }
 
         public TableViewModel(IDataSource source)

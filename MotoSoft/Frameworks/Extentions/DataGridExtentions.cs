@@ -20,5 +20,18 @@ namespace MotoSoft.Assets.Extentions
                 });
             }
         }
+
+        public static void GenerateContextMenuFields(this DataGrid dataGrid, IList<ContextMenuField> contextMenuFields)
+        {
+            dataGrid.ContextMenu.Items.Clear();
+            foreach (var menuField in contextMenuFields)
+            {
+                dataGrid.ContextMenu.Items.Add(new MenuItem
+                {
+                    Header = menuField.Title,
+                    Command = menuField.Action
+                });
+            }
+        }
     }
 }

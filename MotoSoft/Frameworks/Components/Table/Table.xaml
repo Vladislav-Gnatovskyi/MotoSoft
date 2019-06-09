@@ -10,6 +10,36 @@
              Background="#1c324a">
     <UserControl.Resources>
 
+        <Style TargetType="ContextMenu">
+            <Setter Property="Background" Value="#1f3650"/>
+            <Setter Property="Foreground" Value="#4b688c"/>
+            <Setter Property="BorderBrush" Value="#4b688c"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContextMenu}">
+                        <Border x:Name="Border" Background="Transparent" BorderThickness="1">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="#4b688c" />
+                            </Border.BorderBrush>
+                            <StackPanel IsItemsHost="True"
+                      KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasDropShadow"
+                   Value="true">
+                                <Setter TargetName="Border"
+                    Property="Padding"
+                    Value="0,3,0,3" />
+                                <Setter TargetName="Border"
+                    Property="CornerRadius"
+                    Value="4" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
         <Style TargetType="DataGrid">
             <Setter Property="Background" Value="#1c324a" />
             <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
@@ -46,7 +76,7 @@
                         </Style.Triggers>
                     </Style>
                 </Setter.Value>
-            </Setter>
+            </Setter>            
 
             <Setter Property="RowHeaderStyle">
                 <Setter.Value>
@@ -93,8 +123,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid HorizontalScrollBarVisibility="Hidden" x:Name="dataGrid" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding SelectedItem}" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Roboto Mono" Margin="0,60,0,0" AutoGenerateColumns="False">
-        </DataGrid>
+        <DataGrid x:Name="dataGrid" HorizontalScrollBarVisibility="Hidden" ContextMenu="{Binding ContextMenu}" ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding SelectedItem}" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnWidth="*" FontSize="14" FontFamily="Roboto Mono" Margin="0,60,0,0" AutoGenerateColumns="False"/>
         <Grid MaxHeight="60" VerticalAlignment="Top" Height="60" Background="#1f3650">
             <Button Content="" MaxWidth="50" MaxHeight="40" HorizontalAlignment="Left" MinWidth="50" MinHeight="40" VerticalAlignment="Center" Command="{Binding BackPage}" BorderBrush="{x:Null}">
                 <Button.Background>

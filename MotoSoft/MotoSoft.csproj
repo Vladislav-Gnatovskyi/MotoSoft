@@ -102,6 +102,7 @@
     </ApplicationDefinition>
     <Compile Include="Frameworks\Command\OpenFileDialogImage.cs" />
     <Compile Include="Frameworks\Command\ReplayCommand.cs" />
+    <Compile Include="Frameworks\Components\Table\ContextMenuField.cs" />
     <Compile Include="Frameworks\Extentions\DataGridExtentions.cs" />
     <Compile Include="Frameworks\Extentions\WebBrowserExtentions.cs" />
     <Compile Include="Frameworks\Components\Table\Column.cs" />
