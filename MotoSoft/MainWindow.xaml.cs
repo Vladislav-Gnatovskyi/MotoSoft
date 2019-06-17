@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows;
 using MotoSoft.ViewModels;
 
 namespace MotoSoft
@@ -10,8 +13,16 @@ namespace MotoSoft
     {
         public MainWindow()
         {
-            InitializeComponent();
-            DataContext = new MainViewModel();
+            bool existed;
+            // получаем GIUD приложения
+            string guid = Marshal.GetTypeLibGuidForAssembly(Assembly.GetExecutingAssembly()).ToString();
+            Mutex mutexObj = new Mutex(true, guid, out existed);
+            if (existed)
+            {
+                InitializeComponent();
+                DataContext = new MainViewModel();
+            }
+            else App.Current.Shutdown();
         }
     }
 }

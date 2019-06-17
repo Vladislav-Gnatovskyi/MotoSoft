@@ -28,16 +28,22 @@ namespace MotoSoft.Pages.LotSheets
         {
             get => new RelayCommand(x => 
             {
-                LotSheetsModel item = (LotSheetsModel)TableViewModel.SelectedItem;
-                Router.Instance.GoToActiveListings($"{item.Lot}");
+                if (TableViewModel.SelectedItem != null)
+                {
+                    LotSheetsModel item = (LotSheetsModel)TableViewModel.SelectedItem;
+                    Router.Instance.GoToActiveListings($"{item.Lot}");
+                }
             });
         }
         public ICommand GoToSoldListing
         {
             get => new RelayCommand(x =>
             {
-                LotSheetsModel item = (LotSheetsModel)TableViewModel.SelectedItem;
-                Router.Instance.GoToSoldListings($"{item.Lot}");
+                if (TableViewModel.SelectedItem != null)
+                {
+                    LotSheetsModel item = (LotSheetsModel)TableViewModel.SelectedItem;
+                    Router.Instance.GoToSoldListings($"{item.Lot}");
+                }
             });
         }
 

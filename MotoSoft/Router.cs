@@ -9,6 +9,9 @@ using MotoSoft.Frameworks.Authorize;
 using MotoSoft.Pages.Authorize;
 using MotoSoft.Pages.Lot;
 using MotoSoft.Frameworks;
+using System.Threading;
+using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace MotoSoft
 {
@@ -27,14 +30,12 @@ namespace MotoSoft
         private SettingsView _settings;
         private Authorize _brouser;
 
-        private Authorize Brouser
+        private Authorize Brouser(string url = null)
         {
-            get
-            {
-                if (_brouser == null)
-                    _brouser = new Authorize("https://www.ebay.com/");
+            if (_brouser == null && url == null)
+                _brouser = new Authorize("https://www.ebay.com/");
+            else if (url != null) new Authorize(url);
                 return _brouser;
-            }
         }
 
         private LotSheetsView LotSheets
@@ -118,9 +119,9 @@ namespace MotoSoft
             GotToDefault();
         }
        
-        public void GoToBrouser()
+        public void GoToBrouser(string url = null)
         {
-            SetPage(Brouser);
+            SetPage(Brouser(url));
         }
 
         public void GoToAnalytics()
@@ -137,12 +138,12 @@ namespace MotoSoft
         {
             SetPage(LotSheets);
         }
-        public void GoToActiveListings(string search = null)
+        public void GoToActiveListings(string search = "")
         {
             ActiveListings.Search = search;
             SetPage(ActiveListings);
         }
-        public void GoToSoldListings(string search = null)
+        public void GoToSoldListings(string search = "")
         {
             SoldListings.Search = search;
             SetPage(SoldListings);
