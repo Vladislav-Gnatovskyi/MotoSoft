@@ -29,9 +29,10 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -283,7 +284,7 @@
       <Version>73.1.130</Version>
     </PackageReference>
     <PackageReference Include="DevExpressMvvm">
-      <Version>18.2.3</Version>
+      <Version>20.1.6</Version>
     </PackageReference>
     <PackageReference Include="eBay">
       <Version>3.1065.0</Version>
